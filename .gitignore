@@ -12,3 +12,12 @@ __pycache__/
 *.sql
 *.log
 *.tar.gz
+
+*.db
+*.db-journal
+*.sqlite
+.DS_Store
+*_log.txt
+lint_output.txt
+check_out.txt
+app_b64.txt
