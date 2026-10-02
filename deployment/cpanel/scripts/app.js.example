@@ -1,0 +1,146 @@
+#!/usr/bin/env node
+
+/**
+ * Point d'entrée Node.js pour Hinneh Education sur cPanel
+ * À placer dans le répertoire racine après "Setup Node.js App" via cPanel
+ */
+
+import express from 'express';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+import dotenv from 'dotenv';
+import fs from 'fs';
+
+// Charger les variables d'environnement
+dotenv.config({ path: '.env.production' });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const app = express();
+const PORT = process.env.PORT || 8000;
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+// Créer le dossier logs s'il n'existe pas
+const logsDir = join(__dirname, 'logs');
+if (!fs.existsSync(logsDir)) {
+  fs.mkdirSync(logsDir, { recursive: true });
+}
+
+// Logger personnalisé
+const log = (message) => {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${message}`);
+};
+
+log(`🚀 Démarrage Hinneh Education - ${NODE_ENV}`);
+
+// Middleware
+app.use(express.json({ limit: '100mb' }));
+app.use(express.urlencoded({ limit: '100mb', extended: true }));
+
+// Logger les requêtes
+app.use((req, res, next) => {
+  const start = Date.now();
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    log(`${req.method} ${req.path} - ${res.statusCode} (${duration}ms)`);
+  });
+  next();
+});
+
+// Servir les fichiers statiques (React dist)
+const distPath = join(__dirname, 'dist');
+if (fs.existsSync(distPath)) {
+  app.use(express.static(distPath, {
+    maxAge: '1y',
+    etag: false,
+  }));
+  log(`📁 Serving static files from ${distPath}`);
+}
+
+// ====== ROUTES API ======
+
+// Health check (utilisé par cPanel)
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    timestamp: new Date().toISOString(),
+    uptime: process.uptime(),
+  });
+});
+
+// API version
+app.get('/api/version', (req, res) => {
+  res.json({
+    app: 'Hinneh Education',
+    version: process.env.npm_package_version || '1.0.0',
+    environment: NODE_ENV,
+  });
+});
+
+// API placeholder (remplacer par vrai routeur)
+app.use('/api', (req, res) => {
+  res.status(404).json({
+    error: 'API route not implemented',
+    path: req.path,
+  });
+});
+
+// ====== SPA FALLBACK ======
+
+// Toutes les autres requêtes retournent index.html (React routing)
+if (fs.existsSync(distPath)) {
+  app.get('*', (req, res) => {
+    res.sendFile(join(distPath, 'index.html'));
+  });
+}
+
+// ====== ERROR HANDLING ======
+
+app.use((err, req, res, next) => {
+  console.error('Error:', err);
+  res.status(500).json({
+    error: 'Internal Server Error',
+    message: NODE_ENV === 'development' ? err.message : 'An error occurred',
+  });
+});
+
+// ====== START SERVER ======
+
+// Écouter uniquement sur 127.0.0.1 (local) - Apache fera le proxy
+const server = app.listen(PORT, '127.0.0.1', () => {
+  log(`✅ Server listening on http://127.0.0.1:${PORT}`);
+  log(`📍 Public URL: https://hinneh-education.ci`);
+  log(`🔧 Environment: ${NODE_ENV}`);
+});
+
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  log('⏹️  SIGTERM received, shutting down gracefully...');
+  server.close(() => {
+    log('✅ Server closed');
+    process.exit(0);
+  });
+});
+
+process.on('SIGINT', () => {
+  log('⏹️  SIGINT received, shutting down gracefully...');
+  server.close(() => {
+    log('✅ Server closed');
+    process.exit(0);
+  });
+});
+
+// Erreurs non attrapées
+process.on('uncaughtException', (err) => {
+  console.error('❌ Uncaught Exception:', err);
+  process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('❌ Unhandled Rejection at:', promise, 'reason:', reason);
+  process.exit(1);
+});
+
+export default app;

@@ -1,0 +1,817 @@
+{
+  "maternelle_mps": {
+    "id": "maternelle_mps",
+    "label": "Maternelle MPS (200 100 FCFA)",
+    "cycle": "Maternelle",
+    "niveaux": [
+      "MPS"
+    ],
+    "total": 200100,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 40000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 30000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 30000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 30000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 20100,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "maternelle_mms": {
+    "id": "maternelle_mms",
+    "label": "Maternelle MMS (167 100 FCFA)",
+    "cycle": "Maternelle",
+    "niveaux": [
+      "MMS"
+    ],
+    "total": 168100,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 51000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 25500,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 25000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 23300,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 22300,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 21000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "maternelle_mgs": {
+    "id": "maternelle_mgs",
+    "label": "Maternelle MGS (200 100 FCFA)",
+    "cycle": "Maternelle",
+    "niveaux": [
+      "MGS"
+    ],
+    "total": 200100,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 40000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 30000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 30000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 30000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 20100,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "primaire_cp1_cp2": {
+    "id": "primaire_cp1_cp2",
+    "label": "Primaire CP1 & CP2 (195 500 FCFA)",
+    "cycle": "Primaire",
+    "niveaux": [
+      "CP1",
+      "CP2"
+    ],
+    "total": 195500,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 43500,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 31000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 26000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 25000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 20000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "primaire_ce1_ce2": {
+    "id": "primaire_ce1_ce2",
+    "label": "Primaire CE1 & CE2 (200 500 FCFA)",
+    "cycle": "Primaire",
+    "niveaux": [
+      "CE1",
+      "CE2"
+    ],
+    "total": 200500,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 40500,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 30000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 30000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 25000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 25000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "primaire_cm1": {
+    "id": "primaire_cm1",
+    "label": "Primaire CM1 (205 500 FCFA)",
+    "cycle": "Primaire",
+    "niveaux": [
+      "CM1"
+    ],
+    "total": 205500,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 40500,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 35000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 30000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 25000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 25000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "primaire_cm2": {
+    "id": "primaire_cm2",
+    "label": "Primaire CM2 (220 500 FCFA)",
+    "cycle": "Primaire",
+    "niveaux": [
+      "CM2"
+    ],
+    "total": 220500,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 50500,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 45000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 35000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 20000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 20000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "inscription_6eme": {
+    "id": "inscription_6eme",
+    "label": "Inscription 6ème (150 000 FCFA)",
+    "cycle": "Collège",
+    "niveaux": [
+      "6ème (Nouveau)"
+    ],
+    "total": 150000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 50000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 25000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 25000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 20000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 15000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 15000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "reinscription_6eme_hinneh": {
+    "id": "reinscription_6eme_hinneh",
+    "label": "Réinscription 6ème (Hinneh et CM2 - 150 000 FCFA)",
+    "cycle": "Collège",
+    "niveaux": [
+      "6ème (Réinscription)"
+    ],
+    "total": 150000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 35000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 23000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 15000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 15000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "reinscription_5eme_c_d": {
+    "id": "reinscription_5eme_c_d",
+    "label": "Réinscription 5è C & 5è D (157 000 FCFA)",
+    "cycle": "Collège",
+    "niveaux": [
+      "5è C",
+      "5è D"
+    ],
+    "total": 157000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 69000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 35000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 23000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 15000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 15000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "reinscription_5eme": {
+    "id": "reinscription_5eme",
+    "label": "Réinscription 5ème (150 000 FCFA)",
+    "cycle": "Collège",
+    "niveaux": [
+      "5ème"
+    ],
+    "total": 150000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 35000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 23000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 15000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 15000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "reinscription_4eme": {
+    "id": "reinscription_4eme",
+    "label": "Réinscription 4ème (150 000 FCFA)",
+    "cycle": "Collège",
+    "niveaux": [
+      "4ème"
+    ],
+    "total": 150000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 35000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 23000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 15000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 15000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "reinscription_4eme_c_d": {
+    "id": "reinscription_4eme_c_d",
+    "label": "Réinscription 4è C & 4è D (157 000 FCFA)",
+    "cycle": "Collège",
+    "niveaux": [
+      "4è C",
+      "4è D"
+    ],
+    "total": 157000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 69000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 35000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 23000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 15000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 15000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "reinscription_3eme": {
+    "id": "reinscription_3eme",
+    "label": "Réinscription 3ème (220 000 FCFA)",
+    "cycle": "Collège 2nd cycle (Non-Affectés)",
+    "niveaux": [
+      "3ème"
+    ],
+    "total": 220000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 67000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 50000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 40000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 33000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 30000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "lycee_affectes_1ere_anciens": {
+    "id": "lycee_affectes_1ere_anciens",
+    "label": "1ère A, C, D (Affectés Anciens - 175 000 FCFA)",
+    "cycle": "Lycée (Affectés)",
+    "niveaux": [
+      "1ère A",
+      "1ère C",
+      "1ère D (Anciens)"
+    ],
+    "total": 175000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 45000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 35000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc. (Solde)",
+        "montant": 33000,
+        "date": "2026-12-05"
+      }
+    ]
+  },
+  "lycee_affectes_1ere_nouveaux": {
+    "id": "lycee_affectes_1ere_nouveaux",
+    "label": "1ère A, C, D (Affectés Nouveaux - 200 000 FCFA)",
+    "cycle": "Lycée (Affectés)",
+    "niveaux": [
+      "1ère A",
+      "1ère C",
+      "1ère D (Nouveaux)"
+    ],
+    "total": 200000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 50000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 45000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc. (Solde)",
+        "montant": 43000,
+        "date": "2026-12-05"
+      }
+    ]
+  },
+  "lycee_affectes_tle": {
+    "id": "lycee_affectes_tle",
+    "label": "Terminale A, C, D (Affectés - 250 000 FCFA)",
+    "cycle": "Lycée (Affectés)",
+    "niveaux": [
+      "Tle A",
+      "Tle C",
+      "Tle D"
+    ],
+    "total": 250000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 50000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 50000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 45000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan. (Solde)",
+        "montant": 43000,
+        "date": "2027-01-05"
+      }
+    ]
+  },
+  "lycee_naf_2nde": {
+    "id": "lycee_naf_2nde",
+    "label": "2nd NAF (Non-Affectés - 250 600 FCFA)",
+    "cycle": "Lycée (Non-Affectés)",
+    "niveaux": [
+      "2nd NAF"
+    ],
+    "total": 250600,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 45000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 45000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 35000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 33000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 30600,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "lycee_naf_1ere": {
+    "id": "lycee_naf_1ere",
+    "label": "1ère A, C, D NAF (Non-Affectés - 233 000 FCFA)",
+    "cycle": "Lycée (Non-Affectés)",
+    "niveaux": [
+      "1ère A NAF",
+      "1ère C NAF",
+      "1ère D NAF"
+    ],
+    "total": 233000,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 40000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 40000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 40000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 26000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév. (Solde)",
+        "montant": 25000,
+        "date": "2027-02-05"
+      }
+    ]
+  },
+  "lycee_naf_tle": {
+    "id": "lycee_naf_tle",
+    "label": "Terminale A, C, D NAF (Non-Affectés - 296 500 FCFA)",
+    "cycle": "Lycée (Non-Affectés)",
+    "niveaux": [
+      "Tle A NAF",
+      "Tle C NAF",
+      "Tle D NAF"
+    ],
+    "total": 296500,
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 67000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 45000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 45000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 40000,
+        "date": "2026-12-05"
+      },
+      {
+        "libelle": "5ème vers. 05 jan.",
+        "montant": 35000,
+        "date": "2027-01-05"
+      },
+      {
+        "libelle": "6ème vers. 05 fév.",
+        "montant": 33000,
+        "date": "2027-02-05"
+      },
+      {
+        "libelle": "7ème vers. 05 mars (Solde)",
+        "montant": 31500,
+        "date": "2027-03-05"
+      }
+    ]
+  },
+  "test": {
+    "id": "test",
+    "label": "test",
+    "cycle": "Collège",
+    "niveaux": [
+      "5ème"
+    ],
+    "tranches": [
+      {
+        "libelle": "1er vers. 05 sept.",
+        "montant": 62000,
+        "date": "2026-09-05"
+      },
+      {
+        "libelle": "2ème vers. 05 oct.",
+        "montant": 35000,
+        "date": "2026-10-05"
+      },
+      {
+        "libelle": "3ème vers. 05 nov.",
+        "montant": 23000,
+        "date": "2026-11-05"
+      },
+      {
+        "libelle": "4ème vers. 05 déc.",
+        "montant": 15000,
+        "date": "2026-12-05"
+      }
+    ],
+    "total": 135000
+  }
+}

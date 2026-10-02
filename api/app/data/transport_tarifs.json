@@ -1,0 +1,72 @@
+{
+  "cantine": {
+    "mensuel": 15000.0,
+    "trimestriel": 45000.0,
+    "annuel": 135000.0,
+    "journalier": 1000.0
+  },
+  "zones": [
+    {
+      "id": 4,
+      "zone": "ZONE-1",
+      "nom": "Zone 1 - Biabou Proche (≤ 2.0 km)",
+      "quartiers": [
+        "Abobo-Biabou",
+        "BC",
+        "Carrefour Bandji",
+        "Pharmacie Biabou"
+      ],
+      "km": "1.5 km",
+      "tarif": 18000.0
+    },
+    {
+      "id": 5,
+      "zone": "ZONE-2",
+      "nom": "Zone 2 - Biabou Extérieur (2.1 - 4.0 km)",
+      "quartiers": [
+        "Biabou Extension",
+        "Anonkoua Kouté",
+        "Cité Synthèse"
+      ],
+      "km": "3.5 km",
+      "tarif": 22000.0
+    },
+    {
+      "id": 6,
+      "zone": "ZONE-3",
+      "nom": "Zone 3 - Abobo Centre & Alépé (4.1 - 7.0 km)",
+      "quartiers": [
+        "Abobo Baoulé",
+        "Samaké",
+        "PK18",
+        "Route Alépé"
+      ],
+      "km": "6.0 km",
+      "tarif": 25000.0
+    },
+    {
+      "id": 8,
+      "zone": "ZONE-7",
+      "nom": "Ligne Verification Finale",
+      "quartiers": [
+        "Quartier Verif"
+      ],
+      "km": "3.0 km",
+      "tarif": 19000.0
+    },
+    {
+      "zone_id": 8,
+      "nom": "Ligne Verification Finale",
+      "kilometrage_moyen": "3.0 km",
+      "vehicule_id": null,
+      "quartiers": [
+        {
+          "nom": "Quartier Verif",
+          "tarif": 19000,
+          "km": "3.0 km"
+        }
+      ]
+    }
+  ],
+  "tarifs_complets": [
+    

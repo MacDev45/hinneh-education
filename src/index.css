@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+==========================================================================
+【AI HANDOVER NOTE】
+1. DESIGN PHILOSOPHY:
+   - Approche Neo-minimalism avec Bento surfaces pour une plateforme éducative professionnelle
+   - Système modulaire privilégiant la clarté informationnelle et la hiérarchie visuelle stricte
+   - Inspiration Swiss typography pour la rigueur académique, adaptée au contexte francophone
+   - Physicality subtile avec rim-light pour donner de la profondeur aux cartes de données
+   - Palette apaisante et professionnelle, évitant la sur-stimulation visuelle pour un usage quotidien intensif
+   - Design inclusif respectant WCAG 2.1 AA pour l'accessibilité dans les établissements confessionnels
+
+2. TYPOGRAPHY:
+   - Plus Jakarta Sans (primary): Police géométrique humaniste, excellente lisibilité en français, caractère professionnel et moderne adapté au secteur éducatif. Graisses variées (500-800) pour hiérarchie claire des titres et données statistiques.
+   - Inter (secondary): Complément pour textes longs et interfaces denses, optimisée pour écrans, parfaite pour tableaux de données et formulaires de gestion.
+   - JetBrains Mono: Identifiants techniques (codes élèves, références établissements), affichage de données numériques précises, logs système.
+
+3. COLOR SYSTEM:
+   - Brand primary (H:220): Bleu profond académique évoquant confiance, sérénité et professionnalisme éducatif. Mapping: --brand → --primary (boutons CTA, navigation active), --accent (highlights, badges), --ring (focus states).
+   - Semantic colors: Success (H:150) pour validations pédagogiques et présences, Warning (H:45) pour alertes modérées et notifications, Destructive (H:10) pour actions critiques et absences.
+   - Sidebar: Teinte légèrement différenciée (H:215) pour distinction claire entre navigation et contenu principal.
+   - Charts: Palette harmonieuse (H:220/180/280/30/160) pour visualisations de données éducatives (statistiques, présences, performances).
+
+4. USAGE GUIDE:
+   - Layout: Dashboard full-width avec sidebar fixe, zone de contenu principale en grille Bento (cards modulaires 4/8/12 colonnes)
+   - Effets recommandés: backdrop-blur(12px) sur modals et popovers, rim-light subtil (1px) sur cards hover, ombres douces multi-couches pour profondeur
+   - Hiérarchie: Titres en Plus Jakarta Sans 600-800, corps de texte Inter 400-500, données numériques JetBrains Mono 500
+   - Espacement: Système 4px base, généreux pour respiration visuelle (padding cards min 24px)
+   - Interactions: Transitions 200ms ease-out, feedback visuel immédiat sur actions critiques (inscriptions, notes, présences)
+   - Accessibilité: Contraste minimum 4.5:1 texte/fond, focus visible 3px ring, tailles tactiles min 44x44px
+   - Spécificités métier: Codes couleur pour niveaux scolaires, badges de statut élèves, indicateurs de performance établissements
+==========================================================================
+*/
+
+:root {
+  /* Typography */
+  --font-sans: "Plus Jakarta Sans", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+  
+  /* Radius */
+  --radius: 0.75rem;
+
+  /* Core UI Tokens */
+  --background: oklch(0.99 0.002 220);
+  --foreground: oklch(0.15 0.012 220);
+  --card: oklch(0.98 0.004 220);
+  --card-foreground: oklch(0.18 0.012 220);
+  --popover: oklch(0.99 0.003 220);
+  --popover-foreground: oklch(0.15 0.012 220);
+  --primary: oklch(0.48 0.18 220);
+  --primary-foreground: oklch(0.98 0.004 220);
+  --secondary: oklch(0.94 0.008 220);
+  --secondary-foreground: oklch(0.22 0.015 220);
+  --muted: oklch(0.95 0.006 220);
+  --muted-foreground: oklch(0.48 0.012 220);
+  --accent: oklch(0.92 0.015 220);
+  --accent-foreground: oklch(0.22 0.018 220);
+  --destructive: oklch(0.55 0.22 10);
+  --destructive-foreground: oklch(0.98 0.004 10);
+  --border: oklch(0.88 0.008 220);
+  --input: oklch(0.88 0.008 220);
+  --ring: oklch(0.48 0.18 220);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.52 0.18 220);
+  --chart-2: oklch(0.58 0.16 180);
+  --chart-3: oklch(0.62 0.19 280);
+  --chart-4: oklch(0.68 0.17 30);
+  --chart-5: oklch(0.55 0.15 160);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.97 0.006 215);
+  --sidebar-foreground: oklch(0.22 0.015 215);
+  --sidebar-primary: oklch(0.48 0.18 215);
+  --sidebar-primary-foreground: oklch(0.98 0.004 215);
+  --sidebar-accent: oklch(0.92 0.012 215);
+  --sidebar-accent-foreground: oklch(0.22 0.018 215);
+  --sidebar-border: oklch(0.88 0.008 215);
+  --sidebar-ring: oklch(0.48 0.18 215);
+
+  /* Semantic Status Colors */
+  --success: oklch(0.55 0.18 150);
+  --success-foreground: oklch(0.98 0.004 150);
+  --success-muted: oklch(0.92 0.06 150);
+  --warning: oklch(0.70 0.18 45);
+  --warning-foreground: oklch(0.20 0.05 45);
+  --warning-muted: oklch(0.94 0.08 45);
+  --info: oklch(0.55 0.18 220);
+  --info-foreground: oklch(0.98 0.004 220);
+  --info-muted: oklch(0.92 0.06 220);
+  --sidebar-dark: oklch(0.22 0.04 220);
+  --sidebar-dark-foreground: oklch(0.92 0.008 220);
+}
+
+.dark {
+  --background: oklch(0.12 0.015 220);
+  --foreground: oklch(0.92 0.008 220);
+  --card: oklch(0.15 0.018 220);
+  --card-foreground: oklch(0.90 0.008 220);
+  --popover: oklch(0.13 0.016 220);
+  --popover-foreground: oklch(0.92 0.008 220);
+  --primary: oklch(0.62 0.22 220);
+  --primary-foreground: oklch(0.12 0.015 220);
+  --secondary: oklch(0.22 0.025 220);
+  --secondary-foreground: oklch(0.88 0.010 220);
+  --muted: oklch(0.20 0.020 220);
+  --muted-foreground: oklch(0.62 0.015 220);
+  --accent: oklch(0.28 0.030 220);
+  --accent-foreground: oklch(0.90 0.010 220);
+  --destructive: oklch(0.60 0.25 10);
+  --destructive-foreground: oklch(0.95 0.008 10);
+  --border: oklch(0.28 0.025 220);
+  --input: oklch(0.28 0.025 220);
+  --ring: oklch(0.62 0.22 220);
+  
+  /* Chart Tokens */
+  --chart-1: oklch(0.65 0.22 220);
+  --chart-2: oklch(0.68 0.20 180);
+  --chart-3: oklch(0.70 0.24 280);
+  --chart-4: oklch(0.72 0.21 30);
+  --chart-5: oklch(0.66 0.19 160);
+  
+  /* Sidebar Tokens */
+  --sidebar: oklch(0.14 0.018 215);
+  --sidebar-foreground: oklch(0.88 0.010 215);
+  --sidebar-primary: oklch(0.62 0.22 215);
+  --sidebar-primary-foreground: oklch(0.12 0.015 215);
+  --sidebar-accent: oklch(0.28 0.028 215);
+  --sidebar-accent-foreground: oklch(0.90 0.010 215);
+  --sidebar-border: oklch(0.28 0.025 215);
+  --sidebar-ring: oklch(0.62 0.22 215);
+}
+
+@theme inline {
+  /* Semantic Status Colors */
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-success-muted: var(--success-muted);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-warning-muted: var(--warning-muted);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-info-muted: var(--info-muted);
+  --color-sidebar-dark: var(--sidebar-dark);
+  --color-sidebar-dark-foreground: var(--sidebar-dark-foreground);
+  /* Shadcn Core Mapping */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Charts Mapping */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar Mapping */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Typography */
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+
+  /* Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    @apply scroll-smooth antialiased;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans min-h-screen;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  code, pre {
+    @apply font-mono;
+  }
+
+  ::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40;
+  }
+}
+
+/* ── IMPRESSION EMPLOI DU TEMPS & DOCUMENTS SCOLAIRES ── */
+@media print {
+  body.printing-schedule > *:not(#print-schedule-container),
+  body.printing-doc > *:not(#print-doc-container) {
+    display: none !important;
+  }
+
+  body.printing-schedule,
+  body.printing-doc {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  #print-schedule-container,
+  #print-doc-container {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    padding: 0.5rem !important;
+    margin: 0 !important;
+    background: white !important;
+    box-shadow: none !important;
+    color: black !important;
+  }
+
+  #print-schedule-container *,
+  #print-doc-container * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  #print-schedule-container .no-print,
+  #print-doc-container .no-print {
+    display: none !important;
+  }
+
+  body.print-landscape-mode {
+    @page {
+      margin: 1cm;
+      size: landscape;
+    }
+  }
+
+  body.print-portrait-mode {
+    @page {
+      margin: 1cm;
+      size: portrait;
+    }
+  }
+
+  /* Cache systématique des éléments d'interface web lors de l'impression */
+  aside, nav, .sidebar-container, .no-print, button, [role="tablist"] {
+    display: none !important;
+  }
+}

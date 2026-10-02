@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(try { \\(Invoke-RestMethod -Uri \"http://127.0.0.1:8020/openapi.json\" -TimeoutSec 20\\).paths.PSObject.Properties.Name | Where-Object { $_ -match \"caisse|paiement|payment\" } } catch { $_.Exception.Message })",
+      "PowerShell($env:PYTHONIOENCODING='utf-8'; python -c \"import json,io;d=json.load\\(io.open\\(r'C:\\\\Users\\\\dagno\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--dowload-educ-final-Dossier-310526-310526\\\\7b9ff7d1-d03c-412b-b884-dfb71c5e0ee0\\\\scratchpad\\\\recap_6.json',encoding='utf-8'\\)\\);print\\(list\\(d.keys\\(\\)\\)\\);print\\(json.dumps\\({k:d[k] for k in d if k not in \\('echeances','par_categorie','historique'\\)},ensure_ascii=False,indent=1\\)[:2500]\\)\")",
+      "PowerShell(node \"C:\\\\Users\\\\dagno\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--dowload-educ-final-Dossier-310526-310526\\\\7b9ff7d1-d03c-412b-b884-dfb71c5e0ee0\\\\scratchpad\\\\coherence-3.mjs\")",
+      "PowerShell(try { Invoke-RestMethod -Uri \"http://127.0.0.1:8020/api/echeanciers/student/1\" -TimeoutSec 15 } catch { $r=$_.Exception.Response; $sr=New-Object System.IO.StreamReader\\($r.GetResponseStream\\(\\)\\); $sr.ReadToEnd\\(\\) })",
+      "PowerShell(node \"C:\\\\Users\\\\dagno\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\d--dowload-educ-final-Dossier-310526-310526\\\\7b9ff7d1-d03c-412b-b884-dfb71c5e0ee0\\\\scratchpad\\\\verif-bon-eleve.mjs\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name like '%python%'\")",
+      "PowerShell(\\(Get-Item \"D:\\\\dowload\\\\educ\\\\final\\\\Dossier\\\\310526\\\\310526\\\\api\\\\app\\\\routers\\\\caisse.py\"\\).LastWriteTime)",
+      "PowerShell(Select-String -Path api\\\\app\\\\routers\\\\caisse.py -Pattern 'import|_grille_depuis_preset|GrilleTarifaire\\\\\\(' | Where-Object { $_.LineNumber -gt 1190 -and $_.LineNumber -lt 1335 } | ForEach-Object { \"$\\($_.LineNumber\\): $\\($_.Line.Trim\\(\\)\\)\" })",
+      "PowerShell(Select-String -Path api\\\\app\\\\routers\\\\caisse.py -Pattern 'json_presets' -Context 3,0 | Select-Object -First 1 | ForEach-Object { \"LIGNE $\\($_.LineNumber\\)\"; $_.Context.PreContext -join \"`n\"; $_.Line })"
+    ]
+  }
+}

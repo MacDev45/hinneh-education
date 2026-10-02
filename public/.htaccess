@@ -1,0 +1,123 @@
+# ==============================================================================
+# HINNEH ÉDUCATION — FICHIER .HTACCESS DE PRODUCTION (hinneh-education.ci)
+# Conçu pour éliminer les erreurs 404, 403, 500, 502, 503 sur Apache / cPanel
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. GESTION DES PAGES D'ERREUR (Anti-crash 404 / 500 / 502 / 503)
+# ------------------------------------------------------------------------------
+ErrorDocument 404 /index.html
+ErrorDocument 500 /error.html
+ErrorDocument 502 /error.html
+ErrorDocument 503 /error.html
+
+# ------------------------------------------------------------------------------
+# 2. RÉÉCRITURE D'URL & ROUTAGE SPA (React Router - Évite les 404 au rafraîchissement)
+# ------------------------------------------------------------------------------
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ─── Forcer HTTPS (hors localhost) ─────────────────────────────────────────
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} !^localhost
+  RewriteCond %{HTTP_HOST} !^127\.0\.0\.1
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+  # ─── Proxy vers l'API FastAPI locale si mod_proxy est actif sur le serveur ──
+  <IfModule mod_proxy.c>
+    RewriteRule ^api/(.*)$ http://127.0.0.1:8020/api/$1 [P,L]
+    RewriteRule ^(docs|redoc|openapi.json) http://127.0.0.1:8020/$1 [P,L]
+    RewriteRule ^uploads/(.*)$ http://127.0.0.1:8020/uploads/$1 [P,L]
+  </IfModule>
+
+  # ─── Ne pas réécrire les fichiers et dossiers réels existants ──────────────
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # ─── Rediriger toutes les autres routes vers index.html pour le SPA React ───
+  RewriteRule ^ index.html [L,QSA]
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 3. TYPES MIME OFFICIELS (Évite les erreurs de modules JS ou polices bloqués)
+# ------------------------------------------------------------------------------
+<IfModule mod_mime.c>
+  AddType application/javascript          js mjs
+  AddType text/css                        css
+  AddType application/json                json
+  AddType image/svg+xml                   svg svgz
+  AddType font/woff2                      woff2
+  AddType font/woff                       woff
+  AddType font/ttf                        ttf
+  AddType font/eot                        eot
+  AddType image/webp                      webp
+  AddType image/x-icon                    ico
+  AddType application/pdf                 pdf
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 4. EN-TÊTES DE SÉCURITÉ & CORS UNIVERSEL
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Access-Control-Allow-Origin "*"
+  Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  Header set Access-Control-Allow-Headers "Content-Type, Authorization, X-Requested-With, X-School-Code, X-School-Id"
+
+  # ─── Cache Control : Pas de cache sur index.html (mises à jour instantanées)
+  <FilesMatch "\.(html|htm)$">
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+  </FilesMatch>
+
+  # ─── Cache long pour les assets versionnés (JS, CSS, Polices, Images) ───────
+  <FilesMatch "\.(js|mjs|css|woff2|woff|ttf|svg|png|jpg|jpeg|gif|ico|webp)$">
+    Header set Cache-Control "max-age=31536000, public, immutable"
+  </FilesMatch>
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 5. COMPRESSION GZIP / DEFLATE (Accélération des temps de chargement)
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE text/javascript application/javascript application/x-javascript
+  AddOutputFilterByType DEFLATE application/json application/xml image/svg+xml
+  AddOutputFilterByType DEFLATE font/ttf font/woff font/woff2
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 6. EXPIRATION DU CACHE NAVIGATEUR (mod_expires)
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html                 "access plus 0 seconds"
+  ExpiresByType application/json          "access plus 0 seconds"
+  ExpiresByType text/css                  "access plus 1 year"
+  ExpiresByType application/javascript    "access plus 1 year"
+  ExpiresByType text/javascript           "access plus 1 year"
+  ExpiresByType image/svg+xml             "access plus 1 year"
+  ExpiresByType image/png                 "access plus 1 year"
+  ExpiresByType image/jpeg                "access plus 1 year"
+  ExpiresByType image/webp                "access plus 1 year"
+  ExpiresByType image/x-icon              "access plus 1 year"
+  ExpiresByType font/woff2                "access plus 1 year"
+  ExpiresByType font/woff                 "access plus 1 year"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 7. PROTECTION DES FICHIERS SENSIBLES
+# ------------------------------------------------------------------------------
+<FilesMatch "^\.(env|git|htaccess|htpasswd|ini|log|sh|bat|bak)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+Options -Indexes

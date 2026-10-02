@@ -1,0 +1,14 @@
+﻿.env
+.env.*
+*.env
+node_modules/
+venv/
+.venv/
+dist/
+build/
+__pycache__/
+*.pyc
+*.zip
+*.sql
+*.log
+*.tar.gz

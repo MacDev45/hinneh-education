@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hinneh Éducation — Erreur</title>
+  <style>
+    :root {
+      --brand: #1e3a5f;
+      --accent: #2563eb;
+      --danger: #dc2626;
+      --warn: #d97706;
+      --ok: #16a34a;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0f4f8;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+      max-width: 560px;
+      width: 92%;
+      overflow: hidden;
+    }
+    .card-header {
+      background: var(--brand);
+      padding: 28px 32px 20px;
+      color: #fff;
+    }
+    .card-header img { height: 40px; margin-bottom: 10px; }
+    .card-header h1 { font-size: 1.3rem; font-weight: 700; }
+    .card-header p  { font-size: 0.85rem; opacity: 0.75; margin-top: 4px; }
+    .card-body { padding: 28px 32px; }
+    .error-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #fef2f2;
+      border: 1.5px solid #fecaca;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--danger);
+      margin-bottom: 20px;
+    }
+    .error-badge span { font-size: 1.3rem; }
+    .error-desc {
+      font-size: 0.95rem;
+      color: #374151;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .solutions {
+      background: #f8fafc;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .solutions h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--brand);
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .solutions ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .solutions ul li::before { content: "→ "; color: var(--accent); font-weight: bold; }
+    .solutions ul li { font-size: 0.875rem; color: #4b5563; }
+    .btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 7px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: opacity .18s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-outline { background: #fff; color: var(--brand); border: 1.5px solid var(--brand); }
+    .card-footer {
+      border-top: 1px solid #e5e7eb;
+      padding: 14px 32px;
+      font-size: 0.78rem;
+      color: #9ca3af;
+      display: flex;
+      justify-content: space-between;
+    }
+    #error-code { font-weight: 700; color: var(--danger); }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="card-header">
+      <h1>🎓 Collège Privé Hinneh Biabou</h1>
+      <p>Système de Gestion Scolaire — Hinneh Éducation</p>
+    </div>
+    <div class="card-body">
+      <div class="error-badge">
+        <span id="error-icon">⚠️</span>
+        <span id="error-title">Erreur de connexion</span>
+        &nbsp;|&nbsp; Code : <strong id="error-code">—</strong>
+      </div>
+
+      <p class="error-desc" id="error-desc">
+        Une erreur est survenue lors du chargement de l'application. 
+        Ceci peut être dû à une interruption réseau ou à une maintenance du serveur.
+      </p>
+
+      <div class="solutions">
+        <h3>Que faire ?</h3>
+        <ul id="solutions-list">
+          <li>Vérifiez votre connexion Internet</li>
+          <li>Rechargez la page (F5 ou Ctrl+R)</li>
+          <li>Videz le cache du navigateur (Ctrl+Shift+Delete)</li>
+          <li>Réessayez dans quelques minutes</li>
+          <li>Contactez l'administrateur si le problème persiste</li>
+        </ul>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn btn-primary" onclick="location.reload()">🔄 Recharger la page</button>
+        <a class="btn btn-outline" href="/">🏠 Accueil</a>
+      </div>
+    </div>
+    <div class="card-footer">
+      <span>Hinneh Éducation &copy; <span id="year"></span></span>
+      <span id="timestamp"></span>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('timestamp').textContent = new Date().toLocaleString('fr-FR');
+
+    const params = new URLSearchParams(location.search);
+    const code  = params.get('code') || '';
+    const msg   = params.get('msg')  || '';
+
+    const icons   = { '400':'❌','401':'🔐','403':'🚫','404':'🔍','422':'📋','500':'💥','503':'🔧','default':'⚠️' };
+    const titles  = {
+      '400': 'Requête incorrecte',
+      '401': 'Non autorisé — Veuillez vous connecter',
+      '403': 'Accès refusé',
+      '404': 'Page introuvable',
+      '422': 'Données invalides',
+      '500': 'Erreur interne du serveur',
+      '503': 'Service temporairement indisponible',
+      'default': 'Erreur inattendue'
+    };
+    const descs = {
+      '400': 'Les données envoyées au serveur sont incorrectes. Vérifiez les informations saisies et réessayez.',
+      '401': 'Votre session a expiré ou vous n\'êtes pas connecté. Veuillez vous reconnecter pour continuer.',
+      '403': 'Vous n\'avez pas les droits nécessaires pour accéder à cette section. Contactez l\'administrateur.',
+      '404': 'La page ou la ressource demandée n\'existe pas ou a été déplacée.',
+      '422': 'Les données soumises sont incomplètes ou dans un format incorrect. Vérifiez les champs du formulaire.',
+      '500': 'Une erreur interne est survenue sur le serveur. L\'équipe technique a été notifiée automatiquement.',
+      '503': 'Le serveur est momentanément indisponible (maintenance ou surcharge). Réessayez dans quelques instants.',
+    };
+    const solutions = {
+      '401': ['Cliquez sur "Se connecter" et entrez vos identifiants','Vérifiez que votre session n\'a pas expiré','Contactez l\'administrateur si vous avez oublié votre mot de passe'],
+      '403': ['Vérifiez que vous êtes connecté avec le bon compte','Contactez l\'administrateur pour obtenir l\'accès','Assurez-vous que votre profil est actif'],
+      '503': ['Le serveur est en maintenance — réessayez dans 5 à 10 minutes','Vérifiez votre connexion Internet','Contactez l\'administrateur si le service ne reprend pas rapidement'],
+    };
+
+    if (code) {
+      document.getElementById('error-code').textContent  = code;
+      document.getElementById('error-icon').textContent  = icons[code]  || icons.default;
+      document.getElementById('error-title').textContent = titles[code] || titles.default;
+      document.getElementById('error-desc').textContent  = msg || descs[code] || descs.default || 'Une erreur s\'est produite.';
+
+      if (solutions[code]) {
+        const ul = document.getElementById('solutions-list');
+        ul.innerHTML = solutions[code].map(s => `<li>${s}</li>`).join('');
+      }
+
+      // 401 → redirect to login after 5s
+      if (code === '401') {
+        setTimeout(() => { location.href = '/'; }, 5000);
+        const desc = document.getElementById('error-desc');
+        desc.textContent += ' Vous serez redirigé vers la page de connexion dans 5 secondes…';
+      }
+    }
+  </script>
+</body>
+</html>

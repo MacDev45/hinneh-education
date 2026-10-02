@@ -1,0 +1,949 @@
+
+=======================================================
+FICHIER: EMPLOI DU TEMPS PROVISOIRE 2025.docx
+=======================================================
+[P] EMPLOI DU TEMPS PROVISOIRE 2025-2026
+[P] CLASSE :
+
+[TABLE]
+  R1: JOURS             HORAIRES | LUNDI | MARDI | MERCREDI | JEUDI | VENDREDI
+  R2: 07H 15 -07H 25 | SALUT AUX  COULEURS | 
+  R3: 7 H 30 - 8 H 2 0 |  |  |  |  | 
+  R4: 8 H 2 0-0 9 H 1 0 |  |  |  |  | 
+  R5: 09H10-10H00 |  |  |  |  | 
+  R6: 10 H 00-10 H 15 | RECREATION
+  R7: 10H15-11H 05 |  |  |  |  | 
+  R8: 11H 0 5-1 1 H 55 |  |  |  |  | 
+  R9: 1 1 H55-13H20 | ABLUTIONS (20 min) - PRIERE (15min) RESTAURATION (30min) – PAUSE (15min)
+  R10: 1 3 H 2 0-14H 10 |  |  |  |  | 
+  R11: 14H 10 -15H 00 |  |  |  |  | 
+  R12: 15H00-15H50 |  |  |  |  | 
+  R13: 15H50-16H30 | ABLUTIONS – PRIERE DE ASR - GOÛTER
+[END TABLE]
+
+[P] EMPLOI DU TEMPS PROFESSEUR  2025-2026
+[P] Nom et prénoms :
+[P] Matières :
+[P] Téléphone :
+[P] Suite à votre demande en date du ………………relative à un poste d’enseignant dans notre établissement scolaire, j’ai l’honneur de vous informer que vous avez été retenu (e) comme professeur de…………………………………… pour l’année scolaire 2025-2026
+
+[TABLE]
+  R1: JOURS            HORAIRES | LUNDI | MARDI | MERCREDI | JEUDI | VENDREDI
+  R2: 07H15-07H25 | SALUT AUX COULEURS | 
+  R3: 7H30-8H20 |  |  |  |  | 
+  R4: 8H20-09H10 |  |  |  |  | 
+  R5: 09H10-10H00 |  |  |  |  | 
+  R6: 10H00-10H15 | RECREATION
+  R7: 10H15-11H05 |  |  |  |  | 
+  R8: 11H05-1 1 H55 |  |  |  |  | 
+  R9: 1 1 H55-13H20 | ABLUTIONS (20 min) - PRIERE (15min)  RESTAURATION  (30min)   – PAUSE (15min)
+  R10: 13H20-14H10 |  |  |  |  | 
+  R11: 14H10-15H00 |  |  |  |  | 
+  R12: 15H00-15H50 |  |  |  |  | 
+  R13: 15H50-16H30 | ABLUTIONS – PRIERE DE ASR - GOÛTER
+[END TABLE]
+
+[P] RECAPITULATIF DES HORAIRES
+
+[TABLE]
+  R1: Discipline | Classe | Volume horaire hebdomadaire | Volume horaire annuel | Date probable de fin de cours
+  R2:  |  |  |  | 
+  R3:  |  |  |  | 
+  R4:  |  |  |  | 
+  R5:  |  |  |  | 
+  R6: Récapitulatif |  |  |  | 
+[END TABLE]
+
+[P] NB : les professeurs sont tenus au strict respect du présent emploi du temps, toute modification ou réaménagement doit se faire avec l’aval de la direction des études.
+[P] Fait à Korhogo, le …………………………………….20…….
+[P] Le Directeur des études
+[P] KONATE A. Sidiki
+
+=======================================================
+FICHIER: FICHE DE NOTE.docx
+=======================================================
+
+[TABLE]
+  R1: FICHE DE NOTE  6EME
+[END TABLE]
+
+[P] CLASSE : 6EME ; TRIMESTRE………….MATIERE…………….COEFFICIENT…..
+[P] PROFESSEUR………………..CONTACTS…………………………………………………
+
+[TABLE]
+  R1: N° | NOM ET PRENOMS | MAT. | N1 | N2 | N3 | N4 | N5 | MOY. | MOY. COEF | RANG
+  R2: 1 | BARADJI SIRA | 24135367S |  |  |  |  |  |  |  | 
+  R3: 2 | COULIBALY DJOUMA | 23582860C |  |  |  |  |  |  |  | 
+  R4: 3 | DIALLO MARIAM | 24179986W |  |  |  |  |  |  |  | 
+  R5: 4 | FOFANA AL HADJ A | 24183332C |  |  |  |  |  |  |  | 
+  R6: 5 | KONE MAMA A. | 24194107X |  |  |  |  |  |  |  | 
+  R7: 6 | SANOGO SEYDOU | 22567588Z |  |  |  |  |  |  |  | 
+  R8: 7 | SEKONGO YOUNOUSS | 24179668H |  |  |  |  |  |  |  | 
+  R9: 8 | SILUE AMBETCHAN M. | 24525433W |  |  |  |  |  |  |  | 
+  R10: 9 | SILUE O LATIFA | 24525426W |  |  |  |  |  |  |  | 
+  R11: 10 | SILUE T. ZEINAB Y. | 24025725R |  |  |  |  |  |  |  | 
+  R12: 11 | SORO KOUNADI I. | 24305074P |  |  |  |  |  |  |  | 
+  R13: 12 | TOURE S. BEN | 24171742B |  |  |  |  |  |  |  | 
+  R14: 13 | YEO FOUSSENI |  |  |  |  |  |  |  |  | 
+[END TABLE]
+
+[P] Signature Professeur
+
+[TABLE]
+  R1: FICHE DE NOTE   5 EME
+[END TABLE]
+
+[P] CLASSE : 5EME ; TRIMESTRE………….MATIERE…………….COEFFICIENT…..
+[P] PROFESSEUR………………..CONTACTS…………………………………………………
+
+[TABLE]
+  R1: N° | NOM ET PRENOMS | MAT. | N1 | N2 | N3 | N4 | N5 | MOY. | MOY. COEF | RANG
+  R2: 1 | DIABATE AICHATOU | 23767368A |  |  |  |  |  |  |  | 
+  R3: 2 | CHERIF BEN HASSAN E | 23548581U |  |  |  |  |  |  |  | 
+  R4: 3 | KONATE MADOUSSOU | 23630330V |  |  |  |  |  |  |  | 
+  R5: 4 | KONE MARIAME | 23635174N |  |  |  |  |  |  |  | 
+  R6: 5 | OUATTARA FANTA | 23441969K |  |  |  |  |  |  |  | 
+  R7: 6 | SYLLA MALICK NOOR E | 23703114F |  |  |  |  |  |  |  | 
+[END TABLE]
+
+[P] Signature Professeur
+
+=======================================================
+FICHIER: FICHE DE SUIVIE DES NOTES ET DEVOIRS.docx
+=======================================================
+
+[TABLE]
+  R1: NOM ET PRENOMS | I1 | I2 | I3 | I4 | I5 | DEV 1 | DEV2 | DE V 3 | DEV4 | MOYENNE | RANG
+  R2: COULIBALY DJOUMA CHIGATA FATIMA |  |  |  |  |  |  |  |  |  |  | 
+  R3: DIALLO MARIAM |  |  |  |  |  |  |  |  |  |  | 
+  R4: FOFANA AJ HADJ ABOUBACAR |  |  |  |  |  |  |  |  |  |  | 
+  R5: KONE MAMA AICHA |  |  |  |  |  |  |  |  |  |  | 
+  R6: SEKONGO W YOUNOUSS |  |  |  |  |  |  |  |  |  |  | 
+  R7: SILUE AMBETCHAN MARIAM |  |  |  |  |  |  |  |  |  |  | 
+  R8: SILUE O LATIFA |  |  |  |  |  |  |  |  |  |  | 
+  R9: SILUE TIERIGNIMIN ZEINAB YASMINE |  |  |  |  |  |  |  |  |  |  | 
+  R10: SORO KOUNADI IMANE |  |  |  |  |  |  |  |  |  |  | 
+  R11: TOURE SOULEYMANE BEN |  |  |  |  |  |  |  |  |  |  | 
+  R12: YEO FOUSSENI |  |  |  |  |  |  |  |  |  |  | 
+  R13:  |  |  |  |  |  |  |  |  |  |  | 
+  R14:  |  |  |  |  |  |  |  |  |  |  | 
+  R15:  |  |  |  |  |  |  |  |  |  |  | 
+  R16:  |  |  |  |  |  |  |  |  |  |  | 
+  R17:  |  |  |  |  |  |  |  |  |  |  | 
+[END TABLE]
+
+[P] FICHE DE SUIVIS DES NOTES ET DEVOIRS
+[P] FICHE DE SUIVIS DES NOTES ET DEVOIRS
+
+[TABLE]
+  R1: NOM ET PRENOMS | I1 | I2 | I3 | I4 | I5 | DEV 1 | DEV2 | DE V 3 | DEV4 | MOYENNE | RANG
+  R2: CHERIF BEN HASSANE AIDARA |  |  |  |  |  |  |  |  |  |  | 
+  R3: DIABATE AICHATOU KEHIRA |  |  |  |  |  |  |  |  |  |  | 
+  R4: KONATE MADOUSSOU |  |  |  |  |  |  |  |  |  |  | 
+  R5: KONE MARIAME |  |  |  |  |  |  |  |  |  |  | 
+  R6: OUATTARA FANTA |  |  |  |  |  |  |  |  |  |  | 
+  R7: SYLLA MALICK NOOR ELDINE |  |  |  |  |  |  |  |  |  |  | 
+  R8:  |  |  |  |  |  |  |  |  |  |  | 
+  R9:  |  |  |  |  |  |  |  |  |  |  | 
+  R10:  |  |  |  |  |  |  |  |  |  |  | 
+  R11:  |  |  |  |  |  |  |  |  |  |  | 
+  R12:  |  |  |  |  |  |  |  |  |  |  | 
+  R13:  |  |  |  |  |  |  |  |  |  |  | 
+  R14:  |  |  |  |  |  |  |  |  |  |  | 
+  R15:  |  |  |  |  |  |  |  |  |  |  | 
+  R16:  |  |  |  |  |  |  |  |  |  |  | 
+  R17:  |  |  |  |  |  |  |  |  |  |  | 
+[END TABLE]
+
+
+=======================================================
+FICHIER: FICHES STATISTIQUES.docx
+=======================================================
+[P] COLLEGE PRIVE HINNEH KATIOFICOLLEGE PRIVE HINNEH KATIOFIDEUXIEME TRIMESTRE
+[P] FICHE STATISTIQUE
+[P] PROFESSEUR …………………....…………........................MATIERE…………………..CLASSE.....
+[P] EFFECTIF-----NON CLASSSE(S)……………..NOM ET PRENOMS………………………………....
+
+[TABLE]
+  R1: MOY  > 10 | 10 > MOY  >  08.50 | MOY < 08.50
+  R2: NOMBRE | % | NOMBRE | % | NOMBRE | %
+  R3:  |  |  |  |  | 
+[END TABLE]
+
+
+[TABLE]
+  R1: MOYENNE LA PLUS FO R TE | OBTENUE PAR | MOY LA PLUS FAIBLE | OBTENUE PAR | MOY CLASSE
+  R2:  |  |  |  | 
+[END TABLE]
+
+[P] APPRECIATION ET SUGGESTIONS……….....……………………………………………................
+[P] COLLEGE PRIVE HINNEH KATIOFICOLLEGE PRIVE HINNEH KATIOFI
+[P] DEUXIEME TRIMESTRE
+[P] FICHE STATISTIQUE
+[P] PROFESSEUR …………………....……………………MATIERE…………………....…..CLASSE.....
+[P] EFFECTIF-----NON CLASSSE(S)……………..NOM ET PRENOMS………………………………....
+
+[TABLE]
+  R1: MOY  > 10 | 10 > MOY  >  08.50 | MOY < 08.50
+  R2: NOMBRE | % | NOMBRE | % | NOMBRE | %
+  R3:  |  |  |  |  | 
+[END TABLE]
+
+
+[TABLE]
+  R1: MOYENNE LA PLUS FO R TE | OBTENUE PAR | MOY LA PLUS FAIBLE | OBTENUE PAR | MOY CLASSE
+  R2:  |  |  |  | 
+[END TABLE]
+
+[P] APPRECIATION ET SUGGESTIONS……….....……………………………………………................
+[P] MINISTERE DE L’EDUCATION NATIONALE ET DE L’ALPHABETISATIONDRENA KORHOGO / IEPP KORHOGO-ESTGROUPE SCOLAIRE CONFESSIONNEL ISLAMIQUE HINNEH DE KORHOGORENTREE SCOLAIRE 2025-2026MINISTERE DE L’EDUCATION NATIONALE ET DE L’ALPHABETISATIONDRENA KORHOGO / IEPP KORHOGO-ESTGROUPE SCOLAIRE CONFESSIONNEL ISLAMIQUE HINNEH DE KORHOGORENTREE SCOLAIRE 2025-2026REPUBLIQUE DE COTE D’IVOIRE REPUBLIQUE DE COTE D’IVOIRE
+[P] FICHE PROFIL POUR CONSEIL DE CLASSEFICHE PROFIL POUR CONSEIL DE CLASSE
+[P] PROFESSEUR PRINCIPAL…………………………………..CLASSE....
+[P] EFFECTIF----NON CLASSSE(S)…..NOM ET PRENOMS…………………….
+[P] PROFIL DE LA CLASSE
+[P] Le travail :.............................................................................................................
+[P] La conduite : ........................................................................................................
+[P] STATISTIQUES DES RESULTATS SCOLAIRES
+
+[TABLE]
+  R1: MOY  > 10 | 10 > MOY  >  08.50 | MOY < 08.50
+  R2: NOMBRE | % | NOMBRE | % | NOMBRE | %
+  R3:  |  |  |  |  | 
+[END TABLE]
+
+
+[TABLE]
+  R1: MOYENNE LA PLUS FO R TE | OBTENUE PAR | MOY LA PLUS FAIBLE | OBTENUE PAR | MOY CLASSE
+  R2:  |  |  |  | 
+[END TABLE]
+
+[P] DISTINCTIONS
+[P] Tableaux d’honneurs :...................... Avertissement ................ Blâme....................
+[P] APPRECIATION ET SUGGESTIONS………………………………............
+[P] ..................................................................................................................................
+[P] Signatures Directeurs et autres membres du conseilsignature PP
+
+=======================================================
+FICHIER: RAPPORT 3e TRIM 2025.docx
+=======================================================
+[P] MINISTERE DE L’EDUCATION NATIONALE ET DE L’ALPHABETISATION                                         Année scolaire 2024-2025
+[P] DIRECTION REGIONALE DE KORHOGO
+[P] KATIOFI
+[P] LE DIRECTEUR DES ETUDES
+[P] RAPPORT SUR LES ACTIVITES DU DEUXIEME TRIMESTRE
+[P] LES RESULTATS SCOLAIRES
+[P] 1°) Résultats scolaires du primaire
+[P] Tableau statistique de la première composition
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 25 | 37 | 12 | 23 | 35 | 100% | 92% | 94.59% | 0% | 8% | 5.41%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 11 | 19 | 30 | 100% | 95% | 96.77% | 0% | 5% | 3.22%
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 17 | 11 | 28 | 100% | 84.61% | 93.33% | 0% | 15.38% | 6.66%
+  R6: CE2 | 04 | 19 | 23 | 04 | 19 | 23 | 03 | 15 | 18 | 75% | 78.94% | 78.26% | 25% | 21.05% | 21.73%
+  R7: TOTAL | 44 | 77 | 121 | 44 | 77 | 121 | 43 | 68 | 111 | 93.75 % | 87 . 63% | 90 . 73% | 6.25 % | 12.35% | 9 .2 5%
+[END TABLE]
+
+[P] Tableau statistique de la deuxième composition
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 25 | 37 | 12 | 25 | 37 | 100% | 100% | 100% | 0% | 0% | 0%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 11 | 20 | 31 | 100% | 100% | 100% | 0% | 0% | 0%
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 17 | 13 | 30 | 100% | 100% | 100% | 0% | 0% | 0%
+  R6: CE2 | 4 | 19 | 23 | 4 | 19 | 23 | 4 | 19 | 23 | 100% | 100% | 100% | 0% | 0% | 0%
+  R7: TOTAL | 44 | 77 | 121 | 44 | 77 | 121 | 44 | 77 | 212 | 100% | 100% | 100% | 0% | 0% | 0%
+[END TABLE]
+
+[P] Tableau statistique de la troisième composition
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 24 | 36 | 12 | 24 | 36 | 100% | 100% | 100% | 0% | 0% | 0%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 11 | 20 | 31 | 100% | 100% | 100% | 0% | 0% | 0%
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 16 | 11 | 27 | 94.41% | 84.61% | 90.00% | 5.8% | 15.38% | 10.80%
+  R6: CE2 | 4 | 19 | 23 | 4 | 19 | 23 | 3 | 18 | 21 | 75% | 94.73% | 91.30% | 25% | 05.26% | 8.69%
+  R7: TOTAL | 44 | 77 | 121 | 44 | 76 | 120 | 42 | 73 | 115 | 92.35% | 94.83% | 95.32% | 7.7% | 5.16 % | 4.87 %
+[END TABLE]
+
+[P] Tableau statistique de la quatrième composition
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 25 | 37 | 12 | 25 | 37 | 100% | 100% | 100% | 0% | 0% | 0%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 11 | 20 | 31 | 100% | 100% | 100% | 0% | 0% | 0%
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 16 | 11 | 27 | 94.11% | 84 . 61% | 90% | 5.88% | 15.38% | 10%
+  R6: CE2 | 4 | 19 | 23 | 4 | 19 | 23 | 4 | 18 | 22 | 100% | 94.73% | 95 . 65 % | 0% | 5.26% | 4.34%
+  R7: TOTAL | 44 | 77 | 121 | 44 | 77 | 121 | 43 | 74 | 117 | 98.52% | 94.11% | 94.83% | 1.47% | 5.16% | 3.58%
+[END TABLE]
+
+[P] Tableau statistique de la cinquième composition
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 25 | 37 | 12 | 25 | 37 | 100% | 100% | 100% | 00% | 00% | 00%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 9 | 7 | 26 | 81,81% | 85% | 83,87% | 18,18% | 15% | 16,12%
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 17 | 12 | 29 | 100% | 92 ,30% | 96,66% | 00 | 7,69% | 3 ,33%
+  R6: CE2 | 4 | 19 | 23 | 4 | 19 | 23 | 4 | 19 | 23 | 100 % | 100 % | 100 % | 0 % | 0 % | 0 %
+  R7: TOTAL | 44 | 77 | 121 | 44 | 77 | 121 | 4 2 | 63 | 115 | 95.45 % | 94. 32 % | 9 5.13 % | 4.54 % | 5. 67 % | 4.86 %
+[END TABLE]
+
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 25 | 37 | 12 | 25 | 37 | 100% | 100% | 100% | 00% | 00% | 00%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 11 | 20 | 31 | 100% | 100% | 100% | 0 0 % | 0 0 % | 0 0 %
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 17 | 12 | 29 | 100% | 92 ,30% | 96 ,66% | 00% | 7 ,69% | 3 ,33%
+  R6: CE2 | 4 | 19 | 23 | 4 | 19 | 23 | 4 | 19 | 23 | 100 % | 100 % | 100 % | 0 0% | 0 0% | 0 0%
+  R7: TOTAL | 44 | 77 | 121 | 44 | 77 | 121 | 4 4 | 7 6 | 1 20 | 100 % | 98.08 % | 99.17 % | 00 % | 1.92 % | 0.83 %
+[END TABLE]
+
+[P] f)        Tableau statistique de la sixième compositionf)        Tableau statistique de la sixième composition
+
+[TABLE]
+  R1:  | EFFECTIF | PRESENTS | ADMIS | % ADMIS | %REFUSES
+  R2:  | F | G | T | F | G | T | F | G | T | F | G | T | F | G | T
+  R3: CP1 | 12 | 25 | 37 | 12 | 25 | 37 | 12 | 25 | 37 | 100% | 100% | 100% | 00% | 00% | 00%
+  R4: CP2 | 11 | 20 | 31 | 11 | 20 | 31 | 11 | 20 | 31 | 100% | 100% | 100% | 00% | 00% | 00%
+  R5: CE1 | 17 | 13 | 30 | 17 | 13 | 30 | 16 | 02 | 27 | 94.11 | 84.61 | 90 | 5.88 | 15.38 | 10
+  R6: CE2 | 4 | 19 | 23 | 4 | 19 | 23 | 3 | 14 | 17 | 75 | 73.68 | 73.91 | 25 | 26.31 | 26.08
+  R7: TOTAL | 44 | 77 | 121 | 44 | 77 | 121 | 4 4 | 7 6 | 1 20 | 92.28 | 89,5725 | 89,5725 | 7.7 | 10.42 | 9.02
+[END TABLE]
+
+[P] g)        Tableau statistique de la septième compositiong)        Tableau statistique de la septième composition
+
+[TABLE]
+  R1: N° d’ord | Noms et prénoms | 1 ère   composition | 2 ème   composition | 3 ème   compo.  IEP 1 | 4 ème   compo.  IEP 2 | 5EME COMP | 6IEME COMP   IEP 3
+  R2:  |  | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang
+  R3: 1 | BARADJI AMADOU | 08.00 | 30ex | 7.00 | 37 e | 8.85 | 15 e  ex | 9.00 | 16 e  ex | 9.12 | 11 e  ex | 8.87 | 18 e  ex
+  R4: 2 | BARRY DAOUDA | 04.33 | 36 e | 8.66 | 14 e  ex | 7.57 | 30 e | 9.00 | 16 e  ex | 7.75 | 29 e  ex | 8.62 | 25 e  ex
+  R5: 3 | BELLEM ABASS | 09.66 | 7ex | 8.33 | 23 e  ex | 8.85 | 15 e  ex | 9.00 | 16 e  ex | 9.25 | 8 e  ex | 8.87 | 18 e  ex
+  R6: 4 | CAMBIRE SANSAN | 09.66 | 7ex | 8.66 | 14 e  ex | 9.28 | 9 e  ex | 9.57 | 2 e  ex | 9.62 | 2 e  ex | 9.00 | 14 e  ex
+  R7: 5 | CISSE IBTRAHIM LATIF | 09.33 | 13ex | 8.33 | 23 e  ex | A | A | 9.42 | 4 e  ex | 9.75 | 1 er | 9.50 | 1 er
+  R8: 6 | COULIBALY ALI JUNIOR | 08.66 | 23ex | 9.00 | 7 e  ex | 8.00 | 25 e  ex | 8.78 | 22 e  ex | 9.00 | 16 e  ex | 9.00 | 14 e  ex
+  R9: 7 | COULIBALY DOH  P ARICK | 07.00 | 35e | 8.33 | 23 e  ex | 8.00 | 25 e  ex | 8.57 | 30 e | 8.31 | 25 e | 7.75 | 35 e  ex
+  R10: 8 | COULIBALY DOLOUROU RAYAN | 09.00 | 17e | 9.00 | 7 e  ex | 9.42 | 6 e  ex | 9.28 | 7 e  ex | 9.62 | 2 e  ex | 9.12 | 11 e  ex
+  R11: 9 | COULIBALY RACHIDA | 9.33 | 13ex | 8.66 | 14 e  ex | 9.42 | 6 e  ex | 9.71 | 1ere | 8.56 | 23 e  ex | 9.25 | 8 e  ex
+  R12: 10 | COULIBALY HABIB | 10.00 | 1ex | 9.33 | 1 er  ex | 9.42 | 6 e  ex | 9.14 | 14 e | 9.18 | 10 e | 9.12 | 11 e  ex
+  R13: 11 | COULIBALY AWA ALYA | 8.66 | 23ex | 9.00 | 7 e  ex | 8.14 | 22 e  ex | 9.00 | 16 e  ex | 8.62 | 22 e | 8.87 | 18 e  ex
+  R14: 12 | COULIBALY MOHAMED AMINE | 9.00 | 17ex | 8.33 | 23 e  ex | 9.28 | 9 e  ex | 9.14 | 14 e  ex | 9.12 | 11 e  ex | 9.00 | 14 e  ex
+  R15: 13 | DIARRA AWA | 7.66 | 33ex | 9.00 | 7 e  ex | 8.28 | 19 e  ex | 8.71 | 24 e  ex | 9.37 | 7 e | 9.00 | 14 e  ex
+  R16: 14 | DIOMANDE AMADOU-SAYID-AZIZ MOURAD | 8.33 | 27ex | 8.33 | 23 e  ex | 8.14 | 22ex | 9.42 | 4 e  ex | 9.50 | 5 e  ex | 9.37 | 6 e  ex
+  R17: 15 | DIOMANDE SATY MALIKA MARIAM | 10.00 | 1 er e  ex | 9.33 | 1 e  ex | 9.28 | 9 e  ex | 9.42 | 4 e  ex | 9.12 | 11 e  ex | 9.37 | 6 e  ex
+  R18: 16 | FOFANA RACHIDA | 9.66 | 7 e  ex | 9.00 | 7 e  ex | 8.14 | 22 e  ex | 9.57 | 2 e  ex | 9.25 | 8 e  ex | 9.50 | 1 ère  ex
+  R19: 17 | KANE GAOUSSOU | 10.00 | 1 er  ex | 9.33 | 1 er | 9.57 | 1 er | 8.71 | 24 e  ex | 9.50 | 5 e  ex | 8.81 | 22 e  ex
+  R20: 18 | KASSAMBARA ABDOULAYE | 8.00 | 30ex | 7.66 | 33 e  ex | 7.14 | 31 e  ex | 8.71 | 24 e  ex | 7.37 | 32 e  ex | 7.25 | 37 e
+  R21: 19 | KILANI YOUSSOUF OMOTOLA BADELE | 7.33 | 34 | 7.66 | 33 e  ex | 6.14 | 35 e | 8.28 | 33 e | 6.56 | 36 e | 7.87 | 33 e  ex
+  R22: 20 | KONE MAISSATA IQMA | 9.66 | 7eme | 8.33 | 23 e  ex | 8.28 | 19 e  ex | 8.64 | 28 e  ex | 8.56 | 23 e  ex | 7.87 | 33 e  ex
+  R23: 21 | KONE MARIAM | 8.33 | 27eme | 8.33 | 23 e  ex | 8.57 | 18 e | 8.64 | 28 e  ex | 5.93 | 37 e | 8.62 | 25 e  ex
+  R24: 22 | OUATTARA B FANTA | 9.66 | 7 e  ex | 9.00 | 7 e  ex | 9.00 | 14 e | 8.38 | 32 e | 8.75 | 21 e | 8.62 | 25 e  ex
+  R25: 23 | OUATTARA IMRAN | 9.00 | 17 e  ex | 8.66 | 14 e  ex | 9.28 | 9 e  ex | 8.92 | 21 e | 8.93 | 18 e | 9.12 | 11 e  ex
+  R26: 24 | OUATTARA KATIE MARIAM | 10.00 | 1 er e  exe | 9.33 | 1 e  ex | 9.57 | 1 e  ex | 9.28 | 7 e  ex | 9.00 | 16 e  ex | 9.25 | 8 e  ex
+  R27: 25 | SANOGO KOUBRA MYRIEME | 9.00 | 17 e  ex | 7.66 | 33 e  ex | 6.85 | 33 e | 8.78 | 22 e  ex | 8.87 | 19 e | 8.81 | 22 e  ex
+  R28: 26 | SEKONGO DEPKORO SEKOU | 9.33 | 13 e  ex | 8.66 | 14 e  ex | 6.42 | 34 e | 8.50 | 31 e | 7.25 | 33 e  ex | 7.75 | 35 e  ex
+  R29: 27 | SEKONGO KAWA BRAHIMA | 10.00 | 1 er  ex | 8.66 | 14 e  ex | 8.00 | 25 e | 9.28 | 7 e  ex | 9.12 | 11 e  ex | 8.75 | 24 e
+  R30: 28 | SENGHOR  MAME  JELILA | 10.00 | 1ere ex | 9.33 | 1 e  ex | 9.57 | 1ere | 9.42 | 4 e  ex | 8.81 | 20 e  ex | 9.50 | 1 ère  ex
+  R31: 29 | SILUE D AMADOU GON | 8.00 | 30 e  ex | 7.66 | 33 e  ex | 5.71 | 36 e | 7.42 | 36 e | 7.12 | 35 e | 8.37 | 30 e
+  R32: 30 | SILUE SIONBIN MOUSSA | 9.66 | 7 e  ex | 9.00 | 7 e  ex | 7.14 | 31 e | 8.71 | 24 e | 7.81 | 27 e  ex | 8.50 | 29 e
+  R33: 31 | TOURE M LAMINE | 8.33 | 27 e  ex | 8.00 | 32 e  ex | 8.85 | 15 e  ex | 7.78 | 35 e | 7.75 | 29 e  ex | 8.25 | 31 e  ex
+  R34: 32 | TUO DOBA OUMAR | 8.66 | 23 e  ex | 8.66 | 14 e  ex | 7.85 | 28 e  ex | 9.00 | 16 e  ex | 7.81 | 27 e  ex | 9.25 | 8 e  ex
+  R35: 33 | TUO KOLO OUSMANE | 8.66 | 23 e  ex | 8.33 | 33 e  ex | 8.28 | 19 e  ex | 7.21 | 37 e | 7.43 | 31 e | 8.81 | 22 e  ex
+  R36: 34 | TUO SIONTCHANWA MOHAMED | 9.00 | 17 e  ex | 8.33 | 23 ex | 9.14 | 13 e | 9.28 | 7 e  ex | 8.00 | 26 e | 8.62 | 25 e  ex
+  R37: 35 | YEO AMR KIYALA YASMINE | 9.33 | 13 e  ex | 9.33 | 1ere ex | 957 | 1ere ex | 9.28 | 7 e  ex | 9.62 | 2 e  ex | 9.50 | 1 er
+  R38: 36 | YEO MASSA SOULEYMANE | 9.00 | 17 e  ex | 8.66 | 14 e  ex | 9.57 | 1 er  ex | 9.28 | 7 e  ex | 9.12 | 11 e  ex | 9.50 | 1 er  ex
+  R39: 37 | YEO SOULEYMANE | 2.33 | 37 e | 8.66 | 14 e  ex | 7.85 | 28 e  ex | 8.00 | 34 e | 7.25 | 33 e  ex | 8.25 | 31 e  ex
+[END TABLE]
+
+[P] RECAPITULATIF DES MOYENNES : CP1
+[P] RECAPITULATIF DES MOYENNES : CP2
+
+[TABLE]
+  R1: N° d’or | Noms et prénoms | 1 ère  composition | 2 ème  composition | 3 ème  composition  IEP 1 | 4 ème   composition  IEP 2 | 5eme compo | 6eme compo  IEP3
+  R2:  |  | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang
+  R3: 1 | CISSE BAZOUMANA | 7.21 | 17 e | 8.42 | 12 e | 5.38 | 1 er | 5.07 | 31 e | 7.00 | 29 e | 5.00 | 26 e
+  R4: 2 | DIARRASSOUBA MOUSSA | 9.14 | 2 e | 8.85 | 6 e | 9.44 | 2 e | 9.14 | 6 e | 9.55 | 1 e | 9.44 | 1 e
+  R5: 3 | KILANI HAKIM | 5.85 | 26 e | 6.00 | 31 e | 7.55 | 17 e | 6.50 | 23 e | 9.28 | 5 e | 5.22 | 22 e
+  R6: 4 | KONE G ADAMA | 7.28 | 16 e | 7.0 | 26 e | 7.00 | 23 e | 6.57 | 21 e | 8.28 | 19 e | 6.77 | 14 e
+  R7: 5 | KONE KOKROU | 6.64 | 21 e | 7.28 | 24 e | 7.38 | 19 e | 7.57 | 15 e | 7.71 | 14 e | 3.42 | 30 e
+  R8: 6 | KONE LOUKMANE | 8.14 | 8 e | 9.00 | 4 e | 8.61 | 6 e | 9.42 | 3 e | 8.85 | 15 e | 8.22 | 7 e
+  R9: 7 | NIAYE BINTOU | 9.07 | 4 e | 9.00 | 4 e  ex | 8.72 | 5 e | 7.57 | 15 e | 9.42 | 3 e | 7.88 | 8 e
+  R10: 8 | NZI KACOU | 5.28 | 30 e | 6.85 | 28 e | 5.66 | 30 e | 5.64 | 28 e | 7.57 | 25 e | 3.61 | 30 e
+  R11: 9 | OUATTARA AICHA | 5.71 | 27 e | 8.85 | 6 e | 8.77 | 4 e | 9.07 | 7 e | 9.14 | 10 e | 7.83 | 9 e
+  R12: 10 | OUATTARA G ABOUBACAR | 6.28 | 23 e | 8.14 | 15 e | 7.77 | 15 e | 7.00 | 19 e | 7.00 | 29 e | 6.27 | 17 e
+  R13: 11 | OUATTARA KATIENE | 9.14 | 2 e  ex | 7.71 | 21 e | 7.94 | 13 e | 8.35 | 8 e | 9.00 | 14 e | 6.16 | 18 e
+  R14: 12 | OUATTARA MOUHAMED | 7.5 | 13 e | 6.14 | 30 e | 5.88 | 29 e | 5.42 | 30 e | 8.85 | 15 e | 4.66 | 28 e
+  R15: 13 | SANOGO ALIYA | 6.71 | 20 e | 8.00 | 18 e | 6.00 | 28 e | 6.92 | 20 e | 7.14 | 28 e | 4.33 | 29 e
+  R16: 14 | SANOGO ASSIYA | 7.35 | 14 e | 8.28 | 13 e | 7.11 | 22 e | 8.00 | 11 e | 7.85 | 23 e | 5.22 | 22 e
+  R17: 15 | SEKONGO DRAMANE | 4.50 | 31 e | 7.42 | 23 e | 7.22 | 6 e | 6.00 | 25 e | 7.57 | 25 e | 5.05 | 25 e
+  R18: 16 | SEKONGO LAMISSA | 8.00 | 11 e | 8.71 | 9 e | 8.11 | 10 e | 9.57 | 2 e | 9.57 | 1 e | 7.47 | 11 e
+  R19: 17 | SEKONGO YASSINE | 5.57 | 29 e | 8.14 | 15 e | 6.50 | 25 e | 6.21 | 24 e | 8.28 | 19 e | 5.72 | 21 e
+  R20: 18 | SILUE CHIGATA | 7.21 | 17 e | 8.28 | 13 e | 7.94 | 13 e  ex | 8.00 | 11 e | 7.57 | 25 e | 7.61 | 12 e
+  R21: 19 | SILUE SAMIRATOU | 5.64 | 28 e | 7.14 | 25 e | 8.27 | 9 e | 7.64 | 14 e | 9.21 | 8 e | 7.83 | 9 e
+  R22: 20 | SORO ACHATA | 6.14 | 24 e | 8.00 | 18 e | 7.5 | 18 e | 5.71 | 27 e | 8.57 | 18 e | 4.72 | 27 e
+  R23: 21 | SORO FOUNDARHA | 7.14 | 19 e | 8.07 | 17 e | 8.00 | 11 e | 8.07 | 10 e | 9.42 | 3 e | 7.44 | 13 e
+  R24: 22 | SORO G OUMAR | 8.14 | 8 e | 8.71 | 9 e | 7.27 | 20 e | 8.00 | 11 e  ex | 9.44 | 10 e | 6.44 | 16 e
+  R25: 23 | SORO IMAM CHEK | 8.78 | 6 e | 8.78 | 8 e | 8.50 | 8 e | 7.28 | 17 e | 9.21 | 8 e | 8.77 | 2 e
+  R26: 24 | SORO YIRE ASSITA | 7.57 | 12 e | 7.57 | 22 e | 9. 22 | 3 e | 8.14 | 9 e | 9.28 | 5 e | 8.33 | 6 e
+  R27: 25 | TOURE BEN | 6.14 | 24 e | 6.57 | 29 e | 6.33 | 26 e | 6.57 | 21 e | 8.14 | 21 e | 6.77 | 14 e
+  R28: 26 | TRAORE ABDOUL | 7.35 | 14 e | 8.00 | 18 e | 6.16 | 27 e | 5.50 | 29 e | 9.14 | 10 e | 5.77 | 20 e
+  R29: 27 | TRAORE ZAHARA | 9.21 | 1ere | 9.28 | 2 e | 9.55 | 1ere | 9.71 | 1 ère | 9.28 | 5 e | 8.66 | 3 e
+  R30: 28 | YEO DAOUDA | 8.32 | 5 e | 9.71 | 1 er | 8.55 | 7 e | 9.42 | 3 e  ex | 9.14 | 10 e | 8.61 | 4 e
+  R31: 29 | YEO FERELAHA | 8.07 | 10 e | 9.28 | 2 e  ex | 8.00 | 11 e | 7.28 | 17 e  ex | 8.00 | 22 e | 6.16 | 18 e
+  R32: 30 | YEO N LACINA | 8.28 | 7 e | 8.71 | 9 e | 7.72 | 16 e | 9.21 | 5 e | 8.85 | 15 e | 8.44 | 5 e
+  R33: 31 | YEO Y IBRAHIMA | 6.57 | 22 e | 7.0 | 26 e | 6.66 | 24 e | 6.00 | 25 e | 6.57 | 31 e | . 5.11 | 24 e
+[END TABLE]
+
+[P] RECAPITULATIF DES MOYENNES : CE1
+
+[TABLE]
+  R1: N° d | Noms et prénoms | 1 ère  évaluation | 2 ème  évaluation | 3 ème  éval. IEP 1 | 4è compo. IEP2 | 5 ème  évaluation | 6 ème   COMPO. IEP3
+  R2:  |  | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang
+  R3: 1 | BARADJI MOHAMED CHERIF | 11.17 | 21 e | 14.41 | 22e | 12.29 | 23 e | 12.82 | 18 e | 13.52 | 19 e | 13.29 | 23 e
+  R4: 2 | CAMBIRE SIE MOHAMAD | 17.52 | 3 e  ex | 19.76 | 2 e | 17.05 | 8 e | 16.76 | 6 e | 17.64 | 4 e | 17.58 | 8 e
+  R5: 3 | COULIBALY FATOUMATA ZA . | 13.05 | 13 e | 15.82 | 17e | 15.76 | 5 e | 12.70 | 20 e | 13.41 | 21 e | 15.35 | 14 e
+  R6: 4 | COULIBALY ISSOUF | 12.47 | 16 e  ex | 10.23 | 30e | 9.52 | 28 e | 8.94 | 29 e | 12.17 | 25 e | 14.17 | 19 e
+  R7: 5 | COULIBALY TCHEBETCHA S . | 12.82 | 14 e | 18.35 | 8e | 14.11 | 18 e | 12.76 | 19 e | 14.88 | 14 e | 12.85 | 26 e
+  R8: 6 | COULIBALY TCHEMEGNON F . | 10.28 | 27 e | 13.23 | 26e | 8.70 | 30 e | 10.35 | 27 e | 10.41 | 28 e | 12.47 | 27 e
+  R9: 7 | COULIBALY YETI SOULEYMANE | 17.52 | 3 e | 18.23 | 9 e | 18.41 | 3 e | 15.58 | 8 e | 15.35 | 10 e | 17.17 | 10 e
+  R10: 8 | DAGNOGO FATIA AWA NADJA | 10.94 | 24 e | 15.17 | 20 e | 12.23 | 25 e | 8.94 | 29 e  ex | 10.00 | 29 e | 13.47 | 22 e
+  R11: 9 | DIABATE GNELE AMI | 16.94 | 5 e | 18.52 | 6e | 16.47 | 9 e | 16.41 | 7 e | 15.29 | 11 e | 18.64 | 4 e
+  R12: 10 | DIALLO MASSARANGBE | 12.82 | 14 e  ex | 15.58 | 19e | 13.35 | 19 e | 12.05 | 23 e | 14.11 | 16 e | 13.11 | 25 e
+  R13: 11 | DIARRASSOUBA MOUSSA RAYAN | 9.52 | 29 e | 14.35 | 23e | 12.70 | 21 e | 13.78 | 14 e | 13.47 | 20 e | 15.52 | 12 e
+  R14: 12 | KONE BAKARY BEN RAYAN | 13.17 | 12 e | 16.11 | 14e | 16.23 | 11 e | 13.11 | 17 e | 13.17 | 22 e | 15.17 | 15 e
+  R15: 13 | KONE MOHAMED EL AMINE | 11.05 | 23 e | 12.70 | 28e | 10.41 | 26 e | 12.29 | 22 e | 10.52 | 27 e | 13.17 | 24 e
+  R16: 14 | KONE FATOUMATA ZAHARA | 16.94 | 5 e  ex | 18.00 | 10e | 16.23 | 11 e  ex | 18.41 | 1 ère | 17.82 | 3 e | 18.64 | 4ex
+  R17: 15 | KONE FIERLA RAHMA | 11.11 | 22 e | 15.76 | 18e | 17.41 | 7 e | 16.88 | 4 e | 16.82 | 7 e | 17.58 | 8 e
+  R18: 16 | KONE RAFIHATOU | 18.94 | 5 e  ex | 18.94 | 3e | 18.70 | 1 ère | 18.17 | 2 e | 18.35 | 1 er | 19.70 | 1 er
+  R19: 17 | OUATTARA YALAMISSA DOUL . | 8.70 | 30 e | 11.00 | 29e | 8.76 | 29 e | 9.58 | 28 e | 8.23 | 30 e | 9.76 | 30 e
+  R20: 18 | N’ZI KHADIDJAT | 15.52 | 8 e | 18.64 | 5 e | 18.52 | 2 e | 14.23 | 14 e | 17.47 | 5 e | 18.17 | 6 e
+  R21: 19 | N’ZI KOUAME-BLA MARYAM | 15.17 | 9 e | 17.76 | 12 e | 17.76 | 6 e | 14.35 | 12 e | 15.17 | 13 e | 15.64 | 11 e
+  R22: 20 | SANOGO MAKANGO T .  LATIFA | 10.58 | 26 e | 14.47 | 21e | 12.47 | 22 e | 12.00 | 24 e | 12.82 | 23 e | 11.94 | 28 e
+  R23: 21 | SEKONGO KIYALA SCHAKIRA | 11.76 | 19 e | 12.94 | 27 e | 15.82 | 14 e | 15.05 | 10 e | 16.64 | 8 e | 13.47 | 22 e
+  R24: 22 | SIDIBE AICHATOU SABEL M . | 14.94 | 10 e | 18.58 | 6 e | 15.76 | 15 e  ex | 16.35 | 8 e | 14.88 | 14ex | 15.41 | 13 e
+  R25: 23 | SILUE AIDA YOUSRA | 12.35 | 18 e | 17.64 | 13 e | 15.94 | 15 e | 15.05 | 10 e  ex | 15.52 | 9 e | 14.35 | 18 e
+  R26: 24 | SILUE KITANA ABOU | 10.23 | 27 e  ex | 13.35 | 25 e | 10.29 | 27 e | 11.47 | 25 e | 14.05 | 17 e | 14.11 | 20 e
+  R27: 25 | SILUE KOLO BARAKISSA | 11.29 | 20 e | 14.05 | 24 e | 12.29 | 23 e | 10.64 | 26 e | 10.64 | 26 e | 11.82 | 29 e
+  R28: 11 e   26 | SILUE SEHELO MOKTAR | 12.47 | 16 e | 15.55 | 16 e | 15.70 | 17 e | 12.70 | 20 e  ex | 15.29 | 11 e | 18.00 | 7 e
+  R29: 27 | SORO CHIGATA DJIBRIL | 10.70 | 14 e | 16.05 | 15e | 12.88 | 20 e | 13.58 | 16 e | 14.00 | 18 e | 13.85 | 21 e
+  R30: 28 | SORO KOLEHE MOHAMED | 14.00 | 11 e | 18.70 | 4e | 16.29 | 10 e | 15.17 | 9 e | 12.70 | 24 e | 14.47 | 16 e
+  R31: 29 | SORO TENEDIOHO F. SCHAKIRA | 19.64 | 1 ère | 19.88 | 1 ère | 18.00 | 4 e | 18.05 | 3 e | 18.23 | 2 e | 19.64 | 2 e
+  R32: 30 | TUO KATIENEFOWA ISMAEL | 16.82 | 7 e | 18.00 | 10 e | 18.00 | 4 e  ex | 16.82 | 5 e | 17.29 | 6 e | 19.29 | 3 e
+[END TABLE]
+
+[P] Récapitulatif des moyennes au CE2
+
+[TABLE]
+  R1: N° d | Noms et prénoms | 1 ère  évaluation | 2 ème  évaluation | 3 ème  éval. IEP 1 | 4 è m e   COMPO. IEP2 | 5 ème  évaluation | 6 ème   COMPO. IEP3
+  R2:  |  | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang | Moy. | Rang
+  R3: 1 | BAKAYOKO MOUHAMED | 05.41 | 22 e | 12.82 | 23 e | 10.12 | 20 e | 15.29 | 15 e | 14.82 | 14 e | 16.47 | 13 e
+  R4: 2 | BARADJI FATOUMATA | 11.53 | 14 e | 18.35 | 2 e | 15.88 | 7 e | 16.94 | 9 e | 14.12 | 17 e | 16.82 | 10 e
+  R5: 3 | CISSE SINA | 10.00 | 18 e | 14.24 | 21 e | 9.76 | 22 e | 12.59 | 21 e | 11.06 | 23 e | 11.53 | 22 e
+  R6: 4 | COULIBALY  ABDOUL KADER | 11.53 | 14 e  ex | 14.71 | 16 e | 11.76 | 16 e | 16.24 | 12 e | 14.35 | 15 e | 12.82 | 21 e
+  R7: 5 | COULIBALY  ALI  RAMADAN | 11.88 | 13 e | 18.12 | 4 e | 13.88 | 12 e | 16 | 13 e | 16.47 | 6 e | 14.00 | 18 e
+  R8: 6 | COULIBALY  KOLO  KARIDJA | 16.12 | 4 e | 18.59 | 1 er | 17.16 | 1 ère | 18.00 | 1 ère | 15.76 | 10 e | 18.24 | 3 e
+  R9: 7 | COULIBALY  MOHAMED  SAID | 12.35 | 12 e | 14.59 | 17 e | 13.53 | 14 e | 15.18 | 16 e | 14.94 | 13 e | 15.29 | 15 e
+  R10: 8 | COULIBALY  ZOUBEIR | 10.24 | 16 e | 14.47 | 18 e | 10.12 | 20 e  ex | 9.29 | 23 e | 11.53 | 19 e | 15.06 | 16 e
+  R11: 9 | DIAWARA  CHEICK | 14.47 | 10 e | 18.35 | 2 e | 14.24 | 11 e | 17.65 | 3 e | 14.35 | 15ex | 17.65 | 5 e
+  R12: 10 | KAMATE  MOHAMED  R | 16.24 | 3 e | 17.65 | 7 e | 12.00 | 15 e | 14.24 | 18 e | 15.76 | 10ex | 17.41 | 7 e
+  R13: 11 | KONE BEH   HAMZA | 07.06 | 21 e | 16 | 13 e | 11.18 | 18 e | 13.65 | 20 e | 11.18 | 21 e | 14.94 | 17 e
+  R14: 12 | KONE  OUSMANE  SHAKIB | 07.88 | 19 e | 13.41 | 22 e | 16.35 | 5 e | 11.88 | 22 e | 11.18 | 21ex | 10.12 | 23 e
+  R15: 13 | KONE SEKOU GN | 14.71 | 9 e | 17.65 | 7 e | 16.12 | 6 e | 16.35 | 11 e | 17.18 | 3 e | 18.24 | 3ex
+  R16: 14 | OUATTARA ZAKI | 12.94 | 11 e | 17.41 | 10 e | 16.47 | 4 e | 16.00 | 13 e | 16.24 | 7 e | 16.24 | 14 e
+  R17: 15 | OULAI SAMIRA | 16.94 | 1 ère | 17.06 | 12 e | 16.94 | 2 e | 17.53 | 4 e | 17.06 | 4 e | 17.06 | 8 e
+  R18: 16 | SEKONGO CHEICK L | 16.12 | 4 e  ex | 18.12 | 4 e | 15.53 | 10 e | 17.41 | 6 e | 17.65 | 2 e | 18.59 | 1 er
+  R19: 17 | SENGHOR MOHAMADOU | 15.18 | 7 e | 17.41 | 10 e | 15.53 | 10 e | 17.88 | 2 e | 18.35 | 1er | 18.35 | 2 e
+  R20: 18 | SORO KOUNADI IMRANE | 15.53 | 6 e | 18 | 6 e | 16.59 | 3 e | 17.53 | 4 e | 16.94 | 5e | 16.59 | 12 e
+  R21: 19 | SORO YOUSSOUF A CH | 16.94 | 1 er  ex | 17.65 | 7 e | 15.76 | 8 e | 17.06 | 8 e | 16.00 | 8 e | 17.06 | 8 e  ex
+  R22: 20 | TOURE YAHYA | 14.82 | 8 e | 15.88 | 14 e | 15.76 | 8 e  ex | 16.47 | 10 e | 15.88 | 9 e | 17.65 | 5 e  ex
+  R23: 21 | TUO SAMIRA | 07.88 | 19 e  ex | 15.65 | 15 e | 09.18 | 23 e | 13.76 | 19 e | 13.18 | 18 e | 12.94 | 20 e
+  R24: 22 | YEO KORONA HAMZA | 04.59 | 23 e | 14.35 | 19 e | 11.76 | 16 e  ex | 14.71 | 17 e | 11.53 | 19 e  ex | 13.29 | 19 e
+  R25: 23 | YEO NABAN SIDICK | 10.12 | 17 e | 14.35 | 19 e | 10.82 | 19 e | 17.29 | 7 e | 15.06 | 12 e | 16.71 | 11 e
+[END TABLE]
+
+[P] 2°) Résultats scolaires du Secondaire
+[P] 6EME
+
+[TABLE]
+  R1: MOY  > 10 | 10 > MOY  >  08.50 | MOY  <  08.50
+  R2: NOMBRE | % | NOMBRE | % | NOMBRE | %
+  R3: 1 3 | 100 | 0 0 | 00 | 00 | 00
+[END TABLE]
+
+[P] 5EME
+
+[TABLE]
+  R1: MOY  > 10 | 10 > MOY  >  08.50 | MOY  <  08.50
+  R2: NOMBRE | % | NOMBRE | % | NOMBRE | %
+  R3: 6 | 100 | 00 | 00 | 00 | 00
+[END TABLE]
+
+[P] RECUEUIL DES MOYENNES 6EME
+
+[TABLE]
+  R1: NOM ET PRENOMS | DISCIPLINES |  |  |  |  | 
+  R2:  | FRANC | ANGL. | HIST-GE0 | MATH | P-C | SVT | EPS | EDHC | INFO | CORAN | ARABE | EMR | COND. | MGT
+  R3: BARADJI SIRA | 9.71 | 10.66 | 10.00 | 11.14 | 12.50 | 9.87 | 12.00 | 10.00 | 12.00 | 17.50 | 12.75 | 14.40 | 16.00 | 11.58
+  R4: COULIBALY DJOUMA | 10.02 | 10.42 | 11.70 | 11.42 | 10.81 | 08.25 | 11.00 | 14.50 | 11.00 | 15.10 | 19.25 | 11.20 | 16.00 | 11.65
+  R5: DIALLO MARIAM | 9.87 | 11.57 | 11.70 | 10.85 | 12.81 | 08.00 | 14.00 | 08.50 | 09.00 | 18.30 | 19.00 | 12.00 | 16.00 | 11.76
+  R6: FOFANA AL HADJ A | 9.53 | 11.85 | 08.40 | 12.28 | 11.62 | 06.00 | 11.00 | 09.00 | 12.33 | 12.40 | 16.25 | 14.00 | 16 | 10.63
+  R7: KONE MAMA A. | 13.91 | 16.00 | 14.80 | 12.00 | 15.37 | 12.50 | 15.00 | 11.00 | 14.33 | 17.30 | 12.25 | 13.20 | 16.00 | 14.00
+  R8: SANOGO SEYDOU | 9.25 | 11.60 | 07.60 | 11.57 | 13.19 | 10.00 | 12.00 | 9.00 | 10.66 | 13.20 | 17.75 | 13.00 | 16.00 | 11.37
+  R9: SEKONGO YOUNOUSS | 13.08 | 15.57 | 12.40 | 15.12 | 16.00 | 14.50 | 13.00 | 09.50 | 12.33 | 18.60 | 14.00 | 13.00 | 16.00 | 14.82
+  R10: SILUE AMBETCHAN M. | 14.55 | 17.14 | 15.60 | 13.71 | 16.81 | 13.62 | 16.00 | 15.00 | 12.33 | 12.20 | 15.75 | 13.00 | 16.00 | 14.82
+  R11: SILUE O LATIFA | 12.14 | 13.92 | 14.00 | 11.42 | 15.19 | 08.75 | 13.00 | 13.50 | 10.33 | 14.10 | 18.00 | 11.20 | 16.00 | 12.88
+  R12: SILUE T. ZEINAB Y. | 12.67 | 16.14 | 14.40 | 11.14 | 11.62 | 11.75 | 12.00 | 14.00 | 13.00 | 18.20 | 14.87 | 12.00 | 16.00 | 13.30
+  R13: SORO KOUNADI I. | 15.52 | 17.14 | 16.80 | 16.00 | 15.87 | 17.50 | 16.00 | 16.50 | 16.67 | 19.20 | 17.75 | 14.40 | 16.00 | 16.46
+  R14: TOURE S. BEN | 10.47 | 08.71 | 07.20 | 07.42 | 12.50 | 08.00 | 12.00 | 09.50 | 06.67 | 07.08 | 08.25 | 12.40 | 16.00 | 09.44
+  R15: YEO FOUSSENI | 11.94 | 13.57 | 11.40 | 10.28 | 14.00 | 10.50 | 13.00 | 13.00 | 04.33 | 12.40 | 11.50 | 11.00 | 16.00 | 12.89
+[END TABLE]
+
+[P] RECUEUIL MOYENNES 5EME
+
+[TABLE]
+  R1: NOM ET PRENOMS | DISCIPLINES |  |  |  |  | 
+  R2:  | FRANC | ANGL. | HIST-GE0 | MATH | P-C | SVT | EPS | EDHC | INFO | CORAN | ARABE | EMR | COND. | MGT
+  R3: DIABATE AICHATOU | 12.64 | 15.23 | 10.33 | 17.33 | 12.56 | 15.22 | 15.00 | 13.20 | 15.00 | 16.80 | 15.50 | 15.33 | 15 | 14.40
+  R4: CHERIF BEN HASSANE | 11.25 | 11.66 | 11.66 | 8.66 | 13.75 | 11.66 | 15.00 | 12.00 | 16.00 | 05.00 | 8.75 | 12.33 | 15.50 | 11.52
+  R5: KONATE MADOUSSOU | 12.61 | 13.33 | 11.75 | 14.66 | 17.00 | 12.66 | 14.00 | 12.20 | 14.00 | 17.40 | 16.25 | 13.00 | 16.00 | 13.95
+  R6: KONE MARIAME | 13.26 | 15.66 | 13.83 | 16.66 | 14.50 | 14.22 | 15.00 | 15.60 | 16.00 | 19.20 | 15.75 | 17.00 | 16.00 | 15.21
+  R7: OUATTARA FANTA | 11.02 | 07.83 | 12.83 | 13.66 | 12.12 | 10.44 | 12.00 | 08.20 | 14.00 | 12.60 | 18.75 | 04.33 | 16.00 | 11.68
+  R8: SYLLA MALICK NOOR E | 11.39 | 13.66 | 14.83 | 10.33 | 13.56 | 10.44 | 13.00 | 13.00 | 13.00 | 16.40 | 17.87 | 06.00 | 15.00 | 12.54
+[END TABLE]
+
+
+=======================================================
+FICHIER: RAPPORT PREMIER TRIMESTRE COLLEGE PRIVE CONFESSIONNEL HINNEH  2025-2026.xlsx
+=======================================================
+Feuilles: ['PAGE DE GARDE', 'SOMMAIRE', 'INTRODUCTION', 'VIE PEDAGOGIQUE', 'VISITES DE CLASSES', 'FORMATIONS', "NOMBRE D'ELEVES PAR NIVEAU", 'RESULTATS SCOLAIRES', 'LISTE DES MAJORS', 'EFFECTIFS ET PYRAMIDES', 'REPARTITION ELEVE PAR NAISSANCE', 'ETAT DU PERSONNEL ENSEIGNANT', 'ETAT DU PERSONNEL ADMINISTRATIF', 'ETAT PERSONNEL DE SERVICE', 'CAS SOCIAUX', 'CONCLUSION']
+
+--- FEUILLE: PAGE DE GARDE (lignes=38, cols=11) ---
+
+--- FEUILLE: SOMMAIRE (lignes=1, cols=1) ---
+
+--- FEUILLE: INTRODUCTION (lignes=32, cols=5) ---
+  L01:  |  | INTRODUCTION |  | 
+
+--- FEUILLE: VIE PEDAGOGIQUE (lignes=66, cols=11) ---
+  L01:  | Chapitre I : VIE PEDAGOGIQUE ET RESULTATS SCOLAIRES |  |  |  |  |  |  |  |  | 
+  L03:  | A. VIE PEDAGOGIQUE |  |  |  |  |  |  |  |  | 
+  L05:  | 1.    Activités des Unités Pédagogiques et des Conseils d’Enseignement |  |  |  |  |  |  |  |  | 
+  L06:  | N° | Type d’activité UP | Nombre | Type d’activité CE | Nombre |  |  |  |  | 
+  L07:  | 1 | Réunions d'UP | 2 | Réunions d'UP | 2 |  |  |  |  | 
+  L08:  | 2 | Choix des supports de cours et mise en commun | 2 | Choix des supports de cours et mise en commun | 5 |  |  |  |  | 
+  L09:  | 3 | Harmonisation des progressions, des documents et manuels pédagogiques | 1 | Harmonisation des progressions, des documents et manuels pédagogiques | 1 |  |  |  |  | 
+  L10:  | 4 | Encadrement des nouveaux ou stagiaires et des clubs |  | Encadrement des nouveaux ou stagiaires et des clubs | 4 |  |  |  |  | 
+  L11:  | 5 | Examens blancs, Concours |  | Examens blancs, Concours |  |  |  |  |  | 
+  L12:  | 6 | Devoirs de niveaux | 5 | Devoirs de niveaux | 6 |  |  |  |  | 
+  L13:  | 7 | Classes ouvertes et visites de classes | 1 | Classes ouvertes et visites de classes | 2 |  |  |  |  | 
+  L14:  | 8 | Elaboration de cours et supports | 4 | Elaboration de cours et supports | 5 |  |  |  |  | 
+  L15:  | 9 | Elaboration des sujets d'examens |  | Elaboration des sujets d'examens |  |  |  |  |  | 
+  L16:  | 10 | Formations |  | Formations |  |  |  |  |  | 
+  L17:  | 11 | Elaboration de devoirs de niveaux | 5 | Elaboration de devoirs de niveaux | 6 |  |  |  |  | 
+  L18:  | 12 | Restitution d'atelier et CR | 2 | Restitution d'atelier et CR | 2 |  |  |  |  | 
+  L19:  | 3 | Bilan d'activités | 1 | Bilan d'activités | 5 |  |  |  |  | 
+  L20:  | 14 | Activités culturelles | 3 | Activités culturelles | 6 |  |  |  |  | 
+  L21:  | 15 | Corrections de devoirs | 5 | Corrections de devoirs | 6 |  |  |  |  | 
+  L22:  | 16 | Séance de rémédiation et de régularisation | 5 | Séance de rémédiation et de régularisation | 6 |  |  |  |  | 
+  L23:  | 17 | Action sociale |  | Action sociale |  |  |  |  |  | 
+  L24:  | 18 | Autres | 1 | Autres | 1 |  |  |  |  | 
+  L25:  | TOTAL |  | 37 | TOTAL | 57 |  |  |  |  | 
+
+--- FEUILLE: VISITES DE CLASSES (lignes=16, cols=7) ---
+  L01: 2.    Visites de classes et formations |  |  |  |  |  | 
+  L02: 2-1-Visites de classes |  |  |  |  |  | 
+  L05: N° | Nom et prenoms et qualité du visiteur | Enseignants | Disciplines | Date | Heures | Observations
+  L06: 1 | directeur des etudes | Kone karidja | francais | 2025-10-13 00:00:00 | 7H30 | RAS
+  L07: 2 | Directeur des etudes | Ouattara Dofangana | math | 2025-10-27 00:00:00 | 8h20 | RAS
+  L08: 3 | directeur des etudes | Koffi Koffi | Allemand | 2025-11-10 00:00:00 | 7H30 | RAS
+  L09: 4 | directeur des etudes | Sylla Ibrahim | SVT | 2025-11-18 00:00:00 | 8h20 | RAS
+  L10: 5 |  |  |  |  |  | 
+  L11: 6 |  |  |  |  |  | 
+  L12: 7 |  |  |  |  |  | 
+  L13: 8 |  |  |  |  |  | 
+  L14: 9 |  |  |  |  |  | 
+  L15: 10 |  |  |  |  |  | 
+  L16: TOTAL NOMBRE DE VISITES |  |  |  | 183850 |  | 
+
+--- FEUILLE: FORMATIONS (lignes=27, cols=7) ---
+  L01: 2-2-Formations |  |  |  |  |  | 
+  L03: N° | Nom et prenoms et qualité du formateur | Disciplines | Enseignants  Formés | Nombre  de formations | Dates | Observations
+  L04: 1 | NEANT | NEANT | NEANT | NEANT | NEANT | NEANT
+  L05: 2 |  |  |  |  |  | 
+  L06: 3 |  |  |  |  |  | 
+  L07: 4 |  |  |  |  |  | 
+  L08: 5 |  |  |  |  |  | 
+  L09: 6 |  |  |  |  |  | 
+  L10: 7 |  |  |  |  |  | 
+  L11: 8 |  |  |  |  |  | 
+  L12: 9 |  |  |  |  |  | 
+  L13: 10 |  |  |  |  |  | 
+  L14: 11 |  |  |  |  |  | 
+  L15: 12 |  |  |  |  |  | 
+  L16: 13 |  |  |  |  |  | 
+  L17: 14 |  |  |  |  |  | 
+  L18: 15 |  |  |  |  |  | 
+  L19: 16 |  |  |  |  |  | 
+  L20: 17 |  |  |  |  |  | 
+  L21: 18 |  |  |  |  |  | 
+  L22: 19 |  |  |  |  |  | 
+  L23: 20 |  |  |  |  |  | 
+  L24: TOTAL NOMBRE DE FORMATIONS |  |  |  |  |  | 
+  L27: COMMENTAIRES : |  |  |  |  |  | 
+
+--- FEUILLE: NOMBRE D'ELEVES PAR NIVEAU (lignes=21, cols=5) ---
+  L01: B. NOMBRE D'ELEVES |  |  |  | 
+  L03:  | NIVEAU | NOMBRE D'ELEVES AFFECTES | NOMBRE D'ELEVES NON AFFECTES | TOTAL
+  L04:  | 6ème |  | 28 | 28
+  L05:  | 5ème |  | 17 | 17
+  L06:  | 4ème |  | 6 | 6
+  L07:  | 3ème |  |  | 
+  L08:  | total 1 |  | 51 | 51
+  L09:  | 2ndeA |  |  | 
+  L10:  | 2ndeC |  |  | 
+  L11:  | TOTAL 2nde |  |  | 
+  L12:  | 1èreA |  |  | 
+  L13:  | 1èreC |  |  | 
+  L14:  | 1èreD |  |  | 
+  L15:  | TOTAL 1ère |  |  | 
+  L16:  | TleA |  |  | 
+  L17:  | TleC |  |  | 
+  L18:  | TleD |  |  | 
+  L19:  | TOTAL Tle |  |  | 
+  L20:  | total 2 |  |  | 
+  L21:  | TOTAL Général |  | 51 | 51
+
+--- FEUILLE: RESULTATS SCOLAIRES (lignes=25, cols=26) ---
+  L01: B. RESULTATS SCOLAIRES |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L03: 2.    Résultats de fin de trimestre |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L05: 2.1 Résultats scolaires des élèves affectés par classe et par niveau |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L07:  |  |  | Effectif |  |  | Classés | Non-Classés |  |  | Elèves ayant Moy≥10 |  |  |  | Elèves ayant 8,50 ≤ Moy < 10 |  |  |  | Elèves ayant Moy< 8,50 |  |  |  |  |  | 
+  L08: AFFECTES | Niveau | Nbre classes | Garç | Filles | Total |  | Garç | Filles | Total | Garç | Filles | Total | 0 /0 | Garç | Filles | Total | 0/0 | Garç | Filles | Total | 0 /0 |  |  | 
+  L09:  | 6è | 1 | 13 | 15 | 28 | 28 |  |  |  | 11 | 15 | 26 | 92.85714285714286 | 1 |  | 1 | 3.5714285714285716 | 1 |  | 1 | 3.5714285714285716 |  |  | 
+  L10:  | 5è | 1 | 7 | 10 | 17 | 17 |  |  |  | 6 | 10 | 16 | 94.11764705882354 | 1 |  | 1 | 5.882352941176471 |  |  |  |  |  |  | 
+  L11:  | 4è | 1 | 3 | 3 | 6 | 6 |  |  |  | 3 | 3 | 6 | 100 |  |  |  |  |  |  |  |  |  |  | 
+  L12:  | 3è |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L13:  | Total 1er cycle | 3 | 23 | 28 | 51 | 51 |  |  |  | 20 | 28 | 48 | 94.11764705882354 | 2 |  | 2 | 3.9215686274509802 | 1 |  | 1 | 1.9607843137254901 |  |  | 
+  L14:  | 2ndeA |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L15:  | 2ndeC |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L16:  | 1èreA |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L17:  | 1èreC |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L18:  | 1èreD |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L19:  | TleA |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L20:  | TleC |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L21:  | TleD |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L22:  | Total 2nd cycle |  |  |  |  |  |  |  |  |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  |  | #DIV/0! |  |  | 
+  L23:  | Total Général | 3 | 23 | 28 | 51 | 51 |  |  |  | 20 | 28 | 48 | 94.11764705882354 | 2 |  | 2 | 3.9215686274509802 | 1 |  | 1 | 1.9607843137254901 |  |  | 
+
+--- FEUILLE: LISTE DES MAJORS (lignes=17, cols=10) ---
+  L01: 3 .Liste des majors de classe |  |  |  |  |  |  |  |  | 
+  L05: Niveaux | Matricule | Nom et Prénom(s) | Genre | date de naissance | Nationalité | Red / NRed | Moyenne | Rang | classe
+  L06: 6ème | 24282170L | COULIBALY KINIDINNIN SALIMATA | F | 2015-10-11 00:00:00 | IVOIRIENNE | NON | 17.53 | 1ERE | 6EME
+  L07: 5ème | 24305074P | SORO KOUNADI IMANE | F | 2014-06-11 00:00:00 | IVOIRIENNE | NON | 16.05 | 1ERE | 5EME
+  L08: 4ème | 23767368A | DIABATE AICHATOU KEHIRA | F | 2012-06-02 00:00:00 | IVOIRIENNE | NON | 15.47 | 1ERE | 4EME
+  L09: 3ème |  |  |  |  |  |  |  |  | 
+  L10: 2nde A |  |  |  |  |  |  |  |  | 
+  L11: 2nde C |  |  |  |  |  |  |  |  | 
+  L12: 1ere A |  |  |  |  |  |  |  |  | 
+  L13: 1ere C |  |  |  |  |  |  |  |  | 
+  L14: 1ere D |  |  |  |  |  |  |  |  | 
+  L15: Tle A |  |  |  |  |  |  |  |  | 
+  L16: Tle C |  |  |  |  |  |  |  |  | 
+  L17: Tle D |  |  |  |  |  |  |  |  | 
+
+--- FEUILLE: EFFECTIFS ET PYRAMIDES (lignes=21, cols=24) ---
+  L01:  | Chapitre II : EFFECTIFS ET PYRAMIDES |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L03:  | A/  EFFECTIFS ET PYRAMIDES |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L05:  |  |  |  | PREMIER CYCLE |  |  |  |  | SECOND CYCLE |  |  |  |  |  |  |  |  | TOTAL GENERAL |  |  |  |  | 
+  L06:  |  |  |  | 6è | 5è | 4è | 3è | T | 2eA | 2eC | 1èreA | 1èreC | 1èreD | TleA | TleC | TleD | T |  |  |  |  |  | 
+  L07:  | NOM ETABLISSEMENT | Nombre de Classes |  | 1 | 1 | 1 |  | 3 |  |  |  |  |  |  |  |  |  | 3 |  |  |  |  | 
+  L08:  |  | Effectifs par Niveau | G | 13 | 7 | 3 |  | 23 |  |  |  |  |  |  |  |  |  | 23 |  |  |  |  | 
+  L09:  |  |  | F | 15 | 10 | 3 |  | 28 |  |  |  |  |  |  |  |  |  | 28 |  |  |  |  | 
+  L10:  |  |  | T | 28 | 17 | 6 |  | 51 |  |  |  |  |  |  |  |  |  | 51 |  |  |  |  | 
+  L11:  |  | Effectifs Par classe |  | 28 | 17 | 6 | #DIV/0! | 17 | #DIV/0! | #DIV/0! | #DIV/0! | #DIV/0! | #DIV/0! | #DIV/0! | #DIV/0! | #DIV/0! | #DIV/0! | 17 |  |  |  |  | 
+
+--- FEUILLE: REPARTITION ELEVE PAR NAISSANCE (lignes=81, cols=15) ---
+  L01: B/ REPARTITION DES ELEVES PAR ANNEE DE NAISSANCE |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L03: Année de naissance | Genre | PREMIER CYCLE |  |  |  | SECOND CYCLE |  |  |  |  |  |  |  | TL  GL
+  L04:  |  | 6ème | 5ème | 4ème | 3ème | 2eA | 2eC | 1èreA | 1èreC | 1èreD | TleA | TleC | TleD | 
+  L05: SANS EXTRAIT | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L06:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L07:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L08: ÂGE INCORRECT | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L09:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L10:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L11: 2017 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L12:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L13:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L14: 2016 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L15:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L16:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L17: 2015 | G | 2 |  |  |  |  |  |  |  |  |  |  |  | 2
+  L18:  | F | 4 |  |  |  |  |  |  |  |  |  |  |  | 4
+  L19:  | T | 6 |  |  |  |  |  |  |  |  |  |  |  | 6
+  L20: 2014 | G | 6 |  |  |  |  |  |  |  |  |  |  |  | 6
+  L21:  | F | 8 | 1 |  |  |  |  |  |  |  |  |  |  | 9
+  L22:  | T | 14 | 1 |  |  |  |  |  |  |  |  |  |  | 15
+  L23: 2013 | G | 3 | 4 | 1 |  |  |  |  |  |  |  |  |  | 8
+  L24:  | F | 1 | 5 | 1 |  |  |  |  |  |  |  |  |  | 7
+  L25:  | T | 4 | 9 | 2 |  |  |  |  |  |  |  |  |  | 15
+  L26: 2012 | G | 1 |  | 2 |  |  |  |  |  |  |  |  |  | 3
+  L27:  | F | 2 | 3 | 1 |  |  |  |  |  |  |  |  |  | 6
+  L28:  | T | 3 | 3 | 3 |  |  |  |  |  |  |  |  |  | 9
+  L29: 2011 | G | 1 | 2 |  |  |  |  |  |  |  |  |  |  | 3
+  L30:  | F |  | 1 |  |  |  |  |  |  |  |  |  |  | 1
+  L31:  | T | 1 | 3 |  |  |  |  |  |  |  |  |  |  | 4
+  L32: 2010 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L33:  | F |  |  | 1 |  |  |  |  |  |  |  |  |  | 1
+  L34:  | T |  |  | 1 |  |  |  |  |  |  |  |  |  | 1
+  L35: 2009 | G |  | 1 |  |  |  |  |  |  |  |  |  |  | 1
+  L36:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L37:  | T |  | 1 |  |  |  |  |  |  |  |  |  |  | 1
+  L38: 2008 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L39:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L40:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L41: 2007 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L42:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L43:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L44: 2006 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L45:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L46:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L47: 2005 | G |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L48:  | F |  |  |  |  |  |  |  |  |  |  |  |  | 
+  L49:  | T |  |  |  |  |  |  |  |  |  |  |  |  | 
+
+--- FEUILLE: ETAT DU PERSONNEL ENSEIGNANT (lignes=36, cols=10) ---
+  L01: Chapitre III : PERSONNEL ENSEIGNANT ET ADMINISTRATIF |  |  |  |  |  |  |  |  | 
+  L03: A.   ETAT DU PERSONNEL ENSEIGNANT |  |  |  |  |  |  |  |  | 
+  L05:  | Nom et Prénoms | Diplôme | Genre | Statut |  |  | Matière enseignée | N° CNPS | N° d’autorisation .d’enseigner
+  L06:  |  |  |  | Fonctionnaire | Privés |  |  |  | 
+  L07:  |  |  |  | Vacataire | Permanent | Vacataire |  |  | 
+  L08: 1 | KONE EPSE YEO KARIDJA TIAPE | LICENCE | F |  | OUI |  | Français |  | N°4003 MENA/DEEP DU 14/10/2024
+  L09: 2 | OUATTARA DOFANGANA | LICENCE | M |  | OUI |  | MATHEMATIQUES |  | N°F 2266 MENET/DEEP DU 03/11/2015
+  L10: 3 | SORO LACINA | LICENCE | M |  |  | OUI | PHYSIQUE CHIMIE |  | 
+  L11: 4 | SYLLA IBRAHIM | LICENCE | M |  |  | OUI | SVT |  | 
+  L12: 5 | KONE ABOUBAKARY | LICENCE | M | OUI |  |  | ANGLAIS |  | 
+  L13: 6 | SORO T. ADAMA | LICENCE | M |  |  | OUI | HISTOIRE-GEOGRAPHIE |  | N°F 5023 MENA/DEEP DU 29/09/2022
+  L14: 7 | TOURE MAHAMOUD | LICENCE | M | OUI |  |  | EPS |  | 
+  L15: 8 | AKAFFOU CHARLY | LICENCE | M | OUI |  |  | ART-PLASTIQUES |  | 
+  L16: 9 | DIALLO MOHAMED | LICENCE | M |  |  | OUI | ARABE |  | 
+  L17: 10 | KONE FOUSSENI | LICENCE | M |  |  | OUI | ARABE |  | 
+  L18: 11 | TUO NANGA INZA | LICENCE | M |  | OUI |  | ARABE |  | 
+  L19: ENSEIGNANTS PAR DISCIPLINE |  |  |  |  |  |  |  |  | 
+  L20:  | PREMIER CYCLE |  |  | SECOND CYCLE |  |  | TOTAL |  | 
+  L21: DISCIPLINE | Existants (Nombre ) |  |  | Existants (Nombre ) |  |  | Existants |  | 
+  L22:  | F | H | T | F | H | T | F | H | T
+  L23: Philosophie |  |  |  |  |  |  |  |  | 
+  L24: Français | 1 |  | 1 |  |  |  | 1 |  | 1
+  L25: Anglais |  | 1 | 1 |  |  |  |  | 1 | 1
+  L26: Espagnol |  |  |  |  |  |  |  |  | 
+  L27: Allemand |  | 1 | 1 |  |  |  |  | 1 | 1
+  L28: H,G |  | 1 | 1 |  |  |  |  | 1 | 1
+  L29: P-C |  | 1 | 1 |  |  |  |  | 1 | 1
+  L30: Maths |  | 1 | 1 |  |  |  |  | 1 | 1
+  L31: SVT |  | 1 | 1 |  |  |  |  | 1 | 1
+  L32: Arts Plastiques |  | 1 | 1 |  |  |  |  | 1 | 1
+  L33: E P S |  | 1 | 1 |  |  |  |  | 1 | 1
+  L34: H-G/L. MOD |  |  |  |  |  |  |  |  | 
+  L35: Maths/tice |  |  |  |  |  |  |  |  | 
+  L36: TOTAL | #REF! | #REF! | #REF! | #REF! | #REF! | #REF! | #REF! | #REF! | #REF!
+
+--- FEUILLE: ETAT DU PERSONNEL ADMINISTRATIF (lignes=29, cols=7) ---
+  L01: B.   ETAT DU PERSONNEL ADMINISTRATIF |  |  |  |  |  | 
+  L03: N° d’ordre | Nom et Prénoms | Diplôme | Sexe | Fonction | N° CNPS | N° d’autorisation
+  L04: 1 | KONATE ABOUBAKAR S. | MAITRISE | M | DIRECTEUR |  | 1838/ 2 OCT 2014
+  L05: 2 | TOURE BARAKISSA | BTS | F | COMPTABLE |  | 
+  L06: 3 | KONE NASSOU | BTS | F | CAISSIERE |  | 
+  L07: 4 | BAKARY OUATTARA | BTS | M | INFOR/ C.F |  | 
+  L08: 5 | SORO T. ADJARATOU | LICENCE | F | SECRETAIRE |  | 
+  L09: 6 | OUATTARA NENE | BTS | F | ACCUEIL SCOL |  | 
+  L10: 7 | BINATE ALASSANE | LICENCE | M | EDUCATEUR |  | 
+  L11: 8 |  |  |  |  |  | 
+  L12: 9 |  |  |  |  |  | 
+  L13: 10 |  |  |  |  |  | 
+  L14: 11 |  |  |  |  |  | 
+  L15: 12 |  |  |  |  |  | 
+  L18:  | FONCTIONS | EXISTANTS (Nombre) |  |  | OBSERVATIONS | 
+  L19:  |  | F | H | TOTAL |  | 
+  L20:  | DIRECTEURS DES ETUDES |  | 1 | 1 |  | 
+  L21:  | DIRECTEUR ADJOINT |  |  |  |  | 
+  L22:  | ECONOME | 1 |  | 1 |  | 
+  L23:  | SECRETAIRE | 1 |  | 1 |  | 
+  L24:  | EDUCATEURS |  | 1 | 1 |  | 
+  L25:  | CORRESPONDANTS FICHIERS |  | 1 | 1 |  | 
+  L26:  | INFIRMIERS |  | 1 | 1 |  | 
+  L27:  | AUTRES |  |  |  |  | 
+  L28:  | Total | 2 | 4 | 6 |  | 
+
+--- FEUILLE: ETAT PERSONNEL DE SERVICE (lignes=26, cols=7) ---
+  L01: C-ETAT DU PERSONNEL DE SERVICES |  |  |  |  |  | 
+  L05: N° | Nom et Prénoms | Matricule | Genre | Fonction | Contact | E-mail
+  L06: 1 | SORO LACINA |  | M | CHAUFFEUR | 504255224 | 
+  L07: 2 | OUSMANE YATASSAI |  | M | GARDIEN | 140383376 | 
+  L08: 3 |  |  |  |  |  | 
+  L09: 4 |  |  |  |  |  | 
+  L10: 5 |  |  |  |  |  | 
+  L11: 6 |  |  |  |  |  | 
+  L12: 7 |  |  |  |  |  | 
+  L13: 8 |  |  |  |  |  | 
+  L14: 9 |  |  |  |  |  | 
+  L15: 10 |  |  |  |  |  | 
+  L18: N° | FONCTIONS | EXISTANTS |  |  |  | 
+  L19:  |  | F | H | Total |  | 
+  L20: 1 | Laborantins |  |  |  |  | 
+  L21: 2 | Bibliothécaires |  |  |  |  | 
+  L22: 3 | Vaguemestres |  |  |  |  | 
+  L23: 4 | Gardiens |  | 1 | 1 |  | 
+  L24: 5 | Manœuvres (Techn. De surface) | 1 |  | 1 |  | 
+  L25: 6 | Magasiniers |  |  |  |  | 
+  L26: 7 | Autres |  |  | 2 |  | 
+
+--- FEUILLE: CAS SOCIAUX (lignes=73, cols=10) ---
+  L01:  | CHAPITRE IV : LES CAS SOCIAUX |  |  |  |  |  |  |  | 
+  L03:  | A- CAS DE GROSSESSES |  |  |  |  |  |  |  | 
+  L05:  | N° | Matricule | Nom et Prénoms | Âge | Classe | Auteur | Profession | N° du certificat justifiant l'arrêt des cours | 
+  L06:  | 1 |  |  |  |  |  |  |  | 
+  L07:  | 2 |  |  |  |  |  |  |  | 
+  L08:  | 3 |  |  |  |  |  |  |  | 
+  L09:  | 4 |  |  |  |  |  |  |  | 
+  L10:  | 5 |  |  |  |  |  |  |  | 
+  L11:  | 6 |  |  |  |  |  |  |  | 
+  L13: PREMIER   CYCLE |  |  |  |  | SECOND   CYCLE |  |  |  | Total Général
+  L14: 6è | 5è | 4è | 3è | Total | 2NDE | 1ERE | TLE | Total | 
+  L18:  | B- CAS DE HANDICAP |  |  |  |  |  |  |  | 
+  L20:  | N° | Matricule | Nom et Prénoms | Classe | Handicap | N° du certificat justifiant l'arrêt des cours |  |  | 
+  L21:  | 1 |  |  |  |  |  |  |  | 
+  L22:  | 2 |  |  |  |  |  |  |  | 
+  L23:  | 3 |  |  |  |  |  |  |  | 
+  L24:  | 4 |  |  |  |  |  |  |  | 
+  L25:  | 5 |  |  |  |  |  |  |  | 
+  L27:  | NOMBRE TOTAL DE CAS DE HANDICAP DU 1er trimestre = |  |  |  |  |  |  |  | 
+  L29:  | C- CAS DE MALADIE |  |  |  |  |  |  |  | 
+  L31:  | N° | Matricule | Nom et Prénoms | Classe | Genre | Type de maladie | Date de dépôt du certificat médical | Durée de l’arrêt des cours | 
+  L32:  | 1 |  |  |  |  |  |  |  | 
+  L33:  | 2 |  |  |  |  |  |  |  | 
+  L34:  | 3 |  |  |  |  |  |  |  | 
+  L35:  | 4 |  |  |  |  |  |  |  | 
+  L36:  | 5 |  |  |  |  |  |  |  | 
+  L38:  | NOMBRE TOTAL DE CAS DE MALADIE DU 1er trimestre = |  |  |  |  |  |  |  | 
+  L40:  | D-CAS D'ABANDONS |  |  |  |  |  |  |  | 
+  L42:  | N° | Matricule | Nom et Prénoms | Sexe | Classe | Observations |  |  | 
+  L43:  | 1 |  |  |  |  |  |  |  | 
+  L44:  | 2 |  |  |  |  |  |  |  | 
+  L45:  | 3 |  |  |  |  |  |  |  | 
+  L46:  | 4 |  |  |  |  |  |  |  | 
+  L47:  | 5 |  |  |  |  |  |  |  | 
+  L48:  | 6 |  |  |  |  |  |  |  | 
+
+--- FEUILLE: CONCLUSION (lignes=1, cols=2) ---
+  L01:  | CONCLUSION
+
+=======================================================
+FICHIER: RAPPORT_BILAN__FIN_D'ANNEE[1].doc
+=======================================================
+[Contenu extrait DOC binaire (3363 blocs)]
+þÿÿÿ
+ÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿÿì¥Á
+bjbj
+ÿÿÿÿ
+ÿÿÿÿ
+Ø.²¹ÄÛ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+ÿÿÿÿ
+MINISTÈRE DE L
+ÉDUCATION NATIONALE                                                                                                                                                                      RÉPUBLIQUE DE CÔTE D
+IVOIRE
+               DE L
+ALPHABÉTISATION                                                                                                                                                                                           Union 
+ Discipline - Travail                                                                                                                                                                              
+                    
+DIRECTION DES ÉCOLES, LYCÉES ET COLLÈGES
+                    
+SOUS-DIRECTION DU PRÉSCOLAIRE 
+                ET DU PRIMAIRE
+                    
+       SERVICE DU PRÉSCOLAIRE
+                  -----------------
+DRENA : 
+IEPP        : 
+NOM DU CPPP : 
+BP    : 
+TEL. :  
+CEL : 
+E-MAIL :
+RAPPORT BILAN DE FIN D
+ANNÉE 
+ANNÉE SCOLAIRE :
+          
+                                      
+ ÉCOLES ET CLASSES
+         NIVEAUX      
+STRUCTURES
+NOMBRE
+ECOLES
+NOMBRE DE CLASSES
+ETAT DES CLASSES
+NOMBRE DE LOGEMENTS
+BESOINS A PRECISER
+GS UNIQUE RATTACHEE
+TOTAL
+Mauvais
+PUBLIC
+PRIVE
+Préscolaire Communautaire
+TOTAL
+ETAT DES EFFECTIFS PAR NIVEAU
+               NIVEAU
+STRUCTURE
+PETITE SECTION
+MOYENNE SECTION
+GRANDE SECTION
+Classe unique de grande section rattachée au primaire
+Cours jumelés
+Enfants en situation de handicap 
+Abandon
+Effectif total
+PUBLIC
+PRIVE
+Préscolaire Communautaire
+TOTAL
+III 
+ ETAT DES EFFECTIFS PAR NATIONALITE
+                  EFFECTIFS
+STRUCTURES
+Effectif Total
+Ivoiriens
+Autres Africains
+Non Africains
+PUBLIC
+PRIVE
+Préscolaire Communautaire
+TOTAL
+ TABLEAU DE REPARTITION DU PERSONNEL
+      CORPS
+STRUCTURES
+AUTRES
+EN SITUATION DE HANDICAP
+Observations
+PUBLIC

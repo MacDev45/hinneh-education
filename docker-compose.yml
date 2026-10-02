@@ -1,0 +1,128 @@
+version: '3.9'
+
+services:
+  # ─────────────────────────────────────────────────────────────────────────
+  # MySQL Database
+  # ─────────────────────────────────────────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: hinneh_mysql
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-insights_ce}
+      MYSQL_USER: ${MYSQL_USER:-hinneh_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-secure_password}
+
+      # Configuration MySQL optimisée
+      MYSQL_INITDB_SKIP_TZINFO: 1
+      MYSQL_COLLATION_CONNECTION: utf8mb4_unicode_ci
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+
+    ports:
+      - "3306:3306"
+
+    volumes:
+      # Persistence des données
+      - mysql_data:/var/lib/mysql
+
+      # Scripts d'initialisation
+      - ./deployments/init-db.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./migrations/001_inscription_process_schema.sql:/docker-entrypoint-initdb.d/02-inscription.sql
+      - ./migrations/002_populate_grille_tarifaire.sql:/docker-entrypoint-initdb.d/03-grille.sql
+      - ./migrations/003_create_tenue_scolaire_table.sql:/docker-entrypoint-initdb.d/04-tenues.sql
+
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+    networks:
+      - hinneh_network
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # FastAPI Application
+  # ─────────────────────────────────────────────────────────────────────────
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hinneh_api
+    restart: unless-stopped
+
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    environment:
+      # MySQL
+      DATABASE_URL: mysql+pymysql://${MYSQL_USER:-hinneh_user}:${MYSQL_PASSWORD:-secure_password}@mysql:3306/${MYSQL_DATABASE:-insights_ce}
+      MYSQL_HOST: mysql
+      MYSQL_PORT: 3306
+      MYSQL_USER: ${MYSQL_USER:-hinneh_user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-secure_password}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-insights_ce}
+
+      # API
+      SECRET_KEY: ${SECRET_KEY:-change_me_in_production}
+      ALGORITHM: ${ALGORITHM:-HS256}
+      ACCESS_TOKEN_EXPIRE_MINUTES: ${ACCESS_TOKEN_EXPIRE_MINUTES:-30}
+      ENVIRONMENT: ${ENVIRONMENT:-production}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+
+      # CORS
+      ALLOWED_ORIGINS: ${ALLOWED_ORIGINS:-http://localhost:3000}
+
+    ports:
+      - "8000:8000"
+
+    volumes:
+      # Uploads
+      - ./api/uploads:/app/api/uploads
+
+      # Logs
+      - ./logs:/app/logs
+
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+    networks:
+      - hinneh_network
+
+  # ─────────────────────────────────────────────────────────────────────────
+  # PhpMyAdmin (optionnel - pour administration MySQL)
+  # ─────────────────────────────────────────────────────────────────────────
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: hinneh_phpmyadmin
+    restart: unless-stopped
+
+    depends_on:
+      - mysql
+
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${MYSQL_USER:-hinneh_user}
+      PMA_PASSWORD: ${MYSQL_PASSWORD:-secure_password}
+      PMA_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root_password}
+
+    ports:
+      - "8081:80"
+
+    networks:
+      - hinneh_network
+
+volumes:
+  mysql_data:
+    driver: local
+
+networks:
+  hinneh_network:
+    driver: bridge

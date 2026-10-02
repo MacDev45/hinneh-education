@@ -1,0 +1,45 @@
+# Environnement & Secrets
+.env.production
+.env.staging
+.env.local
+.env
+
+# Certificats SSL (jamais commiter)
+nginx/ssl/*.crt
+nginx/ssl/*.key
+nginx/ssl/*.pem
+!nginx/ssl/.gitkeep
+
+# Logs
+logs/
+*.log
+docker/logs/
+
+# Backups & Données sensibles
+backups/
+*.sql
+*.sql.gz
+*.tar.gz
+!backups/.gitkeep
+
+# Volumes Docker
+db_data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporaires
+*.tmp
+.temp/
+node_modules/
+
+# CI/CD
+.github/workflows/secrets*

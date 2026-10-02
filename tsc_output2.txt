@@ -1,0 +1,36 @@
+﻿src/lib/gradeDocuments.ts(67,9): error TS2353: Object literal may only specify known properties, and 'pagebreak' does not exist in type 'Html2PdfOptions'.
+src/pages/Administration.tsx(558,36): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Administration.tsx(562,38): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Administration.tsx(566,38): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Administration.tsx(570,37): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Administration.tsx(574,37): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Administration.tsx(2002,44): error TS2322: Type '"secondary" | "success"' is not assignable to type '"default" | "destructive" | "secondary" | "outline"'.
+  Type '"success"' is not assignable to type '"default" | "destructive" | "secondary" | "outline"'.
+src/pages/Finance.tsx(432,18): error TS2367: This comparison appears to be unintentional because the types '"actif" | "radie" | "transfere"' and '"preinscrit"' have no overlap.
+src/pages/Grades.tsx(775,40): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Grades.tsx(779,41): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Grades.tsx(783,44): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Grades.tsx(787,40): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/HR.tsx(38,5): error TS2322: Type '"outline"' is not assignable to type '"default" | "destructive" | "secondary"'.
+src/pages/HR.tsx(138,36): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/HR.tsx(142,38): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/PreInscription.tsx(203,31): error TS2339: Property 'notesSante' does not exist on type '{ typeInscription: string; matriculeEcole: string; nom: string; prenom: string; genre: string; dateNaissance: string; lieuNaissance: string; nationalite: string; extraitNo: string; extraitDate: string; ... 42 more ...; emailPrincipal: string; }'.
+src/pages/StudentDetail.tsx(310,27): error TS2367: This comparison appears to be unintentional because the types '"transfere"' and '"preinscrit"' have no overlap.
+src/pages/Students.tsx(91,39): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Students.tsx(100,38): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/Students.tsx(109,38): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(792,25): error TS2322: Type '{ value: number; disabled: boolean; onChange: (v: number) => void; }' is not assignable to type 'IntrinsicAttributes & { value: number; onChange: (v: number) => void; }'.
+  Property 'disabled' does not exist on type 'IntrinsicAttributes & { value: number; onChange: (v: number) => void; }'.
+src/pages/TeacherSpace.tsx(1027,40): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1031,38): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1035,40): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1040,44): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1044,43): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1048,41): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1052,45): error TS7011: Function expression, which lacks return-type annotation, implicitly has an 'any[]' return type.
+src/pages/TeacherSpace.tsx(1552,15): error TS2322: Type '(dateStr: string, presencesData: Record<string, "present" | "absent" | "retard" | "excuse">, heureStr: string) => Promise<void>' is not assignable to type '(date: string, presences: Record<string, "absent" | "present" | "retard" | "excuse">) => Promise<void>'.
+  Target signature provides too few arguments. Expected 3 or more, but got 2.
+src/pages/TeacherSpace.tsx(2016,28): error TS2322: Type '"destructive" | "success"' is not assignable to type '"default" | "destructive" | "secondary" | "outline"'.
+  Type '"success"' is not assignable to type '"default" | "destructive" | "secondary" | "outline"'.
+src/pages/TeacherSpace.tsx(2057,38): error TS2322: Type '"destructive" | "success"' is not assignable to type '"default" | "destructive" | "secondary" | "outline"'.
+  Type '"success"' is not assignable to type '"default" | "destructive" | "secondary" | "outline"'.
