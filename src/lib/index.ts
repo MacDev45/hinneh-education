@@ -354,6 +354,8 @@ export interface Staff {
     | 'service'
     | 'direction';
   schoolId: string;
+  code_etablissement?: string;
+  ET_CODEETABLISSEMENT?: string;
   status: 'actif' | 'conge' | 'absent' | 'en_attente';
   chargeHoraire: number;
   photo?: string;

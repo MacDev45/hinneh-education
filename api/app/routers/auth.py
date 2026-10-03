@@ -126,17 +126,24 @@ class SchoolScope:
 
         # 2. Autres cycles du même campus (même code d'établissement)
         # Cela inclut la maternelle, primaire et collège qui partagent le même code
+        target_codes = set()
         if effective_code:
-            query = db.query(models.Etablissement).filter(
-                func.upper(models.Etablissement.ET_CODEETABLISSEMENT) == effective_code.strip().upper()
-            )
-            # Filtrer par ville si l'utilisateur a une ville définie
-            # (pour s'assurer qu'un utilisateur de Bouaké ne voit que les écoles de Bouaké)
-            if self.ville:
-                query = query.filter(func.lower(models.Etablissement.ET_VILLE) == self.ville.lower().strip())
+            target_codes.add(effective_code.strip().upper())
+            if effective_code.strip().upper() in ("058131", "HIN-DLO-01"):
+                target_codes.update(["058131", "HIN-DLO-01"])
 
-            for e in query.all():
-                ids.add(e.IDETABLISSEMENT)
+        if target_codes or self.ville:
+            query = db.query(models.Etablissement)
+            conds = []
+            if target_codes:
+                conds.append(func.upper(models.Etablissement.ET_CODEETABLISSEMENT).in_(list(target_codes)))
+            if self.ville:
+                conds.append(func.lower(models.Etablissement.ET_VILLE) == self.ville.lower().strip())
+            if conds:
+                for e in query.filter(or_(*conds)).all():
+                    if self.ville and e.ET_VILLE and e.ET_VILLE.lower().strip() != self.ville.lower().strip():
+                        continue
+                    ids.add(e.IDETABLISSEMENT)
 
         # 3. Établissements explicitement autorisés (ecoles_autorisees)
         if self.ecoles_autorisees:
@@ -168,6 +175,11 @@ class SchoolScope:
             for e in db.query(models.Etablissement).filter(models.Etablissement.IDETABLISSEMENT.in_(ids)).all():
                 if e.ET_CODEETABLISSEMENT:
                     codes.add(e.ET_CODEETABLISSEMENT.strip().upper())
+
+        # Unification des alias campus (ex: 058131 et HIN-DLO-01 pour Daloa)
+        if any(c in ("058131", "HIN-DLO-01") for c in codes) or (self.ville and self.ville.lower().strip() == "daloa"):
+            codes.update(["058131", "HIN-DLO-01"])
+
         return list(codes)
 
     def can_access_school(self, ecole_id: Optional[int], code_etablissement: Optional[str], db: Session) -> bool:

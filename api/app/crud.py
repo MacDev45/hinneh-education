@@ -919,11 +919,23 @@ def get_staff(db: Session, ecole_id: Optional[int] = None, code_etablissement: O
         query = query.filter(models.Personnel.statut == statut)
     return query.order_by(models.Personnel.nom.asc(), models.Personnel.prenom.asc()).all()
 
-def get_staff_by_schools(db: Session, ecole_ids: Optional[List[int]] = None, statut: Optional[str] = None) -> List[models.Personnel]:
-    """Retourne le personnel de liste d'écoles (identifiants). Filtre sécurisé par établissement autorisé."""
+def get_staff_by_schools(
+    db: Session, 
+    ecole_ids: Optional[List[int]] = None, 
+    code_etablissements: Optional[List[str]] = None,
+    statut: Optional[str] = None
+) -> List[models.Personnel]:
+    """Retourne le personnel de liste d'écoles (identifiants ou codes établissement). Filtre sécurisé par établissement autorisé."""
     query = db.query(models.Personnel)
+    conds = []
     if ecole_ids:
-        query = query.filter(models.Personnel.ecole_id.in_(ecole_ids))
+        conds.append(models.Personnel.ecole_id.in_(ecole_ids))
+    if code_etablissements:
+        clean_codes = [str(c).strip().upper() for c in code_etablissements if c and str(c).strip()]
+        if clean_codes:
+            conds.append(func.upper(models.Personnel.ET_CODEETABLISSEMENT).in_(clean_codes))
+    if conds:
+        query = query.filter(or_(*conds))
     if statut is not None:
         query = query.filter(models.Personnel.statut == statut)
     return query.order_by(models.Personnel.nom.asc(), models.Personnel.prenom.asc()).all()
@@ -1010,12 +1022,29 @@ def valider_staff(db: Session, staff_id: int) -> Optional[models.Personnel]:
     db_staff = db.query(models.Personnel).filter(models.Personnel.id == staff_id).first()
     if db_staff:
         db_staff.statut = 'actif'
+        # Compléter le code établissement sur le personnel si manquant
+        if not db_staff.ET_CODEETABLISSEMENT and db_staff.ecole_id:
+            ecole = db.query(models.Etablissement).filter(models.Etablissement.IDETABLISSEMENT == db_staff.ecole_id).first()
+            if ecole and ecole.ET_CODEETABLISSEMENT:
+                db_staff.ET_CODEETABLISSEMENT = ecole.ET_CODEETABLISSEMENT
+
         if db_staff.user_id:
             db_user = db.query(models.CustomUser).filter(models.CustomUser.id == db_staff.user_id).first()
             if db_user:
                 db_user.is_active = True
                 if db_staff.fonction:
                     db_user.PROFIL = db_staff.fonction
+                if db_staff.ET_CODEETABLISSEMENT and not db_user.ET_CODEETABLISSEMENT:
+                    db_user.ET_CODEETABLISSEMENT = db_staff.ET_CODEETABLISSEMENT
+                if db_staff.ecoles_autorisees and not db_user.ecoles_autorisees:
+                    db_user.ecoles_autorisees = db_staff.ecoles_autorisees
+                if db_staff.ecole_id:
+                    ecole = db.query(models.Etablissement).filter(models.Etablissement.IDETABLISSEMENT == db_staff.ecole_id).first()
+                    if ecole:
+                        if not db_user.ET_CODEETABLISSEMENT and ecole.ET_CODEETABLISSEMENT:
+                            db_user.ET_CODEETABLISSEMENT = ecole.ET_CODEETABLISSEMENT
+                        if not db_user.ville and ecole.ET_VILLE:
+                            db_user.ville = ecole.ET_VILLE
         db.commit()
         db.refresh(db_staff)
     return db_staff

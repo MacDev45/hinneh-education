@@ -88,9 +88,9 @@ export default function HR() {
   const { toast } = useToast();
   const userEcoleId = localStorage.getItem('user_ecole_id');
   const userRole = localStorage.getItem('user_role');
-  const initialSchoolFilter = (userEcoleId && userEcoleId !== 'null' && userEcoleId !== 'undefined' && !['admin', 'superuser', 'direction_fondation'].includes(userRole || ''))
-    ? userEcoleId
-    : 'all';
+  // Le backend filtre déjà le personnel selon les établissements autorisés (campus/ville).
+  // Par défaut, afficher 'all' (Tous les établissements du campus) pour que le directeur et son équipe voient l'ensemble du personnel.
+  const initialSchoolFilter = 'all';
 
   const [selectedSchool, setSelectedSchool] = useState<string>(initialSchoolFilter);
   const [selectedFonction, setSelectedFonction] = useState<string>('all');
@@ -309,7 +309,14 @@ export default function HR() {
 
   const filteredStaff = staffList.filter((staff) => {
     if (staff.status === 'en_attente') return false;
-    if (selectedSchool !== 'all' && staff.schoolId !== selectedSchool) return false;
+    if (selectedSchool !== 'all') {
+      const matchId = String(staff.schoolId || '') === String(selectedSchool);
+      const selSchoolObj = schoolsList.find(s => String(s.id) === String(selectedSchool));
+      const selCode = (selSchoolObj?.code || '').toUpperCase().trim();
+      const staffCode = (staff.code_etablissement || (staff as any).ET_CODEETABLISSEMENT || '').toUpperCase().trim();
+      const matchCode = Boolean(selCode && staffCode && selCode === staffCode);
+      if (!matchId && !matchCode) return false;
+    }
     if (selectedFonction !== 'all' && staff.fonction !== selectedFonction) return false;
     if (selectedStatus !== 'all' && staff.status !== selectedStatus) return false;
     return true;

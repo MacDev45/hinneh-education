@@ -100,10 +100,14 @@ def read_staff(
         staff = crud.get_staff(db, ecole_id=ecole_id, code_etablissement=code_etablissement, statut=statut)
     else:
         auth_ids = scope.get_authorized_school_ids(db)
-        if auth_ids:
-            staff = crud.get_staff_by_schools(db, ecole_ids=auth_ids, statut=statut)
-        else:
-            staff = crud.get_staff(db, ecole_id=ecole_id or scope.ecole_id, code_etablissement=code_etablissement or scope.code_etablissement, statut=statut)
+        auth_codes = scope.get_authorized_school_codes(db)
+        if scope.code_etablissement and scope.code_etablissement not in auth_codes:
+            auth_codes.append(scope.code_etablissement)
+        if any(c in ("058131", "HIN-DLO-01") for c in auth_codes) or (scope.ville and scope.ville.lower() == "daloa"):
+            auth_codes.extend(["058131", "HIN-DLO-01"])
+        auth_codes = list(set(auth_codes))
+
+        staff = crud.get_staff_by_schools(db, ecole_ids=auth_ids, code_etablissements=auth_codes, statut=statut)
     return staff
 
 @router.get("/pending", response_model=List[schemas.StaffResponse])
@@ -116,7 +120,13 @@ def read_staff_pending(
         return crud.get_staff(db, statut="en_attente")
     else:
         auth_ids = scope.get_authorized_school_ids(db)
-        return crud.get_staff_by_schools(db, ecole_ids=auth_ids, statut="en_attente") if auth_ids else []
+        auth_codes = scope.get_authorized_school_codes(db)
+        if scope.code_etablissement and scope.code_etablissement not in auth_codes:
+            auth_codes.append(scope.code_etablissement)
+        if any(c in ("058131", "HIN-DLO-01") for c in auth_codes) or (scope.ville and scope.ville.lower() == "daloa"):
+            auth_codes.extend(["058131", "HIN-DLO-01"])
+        auth_codes = list(set(auth_codes))
+        return crud.get_staff_by_schools(db, ecole_ids=auth_ids, code_etablissements=auth_codes, statut="en_attente")
 
 @router.post("/import")
 def import_staff_csv(file: UploadFile = File(...), db: Session = Depends(get_db)):

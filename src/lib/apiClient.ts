@@ -551,6 +551,8 @@ export const mapStaff = (dbStaff: any): Staff => {
     phone: dbStaff.telephone || "",
     fonction: dbStaff.fonction || "enseignant",
     schoolId: dbStaff.ecole_id ? String(dbStaff.ecole_id) : "",
+    code_etablissement: dbStaff.ET_CODEETABLISSEMENT || dbStaff.code_etablissement || "",
+    ET_CODEETABLISSEMENT: dbStaff.ET_CODEETABLISSEMENT || dbStaff.code_etablissement || "",
     status: dbStaff.statut || "actif",
     chargeHoraire: dbStaff.charge_horaire || 0,
     photo: dbStaff.photo || undefined,
@@ -1645,12 +1647,14 @@ export const apiClient = {
   async validerStaff(id: string | number): Promise<Staff> {
     const cleanId = String(id).replace(/^:/, '');
     const response = await api.patch(`/api/staff/${cleanId}/valider`);
+    invalidateCache("staff");
     return mapStaff(response.data);
   },
 
   async rejeterStaff(id: string | number): Promise<void> {
     const cleanId = String(id).replace(/^:/, '');
     await api.patch(`/api/staff/${cleanId}/rejeter`);
+    invalidateCache("staff");
   },
 
   // Seances / Cahier de texte
