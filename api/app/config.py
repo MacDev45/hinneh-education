@@ -17,12 +17,27 @@ def get_env_files() -> List[str]:
     app_env = os.getenv("APP_ENV", "production")
     files = []
     
-    for root in CANDIDATE_ROOTS:
-        for fname in [".env.local", f".env.{app_env}", ".env.production", ".env"]:
+    # Priority order for Pydantic Settings (later files override earlier ones):
+    # 1. Project-level .env / .env.production
+    # 2. Backend-level .env / .env.production
+    # 3. .env.local (always highest priority for local testing/overrides)
+    ordered_roots = [
+        os.path.abspath(os.path.join(THIS_DIR, "..", "..")),
+        os.path.abspath(os.path.join(THIS_DIR, "..")),
+        os.getcwd(),
+        THIS_DIR
+    ]
+    for root in ordered_roots:
+        for fname in [".env", f".env.{app_env}", ".env.production"]:
             env_path = os.path.join(root, fname)
             if os.path.exists(env_path) and env_path not in files:
                 files.append(env_path)
                 
+    for root in ordered_roots:
+        local_path = os.path.join(root, ".env.local")
+        if os.path.exists(local_path) and local_path not in files:
+            files.append(local_path)
+
     if not files:
         files = [os.path.join(CANDIDATE_ROOTS[0], ".env")]
     return files

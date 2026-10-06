@@ -2,7 +2,7 @@
 title HINNEH EDUCATION - SERVEUR BACKEND FASTAPI
 color 0A
 echo ================================================================
-echo    LANCEMENT DU SERVEUR BACKEND FASTAPI (Port 8000)
+echo    LANCEMENT DU SERVEUR BACKEND FASTAPI (Port 8020)
 echo ================================================================
 echo.
 
@@ -18,7 +18,7 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 echo.
-echo Demarrage de Uvicorn sur http://0.0.0.0:8000 ...
-python -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+echo Demarrage de Uvicorn sur http://0.0.0.0:8020 ...
+python -m uvicorn app.main:app --host 0.0.0.0 --port 8020 --reload
 
 pause

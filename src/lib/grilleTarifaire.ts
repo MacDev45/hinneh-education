@@ -652,6 +652,7 @@ function scorePreset(
     return -1;
   }
 
+  const isMatOrPrim = eleve.cycle === "maternelle" || eleve.cycle === "primaire";
   if (isMatOrPrim) {
     score += 6;
   } else {
