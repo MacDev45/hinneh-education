@@ -31,6 +31,8 @@ RUBRIQUE_MAP = {
 }
 
 # Suffixes pour garantir l'unicité des sous-reçus sur un même reçu papier
+ECOLES_IMPORT = (1, 2, 3)
+
 SUFFIX_MAP = {
     'scolarite': 'SCOL',
     'cantine': 'CANT',
@@ -102,6 +104,10 @@ class ExcelPaymentImporter:
             "paiements_inseres": 0,
             "paiements_deja_existants": 0,
             "classes_creees": 0,
+            "eleves_introuvables": [],
+            "paiements_non_importes": 0,
+            "montant_insere": 0.0,
+            "montant_non_importe": 0.0,
             "nouveaux_eleves_details": [],
             "erreurs": [],
             "dry_run": dry_run
@@ -147,7 +153,7 @@ class ExcelPaymentImporter:
             models.Classe.CE_ABREGE,
             models.Classe.ecole_id,
             models.Classe.ET_CODEETABLISSEMENT
-        ).all()
+        ).filter(models.Classe.ecole_id.in_(ECOLES_IMPORT)).all()
         for cid, lib, code, abr, ecole, etab in classes:
             cl_info = {
                 'id': cid,
@@ -219,7 +225,7 @@ class ExcelPaymentImporter:
             models.Eleve.classe_id,
             models.Eleve.ecole_id,
             models.Eleve.ET_CODEETABLISSEMENT
-        ).all()
+        ).filter(models.Eleve.ecole_id.in_(ECOLES_IMPORT)).all()
         for sid, mat, nom, prenom, cid, ecole_id, etab in students:
             n_nom = normalize_name(nom)
             n_prenom = normalize_name(prenom)
@@ -285,80 +291,14 @@ class ExcelPaymentImporter:
             self.stats["eleves_reconcilies_nom_classe"] += 1
             return candidates[0]
 
-        # 2. Recherche par Nom + Prénom seul si élève unique (cas d'un changement de classe annuel)
-        name_candidates = self.students_by_name.get(n_name)
-        if name_candidates and len(name_candidates) == 1:
-            st = name_candidates[0]
-            classe_info = self._get_or_create_class(classe_name)
-            if st['classe_id'] != classe_info['id']:
-                st['classe_id'] = classe_info['id']
-                self.db.query(models.Eleve).filter(models.Eleve.id == st['id']).update(
-                    {models.Eleve.classe_id: classe_info['id']},
-                    synchronize_session=False
-                )
+        # 2. Nom seul si un seul eleve correspond (sa classe en base n'est jamais modifiee)
+        name_candidates = self.students_by_name.get(n_name) or []
+        if len({c['id'] for c in name_candidates}) == 1:
             self.stats["eleves_reconcilies_nom_seul"] += 1
-            self.students_by_name_and_class[(n_name, n_cls)].append(st)
-            return st
+            return name_candidates[0]
 
-        # 3. Élève non trouvé -> Création d'un nouvel élève avec matricule temporaire
-        mat_temp = self._generate_next_matricule()
-        nom, prenom = split_full_name(nom_complet)
-        classe_info = self._get_or_create_class(classe_name)
-
-        statut_upper = (statut_excel or "").upper()
-        if "AFF" in statut_upper and "NAFF" not in statut_upper:
-            statut_orientation = "Affecté par l'État"
-        elif "NAFF" in statut_upper:
-            statut_orientation = "Non Affecté"
-        elif "ECOLIER" in statut_upper:
-            statut_orientation = "Écolier"
-        else:
-            statut_orientation = statut_excel or "Affecté par l'État"
-
-        nouvel_eleve = models.Eleve(
-            matricule=mat_temp,
-            nom=nom,
-            prenom=prenom,
-            date_naissance=date(2015, 1, 1),
-            genre="M",
-            classe_id=classe_info['id'],
-            ecole_id=classe_info.get('ecole_id') or 1,
-            ET_CODEETABLISSEMENT=classe_info.get('ET_CODEETABLISSEMENT') or "057955",
-            statut="actif",
-            statut_orientation=statut_orientation,
-            solde=Decimal("0.00"),
-            AU_SCOLARITE=Decimal("0.00"),
-            AU_TOTALDEPOT=Decimal("0.00"),
-            AU_SOLDECOMPTE=Decimal("0.00"),
-            date_creation=datetime.now()
-        )
-        self.db.add(nouvel_eleve)
-        self.db.flush()
-
-        st_info = {
-            'id': nouvel_eleve.id,
-            'matricule': mat_temp,
-            'nom': nom,
-            'prenom': prenom,
-            'classe_id': classe_info['id'],
-            'ecole_id': classe_info.get('ecole_id') or 1,
-            'ET_CODEETABLISSEMENT': classe_info.get('ET_CODEETABLISSEMENT') or "057955"
-        }
-
-        self.stats["nouveaux_eleves_crees"] += 1
-        self.stats["nouveaux_eleves_details"].append({
-            "id": nouvel_eleve.id,
-            "matricule": mat_temp,
-            "nom": nom,
-            "prenom": prenom,
-            "classe": classe_name,
-            "statut_orientation": statut_orientation
-        })
-
-        self.students_by_name[n_name].append(st_info)
-        self.students_by_name_and_class[(n_name, n_cls)].append(st_info)
-
-        return st_info
+        # 3. Introuvable ou homonymes : aucune creation, le paiement est signale
+        return None
 
     def process(self) -> Dict[str, Any]:
         """Exécute le traitement complet de l'import."""
@@ -460,6 +400,17 @@ class ExcelPaymentImporter:
                 )
 
                 # Vérifier si l'écriture de paiement existe déjà
+                if eleve is None:
+                    self.stats["paiements_non_importes"] += 1
+                    self.stats["montant_non_importe"] += total_montant
+                    self.stats["eleves_introuvables"].append({
+                        "recu": final_recu,
+                        "nom": first_item['nom_complet'],
+                        "classe": first_item['classe'],
+                        "montant": total_montant
+                    })
+                    continue
+
                 if final_recu in existing_recus:
                     self.stats["paiements_deja_existants"] += 1
                     continue
@@ -496,6 +447,7 @@ class ExcelPaymentImporter:
                 self.db.add(nouveau_paiement)
                 existing_recus.add(final_recu)
                 self.stats["paiements_inseres"] += 1
+                self.stats["montant_insere"] += total_montant
 
                 # Mise à jour du solde de l'élève en base
                 self.db.query(models.Eleve).filter(models.Eleve.id == eleve['id']).update({
@@ -568,6 +520,11 @@ def run_cli():
         print(f"* Classes creees automatiquement      : {res['classes_creees']:,}")
         print(f"* Paiements inseres en base            : {res['paiements_inseres']:,}")
         print(f"* Paiements deja existants (ignores)   : {res['paiements_deja_existants']:,}")
+
+        print(f"* Montant insere                       : {res['montant_insere']:,.0f} FCFA")
+        print(f"* Paiements NON importes               : {res['paiements_non_importes']:,} pour {res['montant_non_importe']:,.0f} FCFA")
+        for e in res['eleves_introuvables']:
+            print(f"   - {e['recu']} | {e['nom']} | {e['classe']} | {e['montant']:,.0f}")
 
         if res['nouveaux_eleves_details']:
             print(f"\nExemples de nouveaux eleves crees ({min(5, len(res['nouveaux_eleves_details']))} premiers) :")
