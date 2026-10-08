@@ -428,6 +428,11 @@ class ExcelPaymentImporter:
         )
 
         for num_recu, items in receipts.items():
+            # Reçu déjà présent en base, avec ou sans suffixe : on ne le réimporte pas
+            if any(e == num_recu or e.startswith(num_recu + "-") for e in existing_recus):
+                self.stats["paiements_deja_existants"] += 1
+                continue
+
             # Regrouper les montants par type de paiement
             by_type = defaultdict(list)
             for it in items:
