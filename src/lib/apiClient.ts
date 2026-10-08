@@ -1511,6 +1511,22 @@ export const apiClient = {
     return response.data;
   },
 
+  // Excel Payments Import
+  async importPaymentsExcel(file: File, dryRun: boolean = false): Promise<any> {
+    const formData = new FormData();
+    formData.append("file", file);
+    const response = await api.post(
+      "/api/finances/import-excel-paiements",
+      formData,
+      {
+        headers: { "Content-Type": "multipart/form-data" },
+        params: { dry_run: dryRun },
+      },
+    );
+    invalidateCache("payments", "finance_stats", "recouvrement", "caisse", "student", "students");
+    return response.data;
+  },
+
   // Salles CSV Import
   async importSallesCsv(file: File): Promise<any> {
     const formData = new FormData();

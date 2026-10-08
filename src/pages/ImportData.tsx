@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Module d'import de données
  * Import Excel/CSV : élèves, personnel, classes, salles
  */
@@ -20,6 +20,7 @@ import {
   Play,
   FileDown,
   AlertTriangle,
+  Receipt,
 } from "lucide-react";
 import { Layout } from "@/components/Layout";
 import {
@@ -42,7 +43,7 @@ import {
 import { useToast } from "@/hooks/use-toast";
 import apiClient from "@/lib/apiClient";
 
-type ImportType = "eleves" | "personnel" | "classes" | "salles" | "impayes";
+type ImportType = "eleves" | "personnel" | "classes" | "salles" | "impayes" | "paiements";
 
 interface ImportConfig {
   key: ImportType;
@@ -236,6 +237,60 @@ const IMPORTS: ImportConfig[] = [
       ],
     ],
   },
+  {
+    key: "paiements",
+    label: "Paiements Excel",
+    icon: Receipt,
+    apiMethod: (file: File) => apiClient.importPaymentsExcel(file),
+    description:
+      "Importer les paiements depuis le fichier Excel (Date, Caissier, Reçu, Nom complet, Classe, Rubrique, Montant). Réconcilie automatiquement les élèves par Nom, Prénom et Classe, et crée les nouveaux élèves introuvables avec un matricule temporaire (TMP26...).",
+    columns: [
+      "Date",
+      "Caissier",
+      "numero reçu",
+      "Nom Complet",
+      "Classe",
+      "Statut",
+      "Filière",
+      "Rubrique",
+      "Montant",
+    ],
+    sampleRows: [
+      [
+        "2026-10-03 09:30:04",
+        "yahkouyate",
+        "RC-06873",
+        "SIDIBE SOULEYMANE",
+        "4EME B",
+        "AFF",
+        "GENERAL",
+        "CANT",
+        "30000",
+      ],
+      [
+        "2026-10-03 09:30:04",
+        "yahkouyate",
+        "RC-06873",
+        "SIDIBE SOULEYMANE",
+        "4EME B",
+        "AFF",
+        "GENERAL",
+        "SCO",
+        "15000",
+      ],
+      [
+        "2026-10-02 15:16:45",
+        "yahkouyate",
+        "RC-06872",
+        "BAMBA MARIAME NOURRAH SAKINA",
+        "2ND A1",
+        "AFF",
+        "GENERAL",
+        "SCO",
+        "40600",
+      ],
+    ],
+  },
 ];
 
 export default function ImportData() {
@@ -322,36 +377,33 @@ export default function ImportData() {
         (e: string) => e && e.trim().length > 0,
       );
 
-      if (res.success || importedCount > 0) {
-        // toast({
-        //   title: "Import terminé avec succès",
-        //   description: (
-        //     <div className="space-y-1">
-        //       <p>
-        //         {importedCount} ligne(s) traitée(s) ({res.imported || 0}{" "}
-        //         nouvelle(s), {res.updated || 0} mise(s) à jour).{" "}
-        //         {errors.length > 0 ? `${errors.length} erreur(s).` : ""}
-        //       </p>
-        //       {errors.length > 0 && (
-        //         <div className="mt-2 max-h-48 overflow-y-auto text-[11px] font-mono bg-destructive/5 border border-destructive/20 p-2 rounded text-destructive-foreground">
-        //           <p className="font-bold mb-1">
-        //             {errors.length} erreur(s) détectée(s) :
-        //           </p>
-        //           {errors.slice(0, 10).map((e: string, i: number) => (
-        //             <p key={i} className="mb-1">
-        //               • {e}
-        //             </p>
-        //           ))}
-        //           {errors.length > 10 && (
-        //             <p className="text-muted-foreground">
-        //               ... et {errors.length - 10} autres erreurs
-        //             </p>
-        //           )}
-        //         </div>
-        //       )}
-        //     </div>
-        //   ) as any,
-        // });
+      if (activeTab === "paiements") {
+        if (res.success || (res.paiements_inseres !== undefined)) {
+          toast({
+            title: "Import des paiements terminé",
+            variant: "default",
+            description: (
+              <div className="space-y-1 text-xs">
+                <p className="font-semibold text-green-600">
+                  {res.paiements_inseres || 0} paiement(s) inséré(s) en base ({res.paiements_deja_existants || 0} déjà existants ignorés).
+                </p>
+                <p className="text-muted-foreground">
+                  {res.eleves_trouves || 0} élève(s) réconcilié(s) | {res.nouveaux_eleves_crees || 0} nouveau(x) élève(s) créé(s) avec matricule temporaire.
+                </p>
+                <p className="text-muted-foreground">
+                  Total : {res.total_lignes_fichier || 0} lignes lues ({res.total_recus_distincts || 0} reçus distincts).
+                </p>
+              </div>
+            ) as any,
+          });
+        } else {
+          toast({
+            variant: "destructive",
+            title: "Échec de l'import des paiements",
+            description: res.erreurs?.join(", ") || "Une erreur est survenue lors de l'import.",
+          });
+        }
+      } else if (res.success || importedCount > 0) {
         toast({
           title: "Import terminé avec succès",
           variant: "default",

@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, HTTPException, status
+from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File, Query
 from sqlalchemy.orm import Session, joinedload
 from sqlalchemy import func, or_, case
 from typing import List, Optional
@@ -387,3 +387,46 @@ def update_transaction_id_finances(
         "nouveau_numero_transaction": paiement.numero_transaction,
         "motif": motif
     }
+
+
+@router.post("/import-excel-paiements")
+async def import_excel_paiements(
+    file: UploadFile = File(...),
+    dry_run: bool = Query(False, description="Exécuter en mode simulation sans écrire en base"),
+    db: Session = Depends(get_db),
+    scope: SchoolScope = Depends(get_school_scope)
+):
+    """
+    Importe les données de paiement depuis un fichier Excel (.xlsx, .xls).
+    - Réconcilie les élèves existants par Nom, Prénom et Classe.
+    - Crée les élèves introuvables avec un matricule temporaire (TMP26xxxx).
+    - Enregistre les paiements avec gestion des sous-rubriques (SCOL, CANT, TRAN, FRAI).
+    - Prévient les doublons de manière idempotente.
+    """
+    nom_fichier = (file.filename or "").lower()
+    if not nom_fichier.endswith((".xlsx", ".xls")):
+        raise HTTPException(
+            status_code=400,
+            detail="Le fichier doit être au format Excel (.xlsx ou .xls)."
+        )
+
+    try:
+        content = await file.read()
+        from ..services.excel_payment_importer import ExcelPaymentImporter
+        importer = ExcelPaymentImporter(
+            db=db,
+            file_bytes=content,
+            dry_run=dry_run
+        )
+        stats = importer.process()
+        return {
+            "success": True,
+            "message": "Simulation d'importation réussie" if dry_run else "Importation effectuée avec succès",
+            **stats
+        }
+    except Exception as e:
+        db.rollback()
+        raise HTTPException(
+            status_code=500,
+            detail=f"Erreur lors de l'importation du fichier Excel : {str(e)}"
+        )
