@@ -241,12 +241,104 @@ def _auto_migrate_schema(eng):
                             conn.commit()
                     except Exception as e_attr:
                         print(f"Table api_attributionmatiere migration notice: {e_attr}")
-                else:
                     try:
                         conn.execute(text("ALTER TABLE api_attributionmatiere MODIFY COLUMN enseignant_id INT NULL;"))
                         conn.commit()
                     except Exception:
                         pass
+            if 'api_evaluation' in tables:
+                eval_cols = [c['name'] for c in inspector.get_columns('api_evaluation')]
+                if 'annee_scolaire' not in eval_cols:
+                    conn.execute(text('ALTER TABLE api_evaluation ADD COLUMN annee_scolaire VARCHAR(20);'))
+                    conn.commit()
+                if 'semestre' not in eval_cols:
+                    conn.execute(text('ALTER TABLE api_evaluation ADD COLUMN semestre INTEGER;'))
+                    conn.commit()
+                if 'transfert_id' not in eval_cols:
+                    conn.execute(text('ALTER TABLE api_evaluation ADD COLUMN transfert_id INTEGER;'))
+                    conn.commit()
+                if 'ville_origine' not in eval_cols:
+                    conn.execute(text('ALTER TABLE api_evaluation ADD COLUMN ville_origine VARCHAR(100);'))
+                    conn.commit()
+                if 'ecole_origine_id' not in eval_cols:
+                    conn.execute(text('ALTER TABLE api_evaluation ADD COLUMN ecole_origine_id INTEGER;'))
+                    conn.commit()
+                if 'code_etablissement_origine' not in eval_cols:
+                    conn.execute(text('ALTER TABLE api_evaluation ADD COLUMN code_etablissement_origine VARCHAR(50);'))
+                    conn.commit()
+
+            if 'api_transfert_notes' not in tables:
+                try:
+                    if is_sqlite:
+                        conn.execute(text("""
+                            CREATE TABLE IF NOT EXISTS api_transfert_notes (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                date_transfert DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                annee_scolaire VARCHAR(20) NOT NULL,
+                                type_periode VARCHAR(20) NOT NULL DEFAULT 'trimestre',
+                                periode_numero INTEGER NOT NULL DEFAULT 1,
+                                ville_source VARCHAR(100) NOT NULL,
+                                ecole_source_id INTEGER,
+                                nom_ecole_source VARCHAR(255),
+                                ecole_destination_id INTEGER NOT NULL,
+                                nom_ecole_destination VARCHAR(255),
+                                code_etablissement_destination VARCHAR(50) NOT NULL,
+                                nombre_notes INTEGER DEFAULT 0,
+                                nombre_eleves INTEGER DEFAULT 0,
+                                nombre_classes INTEGER DEFAULT 0,
+                                moyenne_generale_transfert FLOAT,
+                                statut VARCHAR(30) DEFAULT 'effectue',
+                                effectue_par VARCHAR(150),
+                                effectue_par_nom VARCHAR(150),
+                                motif TEXT,
+                                notes_ids TEXT,
+                                snapshot_origine TEXT,
+                                details TEXT,
+                                date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                date_annulation DATETIME,
+                                annule_par VARCHAR(150),
+                                motif_annulation TEXT
+                            );
+                        """))
+                        conn.execute(text("CREATE INDEX IF NOT EXISTS ix_api_transfert_notes_id ON api_transfert_notes (id);"))
+                        conn.commit()
+                    else:
+                        conn.execute(text("""
+                            CREATE TABLE IF NOT EXISTS api_transfert_notes (
+                                id INT AUTO_INCREMENT PRIMARY KEY,
+                                date_transfert DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                annee_scolaire VARCHAR(20) NOT NULL,
+                                type_periode VARCHAR(20) NOT NULL DEFAULT 'trimestre',
+                                periode_numero INT NOT NULL DEFAULT 1,
+                                ville_source VARCHAR(100) NOT NULL,
+                                ecole_source_id INT NULL,
+                                nom_ecole_source VARCHAR(255) NULL,
+                                ecole_destination_id INT NOT NULL,
+                                nom_ecole_destination VARCHAR(255) NULL,
+                                code_etablissement_destination VARCHAR(50) NOT NULL,
+                                nombre_notes INT DEFAULT 0,
+                                nombre_eleves INT DEFAULT 0,
+                                nombre_classes INT DEFAULT 0,
+                                moyenne_generale_transfert FLOAT NULL,
+                                statut VARCHAR(30) DEFAULT 'effectue',
+                                effectue_par VARCHAR(150) NULL,
+                                effectue_par_nom VARCHAR(150) NULL,
+                                motif TEXT NULL,
+                                notes_ids JSON NULL,
+                                snapshot_origine JSON NULL,
+                                details JSON NULL,
+                                date_creation DATETIME DEFAULT CURRENT_TIMESTAMP,
+                                date_annulation DATETIME NULL,
+                                annule_par VARCHAR(150) NULL,
+                                motif_annulation TEXT NULL,
+                                INDEX idx_transfert_annee (annee_scolaire),
+                                INDEX idx_transfert_ville (ville_source)
+                            );
+                        """))
+                        conn.commit()
+                except Exception as e_tn:
+                    print(f"Table api_transfert_notes migration notice: {e_tn}")
+
             # Recalcul automatique des soldes de scolarité pour isoler strictement la scolarité de la cantine et du transport
             if 'api_eleve' in tables and 'api_paiement' in tables:
                 try:

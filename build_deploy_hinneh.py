@@ -359,6 +359,7 @@ BACKEND_ITEMS = [
     "check_and_fix_cpanel_db.py",
     "requirements.txt",
     "purge_mock_echeanciers.py",
+    "school_educ.db",
 ]
 
 for item in BACKEND_ITEMS:

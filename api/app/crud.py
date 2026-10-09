@@ -3532,7 +3532,590 @@ def delete_attribution_educateur(db: Session, attribution_id: int) -> bool:
     return deleted > 0
 
 
+# =========================================================================
+# TRANSFERT DES NOTES DU COLLÈGE (BOUAKÉ & DALOA -> YAMOUSSOUKRO)
+# =========================================================================
+
+def _get_school_year_date_range(annee_scolaire: str):
+    """Calcule les dates de début et de fin d'une année scolaire au format 'AAAA-AAAA'."""
+    try:
+        parts = annee_scolaire.split("-")
+        y1 = int(parts[0].strip())
+        y2 = int(parts[1].strip()) if len(parts) > 1 else y1 + 1
+    except Exception:
+        y1 = 2025
+        y2 = 2026
+    start_date = date(y1, 9, 1)
+    end_date = date(y2, 7, 31)
+    return start_date, end_date
 
 
+def get_transfert_notes_config(db: Session) -> dict:
+    """Fournit les listes de sélection pour l'interface de transfert des notes."""
+    # 1. Années scolaires
+    annees = db.query(models.AnneeScolaire).order_by(models.AnneeScolaire.date_debut.desc()).all()
+    annees_list = [a.libelle for a in annees] if annees else []
+    for default_year in ["2026-2027", "2025-2026", "2024-2025"]:
+        if default_year not in annees_list:
+            annees_list.append(default_year)
+
+    annee_active_obj = db.query(models.AnneeScolaire).filter(models.AnneeScolaire.active.is_(True)).first()
+    annee_active = annee_active_obj.libelle if annee_active_obj else "2025-2026"
+
+    # 2. Villes sources & Établissements sources
+    bke_schools = db.query(models.Etablissement).filter(
+        func.lower(models.Etablissement.ET_VILLE).in_(["bouaké", "bouake"])
+    ).all()
+    dlo_schools = db.query(models.Etablissement).filter(
+        func.lower(models.Etablissement.ET_VILLE) == "daloa"
+    ).all()
+
+    # 3. Écoles de destination à Yamoussoukro
+    provision_yamoussoukro_if_needed(db)
+    yakro_schools = db.query(models.Etablissement).filter(
+        (func.lower(models.Etablissement.ET_VILLE) == "yamoussoukro") |
+        (models.Etablissement.ET_CODEETABLISSEMENT.in_(["LIY-03", "CSH-03", "ECOLE_TEST_B"]))
+    ).all()
+
+    yakro_list = []
+    for s in yakro_schools:
+        yakro_list.append({
+            "id": s.IDETABLISSEMENT,
+            "nom": s.ET_DENOMMINATION,
+            "code": s.ET_CODEETABLISSEMENT or "LIY-03",
+            "ville": s.ET_VILLE,
+            "is_default": (s.ET_CODEETABLISSEMENT == "LIY-03" or "islamique" in (s.ET_DENOMMINATION or "").lower())
+        })
+    if not yakro_list:
+        yakro_list.append({
+            "id": 3,
+            "nom": "Lycée Islamique Yamoussoukro",
+            "code": "LIY-03",
+            "ville": "Yamoussoukro",
+            "is_default": True
+        })
+
+    # 4. Classes de collège candidates (Bouaké & Daloa)
+    source_school_ids = [s.IDETABLISSEMENT for s in (bke_schools + dlo_schools)]
+    college_classes = db.query(models.Classe).filter(
+        (models.Classe.ecole_id.in_(source_school_ids)) |
+        (models.Classe.CY_LIBELLECYCLE == "college") |
+        (models.Classe.ET_CYCLE == "college") |
+        (models.Classe.CE_LIBELLE.ilike("%6%")) |
+        (models.Classe.CE_LIBELLE.ilike("%5%")) |
+        (models.Classe.CE_LIBELLE.ilike("%4%")) |
+        (models.Classe.CE_LIBELLE.ilike("%3%"))
+    ).all()
+
+    filtered_classes = []
+    for c in college_classes:
+        c_nom = (c.CE_LIBELLE or "").upper()
+        is_lycee = any(x in c_nom for x in ["TLE", "TERMINALE", "1ERE", "2ND", "SECONDE", "M1"])
+        is_primaire = any(x in c_nom for x in ["CP1", "CP2", "CE1", "CE2", "CM1", "CM2", "MATERNELLE", "MPS", "MMS", "MGS"])
+        if is_lycee or is_primaire:
+            continue
+        
+        cl_ville = "Bouaké" if "BOUAK" in c_nom else "Daloa" if "DALOA" in c_nom else None
+        if not cl_ville and c.ecole_id:
+            for s in bke_schools:
+                if s.IDETABLISSEMENT == c.ecole_id:
+                    cl_ville = "Bouaké"
+                    break
+            if not cl_ville:
+                for s in dlo_schools:
+                    if s.IDETABLISSEMENT == c.ecole_id:
+                        cl_ville = "Daloa"
+                        break
+
+        nb_eleves = db.query(models.Eleve).filter(models.Eleve.classe_id == c.id).count()
+        filtered_classes.append({
+            "id": c.id,
+            "nom": c.CE_LIBELLE,
+            "cycle": c.CY_LIBELLECYCLE or "college",
+            "ville": cl_ville or "Bouaké",
+            "ecole_id": c.ecole_id,
+            "code_etablissement": c.ET_CODEETABLISSEMENT,
+            "nb_eleves": nb_eleves
+        })
+
+    return {
+        "annees_scolaires": annees_list,
+        "annee_active": annee_active,
+        "periodes_trimestres": [
+            {"numero": 1, "libelle": "1er Trimestre"},
+            {"numero": 2, "libelle": "2ème Trimestre"},
+            {"numero": 3, "libelle": "3ème Trimestre"}
+        ],
+        "periodes_semestres": [
+            {"numero": 1, "libelle": "1er Semestre"},
+            {"numero": 2, "libelle": "2ème Semestre"}
+        ],
+        "villes_sources": [
+            {"code": "Bouaké & Daloa", "label": "Bouaké & Daloa réunis"},
+            {"code": "Bouaké", "label": "Bouaké uniquement"},
+            {"code": "Daloa", "label": "Daloa uniquement"}
+        ],
+        "ecoles_sources": {
+            "bouake": [{"id": s.IDETABLISSEMENT, "nom": s.ET_DENOMMINATION, "code": s.ET_CODEETABLISSEMENT} for s in bke_schools],
+            "daloa": [{"id": s.IDETABLISSEMENT, "nom": s.ET_DENOMMINATION, "code": s.ET_CODEETABLISSEMENT} for s in dlo_schools]
+        },
+        "ecoles_destination": yakro_list,
+        "classes_college": filtered_classes
+    }
 
 
+def get_candidate_grades_for_transfer(
+    db: Session,
+    annee_scolaire: str,
+    type_periode: str = "trimestre",
+    periode_numero: int = 1,
+    ville_source: str = "Bouaké & Daloa",
+    ecole_source_id: Optional[int] = None,
+    classe_ids: Optional[List[int]] = None,
+    matieres: Optional[List[str]] = None
+) -> List[dict]:
+    """Recherche toutes les notes de collège candidates au transfert vers Yamoussoukro."""
+    start_date, end_date = _get_school_year_date_range(annee_scolaire)
+
+    # 1. Identifier les écoles sources
+    ville_str = (ville_source or "").lower()
+    include_bke = ("bouak" in ville_str) or ("tous" in ville_str) or ("&" in ville_str) or ("reunis" in ville_str)
+    include_dlo = ("daloa" in ville_str) or ("tous" in ville_str) or ("&" in ville_str) or ("reunis" in ville_str)
+
+    bke_schools = db.query(models.Etablissement).filter(
+        func.lower(models.Etablissement.ET_VILLE).in_(["bouaké", "bouake"])
+    ).all() if include_bke else []
+    
+    dlo_schools = db.query(models.Etablissement).filter(
+        func.lower(models.Etablissement.ET_VILLE) == "daloa"
+    ).all() if include_dlo else []
+
+    target_schools = bke_schools + dlo_schools
+    target_school_ids = {s.IDETABLISSEMENT for s in target_schools}
+    if ecole_source_id:
+        target_school_ids = {ecole_source_id}
+
+    target_school_codes = {s.ET_CODEETABLISSEMENT.strip().upper() for s in target_schools if s.ET_CODEETABLISSEMENT}
+
+    # 2. Identifier les classes de collège candidates
+    query_cl = db.query(models.Classe)
+    if classe_ids:
+        query_cl = query_cl.filter(models.Classe.id.in_(classe_ids))
+    all_classes = query_cl.all()
+
+    college_classes_map = {}
+    for c in all_classes:
+        c_nom = (c.CE_LIBELLE or "").upper()
+        is_lycee = any(x in c_nom for x in ["TLE", "TERMINALE", "1ERE", "2ND", "SECONDE", "M1"])
+        is_primaire = any(x in c_nom for x in ["CP1", "CP2", "CE1", "CE2", "CM1", "CM2", "MATERNELLE", "MPS", "MMS", "MGS"])
+        if is_lycee or is_primaire:
+            continue
+        is_college = (c.CY_LIBELLECYCLE == "college" or c.ET_CYCLE == "college" or any(x in c_nom for x in ["6", "5", "4", "3"]))
+        if not is_college:
+            continue
+
+        in_source = (c.ecole_id in target_school_ids) or \
+                    (c.ET_CODEETABLISSEMENT and c.ET_CODEETABLISSEMENT.strip().upper() in target_school_codes) or \
+                    ("BOUAK" in c_nom and include_bke) or \
+                    ("DALOA" in c_nom and include_dlo)
+
+        if in_source or (not c.ecole_id and not c.ET_CODEETABLISSEMENT):
+            c_ville = "Bouaké" if ("BOUAK" in c_nom or (c.ecole_id in [s.IDETABLISSEMENT for s in bke_schools])) else "Daloa"
+            college_classes_map[c.id] = (c, c_ville)
+
+    # 3. Récupérer les évaluations correspondantes
+    candidate_class_ids = list(college_classes_map.keys())
+
+    eleves_source = db.query(models.Eleve).filter(
+        models.Eleve.ecole_id.in_(target_school_ids)
+    ).all() if target_school_ids else []
+    eleves_source_ids = {e.id for e in eleves_source}
+    eleve_info_map = {e.id: e for e in eleves_source}
+
+    query_eval = db.query(models.Evaluation)
+    
+    eval_filter = []
+    if candidate_class_ids:
+        eval_filter.append(models.Evaluation.classe_id.in_(candidate_class_ids))
+    if eleves_source_ids:
+        eval_filter.append(models.Evaluation.eleve_id.in_(list(eleves_source_ids)))
+    
+    if not eval_filter:
+        return []
+    query_eval = query_eval.filter(or_(*eval_filter))
+
+    # Filtre période
+    if type_periode == "trimestre":
+        query_eval = query_eval.filter(models.Evaluation.trimestre == periode_numero)
+    elif type_periode == "semestre":
+        if periode_numero == 1:
+            query_eval = query_eval.filter(or_(
+                models.Evaluation.semestre == 1,
+                and_(models.Evaluation.semestre.is_(None), models.Evaluation.trimestre.in_([1, 2]))
+            ))
+        else:
+            query_eval = query_eval.filter(or_(
+                models.Evaluation.semestre == 2,
+                and_(models.Evaluation.semestre.is_(None), models.Evaluation.trimestre.in_([2, 3]))
+            ))
+
+    # Filtre matières
+    if matieres and len(matieres) > 0:
+        query_eval = query_eval.filter(models.Evaluation.matiere.in_(matieres))
+
+    evals = query_eval.all()
+    results = []
+
+    all_student_ids = {ev.eleve_id for ev in evals}
+    if all_student_ids:
+        for st in db.query(models.Eleve).filter(models.Eleve.id.in_(list(all_student_ids))).all():
+            eleve_info_map[st.id] = st
+
+    all_classe_ids = {ev.classe_id for ev in evals}
+    classes_db_map = {}
+    if all_classe_ids:
+        for cl in db.query(models.Classe).filter(models.Classe.id.in_(list(all_classe_ids))).all():
+            classes_db_map[cl.id] = cl
+
+    for ev in evals:
+        if ev.annee_scolaire:
+            if ev.annee_scolaire.strip() != annee_scolaire.strip():
+                continue
+        elif ev.date:
+            if not (start_date <= ev.date <= end_date):
+                continue
+
+        # Ignorer si déjà transféré avec statut actif
+        if ev.ET_CODEETABLISSEMENT in ["LIY-03", "CSH-03", "ECOLE_TEST_B"] and ev.transfert_id is not None:
+            continue
+
+        eleve = eleve_info_map.get(ev.eleve_id)
+        classe = classes_db_map.get(ev.classe_id)
+        if not classe and ev.classe_id in college_classes_map:
+            classe = college_classes_map[ev.classe_id][0]
+
+        c_ville = "Bouaké"
+        if ev.classe_id in college_classes_map:
+            c_ville = college_classes_map[ev.classe_id][1]
+        elif eleve and eleve.ecole_id in [s.IDETABLISSEMENT for s in dlo_schools]:
+            c_ville = "Daloa"
+        elif classe and "DALOA" in (classe.CE_LIBELLE or "").upper():
+            c_ville = "Daloa"
+
+        if ville_source == "Bouaké" and c_ville != "Bouaké":
+            continue
+        if ville_source == "Daloa" and c_ville != "Daloa":
+            continue
+
+        eleve_nom = f"{eleve.nom or ''} {eleve.prenom or ''}".strip() if eleve else f"Élève #{ev.eleve_id}"
+        classe_nom = classe.CE_LIBELLE if classe else f"Classe #{ev.classe_id}"
+        matricule = eleve.matricule if eleve else ""
+
+        results.append({
+            "id": ev.id,
+            "eleve_id": ev.eleve_id,
+            "matricule": matricule,
+            "eleve_nom": eleve_nom,
+            "classe_id": ev.classe_id,
+            "classe_nom": classe_nom,
+            "matiere": ev.matiere,
+            "type_devoir": ev.type,
+            "trimestre": ev.trimestre,
+            "semestre": ev.semestre or (1 if ev.trimestre == 1 else 2),
+            "note": ev.note,
+            "coefficient": ev.coefficient,
+            "date": ev.date,
+            "ecole_source_id": getattr(ev, "ecole_id", None) or (eleve.ecole_id if eleve else None),
+            "ecole_source_nom": "Institut El Fath Bouaké" if c_ville == "Bouaké" else "Collège Moderne Hînneh Daloa",
+            "ville_source": c_ville,
+            "code_etablissement_actuel": ev.ET_CODEETABLISSEMENT
+        })
+
+    return results
+
+
+def simulate_grades_transfer(db: Session, req: schemas.TransfertNotesSimulationRequest) -> schemas.TransfertNotesSimulationResponse:
+    """Simule le transfert et produit une synthèse avant exécution."""
+    candidates = get_candidate_grades_for_transfer(
+        db=db,
+        annee_scolaire=req.annee_scolaire,
+        type_periode=req.type_periode,
+        periode_numero=req.periode_numero,
+        ville_source=req.ville_source,
+        ecole_source_id=req.ecole_source_id,
+        classe_ids=req.classe_ids,
+        matieres=req.matieres
+    )
+
+    dest_ecole = None
+    if req.ecole_destination_id:
+        dest_ecole = db.query(models.Etablissement).filter(models.Etablissement.IDETABLISSEMENT == req.ecole_destination_id).first()
+    if not dest_ecole:
+        dest_ecole = db.query(models.Etablissement).filter(
+            (func.lower(models.Etablissement.ET_VILLE) == "yamoussoukro") |
+            (models.Etablissement.ET_CODEETABLISSEMENT.in_(["LIY-03", "CSH-03"]))
+        ).first()
+
+    dest_id = dest_ecole.IDETABLISSEMENT if dest_ecole else 3
+    dest_nom = dest_ecole.ET_DENOMMINATION if dest_ecole else "Lycée Islamique Yamoussoukro"
+    dest_code = (dest_ecole.ET_CODEETABLISSEMENT or "LIY-03") if dest_ecole else "LIY-03"
+
+    total_notes = len(candidates)
+    unique_eleves = {c["eleve_id"] for c in candidates}
+    unique_classes = {c["classe_id"] for c in candidates}
+    moyenne_gen = round(sum(c["note"] for c in candidates) / total_notes, 2) if total_notes > 0 else 0.0
+
+    classe_counts = {}
+    for c in candidates:
+        cid = c["classe_id"]
+        if cid not in classe_counts:
+            classe_counts[cid] = {"classe_id": cid, "classe_nom": c["classe_nom"], "ville": c["ville_source"], "nb_notes": 0, "somme": 0.0}
+        classe_counts[cid]["nb_notes"] += 1
+        classe_counts[cid]["somme"] += c["note"]
+
+    classes_concernees = []
+    for cid, val in classe_counts.items():
+        classes_concernees.append({
+            "classe_id": cid,
+            "classe_nom": val["classe_nom"],
+            "ville": val["ville"],
+            "nb_notes": val["nb_notes"],
+            "moyenne": round(val["somme"] / val["nb_notes"], 2) if val["nb_notes"] > 0 else 0.0
+        })
+
+    mat_counts = {}
+    for c in candidates:
+        m = c["matiere"]
+        if m not in mat_counts:
+            mat_counts[m] = {"matiere": m, "nb_notes": 0, "somme": 0.0}
+        mat_counts[m]["nb_notes"] += 1
+        mat_counts[m]["somme"] += c["note"]
+
+    matieres_concernees = []
+    for m, val in mat_counts.items():
+        matieres_concernees.append({
+            "matiere": m,
+            "nb_notes": val["nb_notes"],
+            "moyenne": round(val["somme"] / val["nb_notes"], 2) if val["nb_notes"] > 0 else 0.0
+        })
+
+    return schemas.TransfertNotesSimulationResponse(
+        total_notes=total_notes,
+        total_eleves=len(unique_eleves),
+        total_classes=len(unique_classes),
+        moyenne_generale=moyenne_gen,
+        annee_scolaire=req.annee_scolaire,
+        type_periode=req.type_periode,
+        periode_numero=req.periode_numero,
+        ville_source=req.ville_source,
+        ecole_destination_id=dest_id,
+        ecole_destination_nom=dest_nom,
+        code_etablissement_destination=dest_code,
+        classes_concernees=classes_concernees,
+        matieres_concernees=matieres_concernees,
+        notes=[schemas.CandidateGradeItem(**c) for c in candidates]
+    )
+
+
+def execute_grades_transfer(
+    db: Session,
+    req: schemas.TransfertNotesExecuteRequest,
+    user_id: Optional[int] = None,
+    username: Optional[str] = None
+) -> schemas.TransfertNotesResponse:
+    """Exécute le transfert officiel des notes vers Yamoussoukro."""
+    dest_ecole = db.query(models.Etablissement).filter(models.Etablissement.IDETABLISSEMENT == req.ecole_destination_id).first()
+    if not dest_ecole:
+        raise ValueError(f"Établissement de destination avec ID {req.ecole_destination_id} introuvable.")
+
+    dest_code = dest_ecole.ET_CODEETABLISSEMENT or "LIY-03"
+
+    candidates = get_candidate_grades_for_transfer(
+        db=db,
+        annee_scolaire=req.annee_scolaire,
+        type_periode=req.type_periode,
+        periode_numero=req.periode_numero,
+        ville_source=req.ville_source,
+        ecole_source_id=req.ecole_source_id
+    )
+
+    if req.notes_ids and len(req.notes_ids) > 0:
+        target_ids = set(req.notes_ids)
+        candidates = [c for c in candidates if c["id"] in target_ids]
+
+    if not candidates:
+        raise ValueError("Aucune note candidate trouvée pour les critères spécifiés.")
+
+    selected_ids = [c["id"] for c in candidates]
+    evals = db.query(models.Evaluation).filter(models.Evaluation.id.in_(selected_ids)).all()
+
+    snapshot = []
+    total_somme = 0.0
+    for ev in evals:
+        snapshot.append({
+            "id": ev.id,
+            "ecole_id": ev.ecole_id,
+            "ET_CODEETABLISSEMENT": ev.ET_CODEETABLISSEMENT,
+            "annee_scolaire": ev.annee_scolaire,
+            "semestre": ev.semestre,
+            "trimestre": ev.trimestre,
+            "ville_origine": ev.ville_origine,
+            "ecole_origine_id": ev.ecole_origine_id,
+            "code_etablissement_origine": ev.code_etablissement_origine
+        })
+        total_somme += ev.note
+
+    moyenne_transfert = round(total_somme / len(evals), 2) if evals else 0.0
+
+    classes_set = set()
+    eleves_set = set()
+    matieres_map = {}
+    for ev in evals:
+        classes_set.add(ev.classe_id)
+        eleves_set.add(ev.eleve_id)
+        matieres_map[ev.matiere] = matieres_map.get(ev.matiere, 0) + 1
+
+    details_summary = {
+        "classes_ids": list(classes_set),
+        "eleves_ids": list(eleves_set),
+        "matieres_count": matieres_map,
+        "ecole_source_id": req.ecole_source_id,
+        "ville_source": req.ville_source
+    }
+
+    transfert = models.TransfertNotes(
+        date_transfert=datetime.utcnow(),
+        annee_scolaire=req.annee_scolaire,
+        type_periode=req.type_periode,
+        periode_numero=req.periode_numero,
+        ville_source=req.ville_source,
+        ecole_source_id=req.ecole_source_id,
+        nom_ecole_source=f"Collèges de {req.ville_source}",
+        ecole_destination_id=dest_ecole.IDETABLISSEMENT,
+        nom_ecole_destination=dest_ecole.ET_DENOMMINATION,
+        code_etablissement_destination=dest_code,
+        nombre_notes=len(evals),
+        nombre_eleves=len(eleves_set),
+        nombre_classes=len(classes_set),
+        moyenne_generale_transfert=moyenne_transfert,
+        statut="effectue",
+        effectue_par=username or "admin",
+        effectue_par_nom=username or "Administrateur",
+        motif=req.motif,
+        notes_ids=selected_ids,
+        snapshot_origine=snapshot,
+        details=details_summary,
+        date_creation=datetime.utcnow()
+    )
+    db.add(transfert)
+    db.flush()
+
+    candidates_dict = {c["id"]: c for c in candidates}
+    for ev in evals:
+        c_info = candidates_dict.get(ev.id, {})
+        ev.ecole_origine_id = ev.ecole_id or c_info.get("ecole_source_id")
+        ev.code_etablissement_origine = ev.ET_CODEETABLISSEMENT or c_info.get("code_etablissement_actuel")
+        ev.ville_origine = c_info.get("ville_source") or "Bouaké"
+        ev.transfert_id = transfert.id
+        ev.annee_scolaire = req.annee_scolaire
+        if req.type_periode == "semestre":
+            ev.semestre = req.periode_numero
+        else:
+            ev.trimestre = req.periode_numero
+            ev.semestre = 1 if req.periode_numero == 1 else 2
+
+        ev.ecole_id = dest_ecole.IDETABLISSEMENT
+        ev.ET_CODEETABLISSEMENT = dest_code
+
+    try:
+        audit = models.AuditLog(
+            timestamp=datetime.utcnow(),
+            user_id=user_id,
+            username=username or "admin",
+            user_role="admin",
+            ecole_id=dest_ecole.IDETABLISSEMENT,
+            ET_CODEETABLISSEMENT=dest_code,
+            ville="Yamoussoukro",
+            action="TRANSFERT_NOTES_COLLEGE",
+            module="PEDAGOGIE",
+            target_id=str(transfert.id),
+            target_name=f"Transfert {req.annee_scolaire} {req.type_periode} {req.periode_numero}",
+            detail=(
+                f"Transfert officiel de {len(evals)} note(s) du collège depuis {req.ville_source} "
+                f"vers {dest_ecole.ET_DENOMMINATION} ({dest_code}). "
+                f"{len(eleves_set)} élève(s), {len(classes_set)} classe(s). Motif: {req.motif or 'N/A'}"
+            ),
+            statut="SUCCES"
+        )
+        db.add(audit)
+    except Exception as e_aud:
+        print(f"Audit log insertion notice: {e_aud}")
+
+    db.commit()
+    db.refresh(transfert)
+
+    return schemas.TransfertNotesResponse(
+        success=True,
+        message=f"{len(evals)} notes de collège transférées avec succès vers {dest_ecole.ET_DENOMMINATION} ({dest_code}).",
+        transfert_id=transfert.id,
+        nombre_notes=len(evals),
+        nombre_eleves=len(eleves_set),
+        nombre_classes=len(classes_set),
+        annee_scolaire=req.annee_scolaire,
+        type_periode=req.type_periode,
+        periode_numero=req.periode_numero,
+        code_etablissement_destination=dest_code,
+        date_transfert=transfert.date_transfert
+    )
+
+
+def rollback_grades_transfer(
+    db: Session,
+    transfer_id: int,
+    username: Optional[str] = None,
+    motif: Optional[str] = None
+) -> dict:
+    """Annule un transfert de notes et restaure les valeurs d'origine."""
+    transfert = db.query(models.TransfertNotes).filter(models.TransfertNotes.id == transfer_id).first()
+    if not transfert:
+        raise ValueError(f"Transfert ID {transfer_id} introuvable.")
+
+    if transfert.statut == "annule":
+        raise ValueError("Ce transfert a déjà été annulé.")
+
+    snapshot = transfert.snapshot_origine or []
+    if not snapshot and transfert.notes_ids:
+        snapshot = [{"id": nid, "ecole_id": transfert.ecole_source_id, "ET_CODEETABLISSEMENT": None} for nid in transfert.notes_ids]
+
+    restored_count = 0
+    for snap in snapshot:
+        ev_id = snap.get("id")
+        ev = db.query(models.Evaluation).filter(models.Evaluation.id == ev_id).first()
+        if ev:
+            ev.ecole_id = snap.get("ecole_id")
+            ev.ET_CODEETABLISSEMENT = snap.get("ET_CODEETABLISSEMENT")
+            ev.transfert_id = None
+            ev.ville_origine = snap.get("ville_origine")
+            ev.ecole_origine_id = snap.get("ecole_origine_id")
+            ev.code_etablissement_origine = snap.get("code_etablissement_origine")
+            restored_count += 1
+
+    transfert.statut = "annule"
+    transfert.date_annulation = datetime.utcnow()
+    transfert.annule_par = username or "admin"
+    transfert.motif_annulation = motif or "Annulation manuelle demandée"
+
+    db.commit()
+    return {
+        "success": True,
+        "message": f"Transfert #{transfer_id} annulé avec succès. {restored_count} notes restaurées dans leur état d'origine.",
+        "restored_count": restored_count
+    }
+
+
+def get_transfert_notes_history(db: Session, annee_scolaire: Optional[str] = None) -> List[models.TransfertNotes]:
+    """Récupère l'historique complet des transferts de notes."""
+    query = db.query(models.TransfertNotes)
+    if annee_scolaire:
+        query = query.filter(models.TransfertNotes.annee_scolaire == annee_scolaire)
+    return query.order_by(models.TransfertNotes.date_transfert.desc()).all()

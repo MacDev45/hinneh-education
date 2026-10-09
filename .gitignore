@@ -25,3 +25,6 @@ app_b64.txt
 *.db
 *.db-journal
 *.sqlite
+
+import/*.xlsx
+DOSSIER_DEPLOIEMENT_HINNEH/

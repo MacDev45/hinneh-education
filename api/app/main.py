@@ -16,7 +16,7 @@ from fastapi.exception_handlers import (
 
 from .config import settings
 from .database import engine, Base
-from .routers import auth, schools, classes, students, staff, grades, finances, requests, salles, courriers, stocks, taches, archives, uploads, transport, echeancier, caisse, bank, villes, bibliotheque, dossiers, rh_demandes, badges_qr, reductions, tenues, parcauto, audit, rendezvous, annees, tarifs, pointage_badge, periodes
+from .routers import auth, schools, classes, students, staff, grades, finances, requests, salles, courriers, stocks, taches, archives, uploads, transport, echeancier, caisse, bank, villes, bibliotheque, dossiers, rh_demandes, badges_qr, reductions, tenues, parcauto, audit, rendezvous, annees, tarifs, pointage_badge, periodes, transfert_notes
 from .services import bank_scheduler
 from .school_middleware import EtablissementActifMiddleware
 
@@ -844,6 +844,7 @@ app.include_router(audit.router, prefix=settings.API_STR)
 app.include_router(tarifs.router, prefix=settings.API_STR)
 app.include_router(pointage_badge.router, prefix=settings.API_STR)
 app.include_router(periodes.router, prefix=settings.API_STR)
+app.include_router(transfert_notes.router, prefix=settings.API_STR)
 
 # ─── Fichiers statiques (photos & assets école) ───────────────────────────
 # Rendre accessibles les images uploadées via /api/uploads/...

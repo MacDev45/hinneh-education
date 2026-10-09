@@ -1637,3 +1637,107 @@ class EmpruntLivreOut(EmpruntLivreBase):
         from_attributes = True
 
 
+# =========================================================================
+# SCHÉMAS : TRANSFERT DES NOTES DU COLLÈGE (BOUAKÉ & DALOA -> YAMOUSSOUKRO)
+# =========================================================================
+
+class CandidateGradeItem(BaseModel):
+    id: int
+    eleve_id: int
+    matricule: Optional[str] = None
+    eleve_nom: str
+    classe_id: int
+    classe_nom: str
+    matiere: str
+    type_devoir: str
+    trimestre: int
+    semestre: Optional[int] = None
+    note: float
+    coefficient: int
+    date: Optional[date_type] = None
+    ecole_source_id: Optional[int] = None
+    ecole_source_nom: Optional[str] = None
+    ville_source: str
+    code_etablissement_actuel: Optional[str] = None
+
+class TransfertNotesSimulationRequest(BaseModel):
+    annee_scolaire: str = "2025-2026"
+    type_periode: str = "trimestre"  # 'trimestre' ou 'semestre'
+    periode_numero: int = 1           # 1, 2, ou 3
+    ville_source: str = "Bouaké & Daloa"  # 'Bouaké', 'Daloa', ou 'Bouaké & Daloa'
+    ecole_source_id: Optional[int] = None
+    ecole_destination_id: Optional[int] = None
+    classe_ids: Optional[List[int]] = None
+    matieres: Optional[List[str]] = None
+
+class TransfertNotesSimulationResponse(BaseModel):
+    total_notes: int
+    total_eleves: int
+    total_classes: int
+    moyenne_generale: Optional[float] = None
+    annee_scolaire: str
+    type_periode: str
+    periode_numero: int
+    ville_source: str
+    ecole_destination_id: int
+    ecole_destination_nom: str
+    code_etablissement_destination: str
+    classes_concernees: List[dict] = []
+    matieres_concernees: List[dict] = []
+    notes: List[CandidateGradeItem] = []
+
+class TransfertNotesExecuteRequest(BaseModel):
+    annee_scolaire: str = "2025-2026"
+    type_periode: str = "trimestre"
+    periode_numero: int = 1
+    ville_source: str = "Bouaké & Daloa"
+    ecole_source_id: Optional[int] = None
+    ecole_destination_id: int
+    notes_ids: Optional[List[int]] = None
+    motif: Optional[str] = "Rattachement officiel des notes du collège vers le centre d'examen Yamoussoukro (absence de code établissement local)"
+
+class TransfertNotesResponse(BaseModel):
+    success: bool
+    message: str
+    transfert_id: int
+    nombre_notes: int
+    nombre_eleves: int
+    nombre_classes: int
+    annee_scolaire: str
+    type_periode: str
+    periode_numero: int
+    code_etablissement_destination: str
+    date_transfert: datetime
+
+class TransfertNotesHistoryItem(BaseModel):
+    id: int
+    date_transfert: datetime
+    annee_scolaire: str
+    type_periode: str
+    periode_numero: int
+    ville_source: str
+    nom_ecole_source: Optional[str] = None
+    ecole_destination_id: int
+    nom_ecole_destination: Optional[str] = None
+    code_etablissement_destination: str
+    nombre_notes: int
+    nombre_eleves: int
+    nombre_classes: int
+    moyenne_generale_transfert: Optional[float] = None
+    statut: str
+    effectue_par: Optional[str] = None
+    effectue_par_nom: Optional[str] = None
+    motif: Optional[str] = None
+    details: Optional[Any] = None
+    date_annulation: Optional[datetime] = None
+    annule_par: Optional[str] = None
+    motif_annulation: Optional[str] = None
+
+    class Config:
+        from_attributes = True
+
+class TransfertNotesRollbackRequest(BaseModel):
+    motif: Optional[str] = "Annulation demandée par l'administrateur"
+
+
+

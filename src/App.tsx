@@ -82,6 +82,7 @@ const PointageBadgeSpace = lazy(() => import("@/pages/PointageBadgeSpace"));
 const StudentTransferSpace = lazy(() => import("@/pages/StudentTransferSpace"));
 const StudentSerieTransferSpace = lazy(() => import("@/pages/StudentSerieTransferSpace"));
 const StudentWithdrawalSpace = lazy(() => import("@/pages/StudentWithdrawalSpace"));
+const TransfertNotesSpace = lazy(() => import("@/pages/TransfertNotesSpace"));
 import { AppLogoLoader } from "@/components/AppLogoLoader";
 
 const PageLoadingFallback = () => (
@@ -385,6 +386,28 @@ const App = () => (
                 ]}
               >
                 <StudentTransferSpace />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path={ROUTE_PATHS.TRANSFERT_NOTES}
+            element={
+              <ProtectedRoute
+                allowedRoles={[
+                  "direction_fondation",
+                  "directeur_ecole",
+                  "directeur_etudes",
+                  "directeur_etude",
+                  "de",
+                  "directeur",
+                  "superviseur",
+                  "educateur",
+                  "secretaire_direction",
+                  "enseignant",
+                  "admin",
+                ]}
+              >
+                <TransfertNotesSpace />
               </ProtectedRoute>
             }
           />

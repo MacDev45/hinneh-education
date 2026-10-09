@@ -9,6 +9,12 @@ import type {
   Attendance,
   Seance,
   Pointage,
+  TransfertNotesConfig,
+  TransfertNotesSimulationRequest,
+  TransfertNotesSimulationResponse,
+  TransfertNotesExecuteRequest,
+  TransfertNotesResponse,
+  TransfertNotesHistoryItem,
 } from "@/lib/index";
 import { filterSchoolsByUserCity } from "@/lib/utils";
 
@@ -2665,6 +2671,61 @@ export const apiClient = {
       const response = await api.get("/api/caisse/mobile-money-coris-transactions", { params });
       return response.data || [];
     });
+  },
+
+  // ─── TRANSFERT DES NOTES DU COLLÈGE (BOUAKÉ & DALOA -> YAMOUSSOUKRO) ───
+  async getTransfertNotesConfig(): Promise<TransfertNotesConfig> {
+    const response = await api.get("/api/transfert-notes/config");
+    return response.data;
+  },
+
+  async getCandidateGrades(params?: {
+    annee_scolaire?: string;
+    type_periode?: string;
+    periode_numero?: number;
+    ville_source?: string;
+    ecole_source_id?: number;
+  }): Promise<any> {
+    const response = await api.get("/api/transfert-notes/candidates", { params });
+    return response.data;
+  },
+
+  async simulateTransfertNotes(
+    payload: TransfertNotesSimulationRequest
+  ): Promise<TransfertNotesSimulationResponse> {
+    const response = await api.post("/api/transfert-notes/simulate", payload);
+    return response.data;
+  },
+
+  async executeTransfertNotes(
+    payload: TransfertNotesExecuteRequest
+  ): Promise<TransfertNotesResponse> {
+    const response = await api.post("/api/transfert-notes/execute", payload);
+    invalidateCache("evaluations", "bulletins");
+    return response.data;
+  },
+
+  async getTransfertNotesHistory(
+    annee_scolaire?: string
+  ): Promise<TransfertNotesHistoryItem[]> {
+    const response = await api.get("/api/transfert-notes/history", {
+      params: annee_scolaire ? { annee_scolaire } : undefined,
+    });
+    return response.data;
+  },
+
+  async getTransfertNotesDetail(transferId: number): Promise<any> {
+    const response = await api.get(`/api/transfert-notes/${transferId}`);
+    return response.data;
+  },
+
+  async rollbackTransfertNotes(
+    transferId: number,
+    payload?: { motif?: string }
+  ): Promise<any> {
+    const response = await api.post(`/api/transfert-notes/${transferId}/rollback`, payload || {});
+    invalidateCache("evaluations", "bulletins");
+    return response.data;
   },
 
   // In-memory cache management

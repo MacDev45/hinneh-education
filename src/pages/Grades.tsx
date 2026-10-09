@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { fadeInUp, staggerContainer, staggerItem } from '@/lib/motion';
 import { Layout } from '@/components/Layout';
@@ -7,8 +8,7 @@ import { StatsCard, MetricCard } from '@/components/Stats';
 import { PerformanceLineChart, StudentProgressChart } from '@/components/Charts';
 import apiClient from '@/lib/apiClient';
 import type { Evaluation, KPICard, Student, ClassRoom } from '@/lib/index';
-import { formatStudentName } from '@/lib/index';
-import { formatDate } from '@/lib/index';
+import { formatStudentName, formatDate, ROUTE_PATHS } from '@/lib/index';
 import { printBulletins } from '@/lib/bulletinPrinter';
 import {
   printAttendanceCertificate,
@@ -65,6 +65,7 @@ import {
   Award,
   ClipboardList,
   ArrowLeft,
+  ArrowRightLeft,
 } from 'lucide-react';
 
 interface BulletinRecord {
@@ -661,6 +662,7 @@ const calculateClassesWithRepêchage = (studentsList: Student[], evaluationsList
 };
 
 export default function Grades() {
+  const navigate = useNavigate();
   const userRole = typeof window !== 'undefined' ? (localStorage.getItem('user_role') || '').toLowerCase() : '';
   const isEducateur = userRole === 'educateur';
 
@@ -1219,7 +1221,15 @@ export default function Grades() {
                 Gestion des évaluations et génération des bulletins scolaires
               </p>
             </div>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-2">
+              <Button
+                variant="outline"
+                onClick={() => navigate(ROUTE_PATHS.TRANSFERT_NOTES)}
+                className="border-blue-500 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 flex items-center gap-1.5 text-xs font-semibold shadow-sm"
+              >
+                <ArrowRightLeft className="h-3.5 w-3.5 text-blue-600" />
+                Transfert Collège (Bouaké/Daloa → Yamoussoukro)
+              </Button>
               <Button variant="outline">
                 <FileText className="h-4 w-4 mr-2" />
                 Exporter

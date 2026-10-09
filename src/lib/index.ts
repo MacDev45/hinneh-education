@@ -73,6 +73,7 @@ export const ROUTE_PATHS = {
   STUDENT_TRANSFER: '/transfert-classes',
   STUDENT_SERIE_TRANSFER: '/transfert-series',
   STUDENT_WITHDRAWAL: '/retrait-eleves',
+  TRANSFERT_NOTES: '/transfert-notes',
 } as const;
 
 // ─── CRM TYPES ──────────────────────────────────────────────────────────────
@@ -788,3 +789,142 @@ export const resolveStudentClassName = (student: any, classesList: any[] = []): 
 
   return "Non renseigné";
 };
+
+// ─── TYPES POUR LE TRANSFERT DES NOTES DU COLLÈGE ──────────────────────────
+
+export interface CandidateGradeItem {
+  id: number;
+  eleve_id: number;
+  matricule?: string;
+  eleve_nom: string;
+  classe_id: number;
+  classe_nom: string;
+  matiere: string;
+  type_devoir: string;
+  trimestre: number;
+  semestre?: number;
+  note: number;
+  coefficient: number;
+  date?: string;
+  ecole_source_id?: number;
+  ecole_source_nom?: string;
+  ville_source: string;
+  code_etablissement_actuel?: string;
+}
+
+export interface TransfertNotesConfig {
+  annees_scolaires: string[];
+  annee_active: string;
+  periodes_trimestres: { numero: number; libelle: string }[];
+  periodes_semestres: { numero: number; libelle: string }[];
+  villes_sources: { code: string; label: string }[];
+  ecoles_sources: {
+    bouake: { id: number; nom: string; code: string }[];
+    daloa: { id: number; nom: string; code: string }[];
+  };
+  ecoles_destination: {
+    id: number;
+    nom: string;
+    code: string;
+    ville: string;
+    is_default?: boolean;
+  }[];
+  classes_college: {
+    id: number;
+    nom: string;
+    cycle: string;
+    ville: string;
+    ecole_id?: number;
+    code_etablissement?: string;
+    nb_eleves: number;
+  }[];
+}
+
+export interface TransfertNotesSimulationRequest {
+  annee_scolaire: string;
+  type_periode: 'trimestre' | 'semestre';
+  periode_numero: number;
+  ville_source: string;
+  ecole_source_id?: number;
+  ecole_destination_id?: number;
+  classe_ids?: number[];
+  matieres?: string[];
+}
+
+export interface TransfertNotesSimulationResponse {
+  total_notes: number;
+  total_eleves: number;
+  total_classes: number;
+  moyenne_generale?: number;
+  annee_scolaire: string;
+  type_periode: string;
+  periode_numero: number;
+  ville_source: string;
+  ecole_destination_id: number;
+  ecole_destination_nom: string;
+  code_etablissement_destination: string;
+  classes_concernees: {
+    classe_id: number;
+    classe_nom: string;
+    ville: string;
+    nb_notes: number;
+    moyenne: number;
+  }[];
+  matieres_concernees: {
+    matiere: string;
+    nb_notes: number;
+    moyenne: number;
+  }[];
+  notes: CandidateGradeItem[];
+}
+
+export interface TransfertNotesExecuteRequest {
+  annee_scolaire: string;
+  type_periode: 'trimestre' | 'semestre';
+  periode_numero: number;
+  ville_source: string;
+  ecole_source_id?: number;
+  ecole_destination_id: number;
+  notes_ids?: number[];
+  motif?: string;
+}
+
+export interface TransfertNotesResponse {
+  success: boolean;
+  message: string;
+  transfert_id: number;
+  nombre_notes: number;
+  nombre_eleves: number;
+  nombre_classes: number;
+  annee_scolaire: string;
+  type_periode: string;
+  periode_numero: number;
+  code_etablissement_destination: string;
+  date_transfert: string;
+}
+
+export interface TransfertNotesHistoryItem {
+  id: number;
+  date_transfert: string;
+  annee_scolaire: string;
+  type_periode: string;
+  periode_numero: number;
+  ville_source: string;
+  nom_ecole_source?: string;
+  ecole_destination_id: number;
+  nom_ecole_destination?: string;
+  code_etablissement_destination: string;
+  nombre_notes: number;
+  nombre_eleves: number;
+  nombre_classes: number;
+  moyenne_generale_transfert?: number;
+  statut: 'effectue' | 'annule';
+  effectue_par?: string;
+  effectue_par_nom?: string;
+  motif?: string;
+  details?: any;
+  date_annulation?: string;
+  annule_par?: string;
+  motif_annulation?: string;
+}
+

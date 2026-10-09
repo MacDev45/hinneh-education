@@ -140,6 +140,12 @@ const navigationSections: NavSection[] = [
         roles: ['direction_fondation', 'directeur_ecole', 'directeur_etudes', 'de', 'educateur', 'admin', 'secretaire_direction'],
       },
       {
+        label: 'Transfert de notes (Bouaké/Daloa)',
+        path: ROUTE_PATHS.TRANSFERT_NOTES,
+        icon: ArrowLeftRight,
+        roles: ['direction_fondation', 'directeur_ecole', 'directeur_etudes', 'de', 'educateur', 'admin', 'secretaire_direction', 'enseignant'],
+      },
+      {
         label: 'Changement de série',
         path: ROUTE_PATHS.STUDENT_SERIE_TRANSFER,
         icon: Shuffle,

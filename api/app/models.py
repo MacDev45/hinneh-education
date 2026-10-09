@@ -537,6 +537,14 @@ class Evaluation(Base):
     ET_CODEETABLISSEMENT = Column(String(50), nullable=True)
     ecole_id = Column(Integer, nullable=True, index=True)
 
+    # Rattachement & Transfert (Année scolaire, période, traçabilité d'origine)
+    annee_scolaire = Column(String(20), nullable=True, index=True)
+    semestre = Column(Integer, nullable=True) # 1 ou 2 si régime semestriel
+    transfert_id = Column(Integer, nullable=True, index=True)
+    ville_origine = Column(String(100), nullable=True)
+    ecole_origine_id = Column(Integer, nullable=True)
+    code_etablissement_origine = Column(String(50), nullable=True)
+
     classe = relationship("Classe", back_populates="evaluations")
     eleve = relationship("Eleve", back_populates="evaluations")
 
@@ -1476,3 +1484,52 @@ class PointageBadge(Base):
     # Relations
     eleve      = relationship("Eleve",      foreign_keys=[eleve_id])
     pointe_par = relationship("Personnel",  foreign_keys=[pointe_par_id])
+
+
+class TransfertNotes(Base):
+    """
+    Journal des transferts de notes de collège (Bouaké & Daloa vers Yamoussoukro).
+    Trace chaque opération avec année scolaire, période, source, destination,
+    notes transférées, utilisateur et métadonnées.
+    """
+    __tablename__ = "api_transfert_notes"
+
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
+    date_transfert = Column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+    annee_scolaire = Column(String(20), nullable=False, index=True)  # ex: '2025-2026'
+    type_periode = Column(String(20), default="trimestre", nullable=False)  # 'trimestre' ou 'semestre'
+    periode_numero = Column(Integer, default=1, nullable=False)  # 1, 2, 3
+    
+    # Sources
+    ville_source = Column(String(100), nullable=False)  # 'Bouaké', 'Daloa', ou 'Bouaké & Daloa'
+    ecole_source_id = Column(Integer, nullable=True)
+    nom_ecole_source = Column(String(255), nullable=True)
+    
+    # Destination (Yamoussoukro)
+    ecole_destination_id = Column(Integer, nullable=False)
+    nom_ecole_destination = Column(String(255), nullable=True)
+    code_etablissement_destination = Column(String(50), nullable=False)  # ex: 'LIY-03'
+    
+    # Statistiques du transfert
+    nombre_notes = Column(Integer, default=0, nullable=False)
+    nombre_eleves = Column(Integer, default=0, nullable=False)
+    nombre_classes = Column(Integer, default=0, nullable=False)
+    moyenne_generale_transfert = Column(Float, nullable=True)
+    
+    # Statut & Audit
+    statut = Column(String(30), default="effectue", nullable=False)  # 'effectue', 'annule'
+    effectue_par = Column(String(150), nullable=True)  # username
+    effectue_par_nom = Column(String(150), nullable=True)
+    motif = Column(Text, nullable=True)
+    
+    # Données d'audit & Rollback (JSON des IDs des notes et snapshot avant transfert)
+    notes_ids = Column(JSON, nullable=True)  # [eval_id_1, eval_id_2, ...]
+    snapshot_origine = Column(JSON, nullable=True)  # snapshot pour rollback : [{id, ecole_id, code_etab, ...}]
+    details = Column(JSON, nullable=True)  # résumé par classe et matière
+    
+    # Métadonnées
+    date_creation = Column(DateTime, default=datetime.utcnow, nullable=False)
+    date_annulation = Column(DateTime, nullable=True)
+    annule_par = Column(String(150), nullable=True)
+    motif_annulation = Column(Text, nullable=True)
+
