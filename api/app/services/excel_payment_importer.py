@@ -26,18 +26,25 @@ RUBRIQUE_MAP = {
     'CANT': 'cantine',
     'ANX': 'frais_annexe',
     'CEPE ARABE': 'frais_annexe',
-    'INS': 'scolarite',
-    'ARRIERE': 'scolarite',
+    'INS': 'frais_inscription',
+    # Arriérés d'années antérieures : type distinct, sinon ils seraient ventilés sur les
+    # tranches de l'année en cours et disparaîtraient du reçu.
+    'ARRIERE': 'arriere',
 }
 
+# Le fichier provient de l'ancien logiciel du campus d'Abidjan : seuls les élèves des
+# établissements de cette ville sont rapprochés (jamais ceux de Bouaké, Daloa, etc.).
+VILLE_IMPORT = "abidjan"
+
 # Suffixes pour garantir l'unicité des sous-reçus sur un même reçu papier
-ECOLES_IMPORT = (1, 2, 3)
 
 SUFFIX_MAP = {
     'scolarite': 'SCOL',
     'cantine': 'CANT',
     'transport': 'TRAN',
-    'frais_annexe': 'FRAI'
+    'frais_annexe': 'FRAI',
+    'frais_inscription': 'INSC',
+    'arriere': 'ARR',
 }
 
 
@@ -80,6 +87,7 @@ class ExcelPaymentImporter:
         dry_run: bool = False
     ):
         self.db = db
+        self.ecoles_import: List[int] = []
         self.file_path = file_path
         self.file_bytes = file_bytes
         self.dry_run = dry_run
@@ -143,6 +151,17 @@ class ExcelPaymentImporter:
             # Erreur mineure, on continue sans le dump
             pass
 
+    def _load_ecoles_import(self):
+        """Établissements de la ville d'Abidjan, seuls concernés par l'import."""
+        from .. import models
+        self.ecoles_import = [
+            eid for (eid,) in self.db.query(models.Etablissement.IDETABLISSEMENT).filter(
+                func.lower(models.Etablissement.ET_VILLE).like(f"%{VILLE_IMPORT}%")
+            ).all()
+        ]
+        if not self.ecoles_import:
+            raise ValueError("Aucun établissement de la ville d'Abidjan n'est configuré : import impossible.")
+
     def _load_classes(self):
         """Charge toutes les classes existantes en base."""
         from .. import models
@@ -153,7 +172,7 @@ class ExcelPaymentImporter:
             models.Classe.CE_ABREGE,
             models.Classe.ecole_id,
             models.Classe.ET_CODEETABLISSEMENT
-        ).filter(models.Classe.ecole_id.in_(ECOLES_IMPORT)).all()
+        ).filter(models.Classe.ecole_id.in_(self.ecoles_import)).all()
         for cid, lib, code, abr, ecole, etab in classes:
             cl_info = {
                 'id': cid,
@@ -225,7 +244,7 @@ class ExcelPaymentImporter:
             models.Eleve.classe_id,
             models.Eleve.ecole_id,
             models.Eleve.ET_CODEETABLISSEMENT
-        ).filter(models.Eleve.ecole_id.in_(ECOLES_IMPORT)).all()
+        ).filter(models.Eleve.ecole_id.in_(self.ecoles_import)).all()
         for sid, mat, nom, prenom, cid, ecole_id, etab in students:
             n_nom = normalize_name(nom)
             n_prenom = normalize_name(prenom)
@@ -305,6 +324,7 @@ class ExcelPaymentImporter:
         from .. import models
 
         # 1. Chargement des référentiels
+        self._load_ecoles_import()
         self._load_historical_dump_classes()
         self._load_classes()
         self._load_students()

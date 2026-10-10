@@ -1952,6 +1952,7 @@ def get_recu_recapitulatif_eleve(
 
     # Récapitulatif par catégorie
     by_category = {
+        "arriere": [],
         "frais_annexe": [],
         "frais_inscription": [],
         "inscription": [],
@@ -1967,6 +1968,7 @@ def get_recu_recapitulatif_eleve(
     }
 
     totaux_category = {
+        "arriere": Decimal("0.00"),
         "frais_annexe": Decimal("0.00"),
         "frais_inscription": Decimal("0.00"),
         "inscription": Decimal("0.00"),
@@ -1995,7 +1997,9 @@ def get_recu_recapitulatif_eleve(
             "numero_transaction": p.numero_transaction or "-"
         }
         ptype = (p.type or "").lower().strip()
-        if ptype == "frais_annexe":
+        if "arriere" in ptype or "arriéré" in ptype:
+            cat = "arriere"
+        elif ptype == "frais_annexe":
             cat = "frais_annexe"
         elif ptype == "frais_inscription":
             cat = "frais_inscription"
@@ -2034,9 +2038,18 @@ def get_recu_recapitulatif_eleve(
         models.EcheancierPaiement.eleve_id == student.id
     ).order_by(models.EcheancierPaiement.date_echeance.asc()).all()
 
+    def is_arriere_ech(e):
+        stype = (e.service_type or "").strip().lower()
+        lib = (e.libelle or "").strip().lower()
+        return stype == "arriere" or "arriere" in lib or "arriéré" in lib
+
+    arriere_echeances = [e for e in all_db_echeances if is_arriere_ech(e)]
+
     def is_scolarite_ech(e):
         stype = (e.service_type or "").strip().lower()
         lib = (e.libelle or "").strip().lower()
+        if is_arriere_ech(e):
+            return False
         if stype in ("cantine", "transport", "car", "examen", "uniforme", "autres"):
             return False
         if any(kw in lib for kw in ["cantine", "transport", " car", "examen", "bepc", "cepe", "bac", "uniforme"]):
@@ -2089,17 +2102,99 @@ def get_recu_recapitulatif_eleve(
                 "service_type": "scolarite",
             })
     else:
-        rem_verse = float(total_verse_scolarite)
+        # Les frais annexes et d'inscription sont crédités d'abord sur leur propre tranche
+        # de la grille : versés à part, ils doivent apparaître sous leur rubrique et non
+        # remplir la première tranche venue. Sans tranche correspondante dans la grille, ils
+        # forment leur propre ligne réglée. Ce qui dépasse la tranche rejoint la scolarité.
+        def tranche_kind(name: str) -> str:
+            n = (name or "").lower()
+            if "annexe" in n:
+                return "frais_annexe"
+            if "inscription" in n:
+                return "inscription"
+            return "scolarite"
+
+        pools = {
+            "frais_annexe": float(totaux_category["frais_annexe"]),
+            "inscription": float(totaux_category["frais_inscription"] + totaux_category["inscription"]),
+        }
+        kinds_in_grid = {tranche_kind(name) for name, _ in preset_tranches}
+        libelles_hors_grille = {"frais_annexe": "Frais annexe", "inscription": "Frais d'Inscription"}
+        for kind, libelle in libelles_hors_grille.items():
+            if kind not in kinds_in_grid and pools[kind] > 0:
+                echeances_out.append({
+                    "rubric": libelle,
+                    "amount": pools[kind],
+                    "paid": pools[kind],
+                    "rest": 0.0,
+                    "statut": "paye",
+                    "service_type": kind,
+                })
+                pools[kind] = 0.0
+
+        paid_by_tranche = []
         for name, amt in preset_tranches:
-            p_amt = min(amt, rem_verse)
-            rem_verse = max(0.0, rem_verse - p_amt)
+            kind = tranche_kind(name)
+            p_amt = 0.0
+            if kind in pools:
+                p_amt = min(amt, pools[kind])
+                pools[kind] -= p_amt
+            paid_by_tranche.append(p_amt)
+
+        rem_verse = float(totaux_category["scolarite"]) + sum(pools.values())
+        for (name, amt), p_amt in zip(preset_tranches, paid_by_tranche):
+            extra = min(amt - p_amt, rem_verse)
+            p_amt += extra
+            rem_verse = max(0.0, rem_verse - extra)
             echeances_out.append({
                 "rubric": name,
                 "amount": amt,
                 "paid": p_amt,
                 "rest": max(0.0, amt - p_amt),
-                "service_type": "scolarite",
+                "service_type": tranche_kind(name),
             })
+
+        # Le dû et le versé suivent exactement les lignes imprimées.
+        total_du = float(sum(e["amount"] for e in echeances_out))
+        total_verse_scolarite = float(sum(e["paid"] for e in echeances_out)) + rem_verse
+        total_verse = total_verse_scolarite
+        solde_impaye = float(sum(e["rest"] for e in echeances_out))
+
+    # Arriérés des années antérieures : ligne distincte, comme sur les reçus de l'ancien
+    # logiciel. Le montant est ce qui a déjà été réglé plus ce qui reste dû
+    # (AU_MONTANTARRIERE), placée juste après l'inscription et les frais annexes.
+    arriere_lines = []
+    if arriere_echeances:
+        for ech in arriere_echeances:
+            amt = float(ech.montant_prevu or 0.0)
+            paid = float(ech.montant_paye or 0.0)
+            arriere_lines.append({
+                "rubric": ech.libelle or "ARRIERE",
+                "amount": amt,
+                "paid": paid,
+                "rest": max(0.0, amt - paid),
+                "date_echeance": ech.date_echeance.strftime("%d/%m/%Y") if ech.date_echeance else None,
+                "statut": ech.statut,
+                "service_type": "arriere",
+            })
+    else:
+        arriere_paye = float(totaux_category["arriere"])
+        if arriere_paye > 0 or arrieres > 0:
+            arriere_lines.append({
+                "rubric": "ARRIERE",
+                "amount": arriere_paye + arrieres,
+                "paid": arriere_paye,
+                "rest": arrieres,
+                "statut": "paye" if arrieres <= 0 else ("partiel" if arriere_paye > 0 else "non_paye"),
+                "service_type": "arriere",
+            })
+    if arriere_lines:
+        insert_at = 0
+        while insert_at < len(echeances_out) and any(
+            kw in (echeances_out[insert_at]["rubric"] or "").lower() for kw in ("annexe", "inscription")
+        ):
+            insert_at += 1
+        echeances_out[insert_at:insert_at] = arriere_lines
 
     # Services optionnels (cantine, transport) :
     # - Si l'élève a des tranches en base : renvoyer ses vraies tranches en base.
@@ -2331,6 +2426,7 @@ def get_recu_recapitulatif_eleve(
         + float(totaux_category["uniforme"])
         + float(totaux_category["frais_divers"])
         + float(totaux_category["autres"])
+        + float(totaux_category["arriere"])
     )
     total_verse_global = float(total_general)
     total_reste_global = max(0.0, solde_impaye + cantine_reste_eff + transport_reste_eff)
@@ -2378,6 +2474,10 @@ def get_recu_recapitulatif_eleve(
             "statut_financier": "À jour" if total_a_recouvrer <= 0 else ("Arriérés / Impayés en cours" if arrieres > 0 else "Solde partiel")
         },
         "ventilations": {
+            "arriere": {
+                "subtotal": float(totaux_category["arriere"]),
+                "items": by_category["arriere"]
+            },
             "frais_annexe": {
                 "subtotal": float(totaux_category["frais_annexe"]),
                 "items": by_category["frais_annexe"]

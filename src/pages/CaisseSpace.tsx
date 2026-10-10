@@ -2426,6 +2426,7 @@ export default function CaisseSpace() {
       versementDetails = [];
       if (currentRecu.ventilations) {
         const cats = [
+          "arriere",
           "frais_annexe",
           "frais_inscription",
           "inscription",
@@ -2443,7 +2444,9 @@ export default function CaisseSpace() {
           const catAmount = Number(catData?.subtotal || 0);
           if (catAmount > 0) {
             const label =
-              cat === "frais_annexe"
+              cat === "arriere"
+                ? "ARRIERE"
+                : cat === "frais_annexe"
                 ? "Frais Annexes"
                 : cat === "frais_inscription"
                 ? "Frais d'Inscription"
@@ -2516,6 +2519,10 @@ export default function CaisseSpace() {
       const obs = currentRecu.details_recu?.observation || observation || "";
       versementDetails = [
         { rubric: obs ? `Achats Divers — ${obs}` : "Achats Divers & Fournitures", amount: montantPaiement }
+      ];
+    } else if (String(currentMotif).toLowerCase().includes("arriere")) {
+      versementDetails = [
+        { rubric: "ARRIERE", amount: montantPaiement }
       ];
     } else if (currentMotif === "frais_annexe") {
       versementDetails = [
@@ -2591,7 +2598,7 @@ export default function CaisseSpace() {
       // Cumul réel de scolarité
       let cumulScolarite = studentPmtList.reduce((acc: number, p: any) => {
         const pt = String(p.type || p.motif || "").toLowerCase();
-        if (pt.includes("cant") || pt.includes("trans") || pt.includes("car") || pt.includes("kit") || pt.includes("tenue") || pt.includes("uniforme") || pt.includes("fourniture") || pt.includes("exam") || pt.includes("anglais") || pt.includes("informatique") || pt.includes("divers")) {
+        if (pt.includes("arriere") || pt.includes("cant") || pt.includes("trans") || pt.includes("car") || pt.includes("kit") || pt.includes("tenue") || pt.includes("uniforme") || pt.includes("fourniture") || pt.includes("exam") || pt.includes("anglais") || pt.includes("informatique") || pt.includes("divers")) {
           return acc;
         }
         return acc + Number(p.montant || 0);
@@ -2641,7 +2648,8 @@ export default function CaisseSpace() {
               e.reste ??
               Math.max(0, Number(e.montant_prevu || 0) - Number(e.montant_paye || 0)),
           ),
-          service_type: "scolarite",
+          // La ligne ARRIERE garde son type : le reçu la sépare de la scolarité de l'année.
+          service_type: String(e.service_type || "").toLowerCase() === "arriere" ? "arriere" : "scolarite",
           mode: e.mode,
           statut: e.statut,
         }));
@@ -2871,7 +2879,15 @@ export default function CaisseSpace() {
         amount: e.paid,
       }));
 
+    // Un paiement d'arriérés, de frais annexes ou d'inscription garde sa propre rubrique :
+    // son reçu ne montre que ce versement, pas le cumul de toutes les lignes payées.
+    const motifARubriquePropre =
+      String(currentMotif).toLowerCase().includes("arriere") ||
+      currentMotif === "frais_annexe" ||
+      currentMotif === "inscription" ||
+      currentMotif === "frais_inscription";
     if (
+      !motifARubriquePropre &&
       paidFormatted.length > 1 &&
       (versementDetails.length <= 1 ||
         currentMotif === "Recu global recapitulatif" ||

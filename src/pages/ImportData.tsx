@@ -243,7 +243,7 @@ const IMPORTS: ImportConfig[] = [
     icon: Receipt,
     apiMethod: (file: File) => apiClient.importPaymentsExcel(file),
     description:
-      "Importer les paiements depuis le fichier Excel (Date, Caissier, Reçu, Nom complet, Classe, Rubrique, Montant). Réconcilie automatiquement les élèves par Nom, Prénom et Classe, et crée les nouveaux élèves introuvables avec un matricule temporaire (TMP26...).",
+      "Importer les paiements depuis le fichier Excel (Date, Caissier, Reçu, Nom complet, Classe, Rubrique, Montant). Uniquement les élèves des établissements d'Abidjan, rapprochés par Nom, Prénom et Classe. Les élèves introuvables ne sont pas créés : leurs paiements sont listés dans le rapport.",
     columns: [
       "Date",
       "Caissier",

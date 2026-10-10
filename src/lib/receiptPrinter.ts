@@ -410,6 +410,7 @@ export function getServiceCategory(rubric?: string, serviceType?: string): Servi
     return "frais_divers";
   }
   if (
+    st === "arriere" ||
     st === "scolarite" ||
     st === "ecolage" ||
     st === "inscription" ||
@@ -449,6 +450,13 @@ export function getServiceCategory(rubric?: string, serviceType?: string): Servi
   }
 
   return "ecolage";
+}
+
+/** Ligne d'arriérés des années antérieures (code ARRIERE de l'ancien logiciel). */
+export function isArriereEcheance(e: { rubric?: string; service_type?: string }): boolean {
+  if ((e.service_type || "").trim().toLowerCase() === "arriere") return true;
+  const u = (e.rubric || "").toUpperCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
+  return u.includes("ARRIERE");
 }
 
 export function generateReceiptHTML(data: ReceiptData): string {
@@ -1319,6 +1327,8 @@ export function generateReceiptHTML(data: ReceiptData): string {
   const activeEcheancesForSolde = realEcheances.filter((e) => {
     const u = (e.rubric || "").toUpperCase();
     if (u.includes("APE") || u.includes("DROITS BAC") || u.includes("COTISATION APE")) return false;
+    // Le reste des arriérés est déjà porté par « Arriérés années antérieures ».
+    if (isArriereEcheance(e)) return false;
     const isDesab = (e as any).statut === "desabonne" || (e as any).is_desabonne || (e as any).isDesabonne;
     if (isDesab) return false;
     if ((e.amount || 0) <= 0 && (e.paid || 0) <= 0) return false;
@@ -1459,6 +1469,9 @@ export function generateReceiptHTML(data: ReceiptData): string {
 
   // ─── DÉPARTAGE PAR SERVICE (Scolarité, Cantine, Transport, Kits, Examen, Divers) ───
   const scolariteEcheances = defaultEcheances.filter(e => getServiceCategory(e.rubric, e.service_type) === "ecolage");
+  const scolariteHorsArriere = scolariteEcheances.filter(e => !isArriereEcheance(e));
+  const arriereEcheances = scolariteEcheances.filter(e => isArriereEcheance(e));
+  const arrierePaid = arriereEcheances.reduce((acc, e) => acc + Number(e.paid || 0), 0);
   const cantineEcheances = defaultEcheances.filter(e => getServiceCategory(e.rubric, e.service_type) === "cantine");
   const transportEcheances = defaultEcheances.filter(e => getServiceCategory(e.rubric, e.service_type) === "transport");
   const kitsEcheances = defaultEcheances.filter(e => getServiceCategory(e.rubric, e.service_type) === "kits_achats");
@@ -1468,8 +1481,8 @@ export function generateReceiptHTML(data: ReceiptData): string {
     return cat === "frais_divers" || cat === "autres";
   });
 
-  const scolPaid = scolariteEcheances.reduce((acc, e) => acc + Number(e.paid || 0), 0);
-  const scolRest = scolariteEcheances.reduce((acc, e) => acc + Number(e.rest || 0), 0);
+  const scolPaid = scolariteHorsArriere.reduce((acc, e) => acc + Number(e.paid || 0), 0);
+  const scolRest = scolariteHorsArriere.reduce((acc, e) => acc + Number(e.rest || 0), 0);
 
   const cantinePaid = cantineEcheances.reduce((acc, e) => acc + Number(e.paid || 0), 0);
   const cantineRest = cantineEcheances.reduce((acc, e) => acc + Number(e.rest || 0), 0);
@@ -1706,6 +1719,7 @@ export function generateReceiptHTML(data: ReceiptData): string {
             <!-- DÉPARTAGE PAR SERVICE DES VERSEMENTS & RESTES -->
             <div style="margin-top: 3px; padding-top: 3px; border-top: 1px dashed #cbd5e1; font-size: 8px; line-height: 1.25;">
               <p><strong>• Scolarité :</strong> Versé: <span class="font-bold">${scolPaid.toLocaleString("fr-FR")}</span> | Reste: <span style="color:#dc2626; font-weight:bold;">${scolRest.toLocaleString("fr-FR")}</span></p>
+              ${arrierePaid > 0 ? `<p><strong>• Arriérés réglés :</strong> Versé: <span class="font-bold">${arrierePaid.toLocaleString("fr-FR")}</span></p>` : ''}
               ${(shouldDisplayCantine || cantinePaid > 0) ? `<p><strong>• Cantine ${!isCantineActive && cantinePaid > 0 ? '<span style="font-size:7px; color:#dc2626; font-style:italic; font-weight:bold;">(Désabonné)</span>' : ''} :</strong> Versé: <span class="font-bold">${cantinePaid.toLocaleString("fr-FR")}</span> | Reste: <span style="color:#dc2626; font-weight:bold;">${cantineRest.toLocaleString("fr-FR")}</span></p>` : ''}
               ${(shouldDisplayTransport || transportPaid > 0) ? `<p><strong>• Transport ${!isTransportActive && transportPaid > 0 ? '<span style="font-size:7px; color:#dc2626; font-style:italic; font-weight:bold;">(Désabonné)</span>' : ''} :</strong> Versé: <span class="font-bold">${transportPaid.toLocaleString("fr-FR")}</span> | Reste: <span style="color:#dc2626; font-weight:bold;">${transportRest.toLocaleString("fr-FR")}</span></p>` : ''}
               ${kitsPaid > 0 ? `<p><strong>• Kits & Tenues :</strong> Versé: <span class="font-bold">${kitsPaid.toLocaleString("fr-FR")}</span></p>` : ''}
